@@ -4,33 +4,33 @@ from bottle import get, run, template, static_file, response, request
 import sqlite3 
 # this data will come from the database (we will make an array for our tweets)
 # for now, we just cided the data
-# tweets = [
-#     {"image_name":"1.jpg", "fullname":"Elon Musk", "username":"@elonmusk"}
-# ]
+
 
 tweets = [
-  { "verified":1, "image_name":"1.jpg", "fullname":"Santiago Donoso", "username":"santiagodonoso","message":"My first tweet", "total_messages":"21","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
-  { "verified":0, "image_name":"2.jpg", "fullname":"Joe Biden", "username":"joebiden","message":"I am THE president","message_image":"1.jpg","total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
-  { "verified":1, "image_name":"1.jpg", "fullname":"Santiago Donoso", "username":"santiagodonoso","message":"My first tweet", "total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
-  { "verified":0, "image_name":"1.jpg", "fullname":"Santiago Donoso", "username":"santiagodonoso","message":"My first tweet","message_image":"1.jpg","total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
-  { "verified":1, "image_name":"1.jpg", "fullname":"Santiago Donoso", "username":"santiagodonoso","message":"My first tweet", "total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
-  { "verified":0, "image_name":"1.jpg", "fullname":"Santiago Donoso", "username":"santiagodonoso","message":"My first tweet","message_image":"1.jpg","total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
+  { "verified":1, "might_like":"you might like", "image_name":"1.jpg", "fullname":"Elon Musk", "username":"elonmusk", "hours":"· 9h", "message":"This is looking great! I just love my new mansion", "message_image":"2.jpg", "total_messages":"21","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
+  { "verified":0, "might_like":"Elon commented this", "image_name":"joe.jpg", "fullname":"Joe Biden", "username":"joebiden", "hours":"· 3h", "message":"I am THE new president! I will now make it the best country evaaaaaaaaar! BELIEVE ME!","message_image":"president.jpg","total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
+  { "verified":1, "might_like":"you might like", "image_name":"shakira.jpg", "fullname":"Shakira", "username":"shakira", "hours":"· 2h", "message":"Just filmed my new musicvideo! It went amaaaaaazing and I was so beautiful - you would not believe it! Just look at this picture - wow!", "message_image":"dancing.jpg", "total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
+  { "verified":0, "might_like":"Shakira commented this", "image_name":"britney.jpg", "fullname":"Britney Spears", "username":"britneyspears", "hours":"· 17h", "message":"Just sitting here missing my ex-boyfriend! Justin Timberlake was just so handsome you would not believe it!","message_image":"scandal.jpg","total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
+  { "verified":1, "might_like":"you might like", "image_name":"michael.jpg", "fullname":"Michael Jackson", "username":"michaeljackson", "hours":"· 14h", "message":"Just finished my last show tonight. Thank you all for always believing in me - it has been an amazing journey - see you in heaven! Peace and love to you all!","message_image":"show.jpg", "total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
 ]
 
 # list = array
 # dictionary is {}. think of it as JSON
 trends = [
-    {"title":"one", "total_hash":1},
-    {"title":"two", "total_hash":2},
-    {"title":"three", "total_hash":3}
+    {"title":"Sports - Trending", "trend_name":"Holland", "total_hash":6.795},
+    {"title":"Trending in Denmark", "trend_name":"Denmark", "total_hash":6.795},
+    {"title":"Entertainment - Trending", "trend_name":"Holland", "total_hash":6.795},
+    {"title":"Entertainment - Trending", "trend_name":"Holland", "total_hash":6.795},
+    {"title":"Entertainment - Trending", "trend_name":"Holland", "total_hash":6.795},
+    {"title":"Entertainment - Trending", "trend_name":"Holland", "total_hash":6.795}
 ]
 
 people = [
     {"profile_picture":"1.jpg", "title":"Elon Musk", "user_mail":"elonmusk"},
-    {"profile_picture":"1.jpg", "title":"Joe Biden", "user_mail":"joebiden"},
-    {"profile_picture":"1.jpg", "title":"Shakira", "user_mail":"shakira"},
-    {"profile_picture":"1.jpg", "title":"Shakira", "user_mail":"shakira"},
-    {"profile_picture":"1.jpg", "title":"Shakira", "user_mail":"shakira"}
+    {"profile_picture":"joe.jpg", "title":"Joe Biden", "user_mail":"joebiden"},
+    {"profile_picture":"shakira.jpg", "title":"Shakira", "user_mail":"shakira"},
+    {"profile_picture":"britney.jpg", "title":"Britney Spears", "user_mail":"britneyspears"},
+    {"profile_picture":"michael.jpg", "title":"Michael Jackson", "user_mail":"michaeljackson"}
 ]
 
 #########################
@@ -104,4 +104,4 @@ def _():
 
 #########################
 #synonym for localhost, men brug altid nedenstående
-run(host="127.0.0.1", port=3000, reloader=True, debug=True, server="paste")
+run(host="127.0.0.1", port=3000, reloader=True, debug=True)
