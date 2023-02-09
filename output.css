@@ -686,6 +686,11 @@ video {
   width: 0.5rem;
 }
 
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
