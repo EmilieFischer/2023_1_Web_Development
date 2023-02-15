@@ -554,25 +554,56 @@
         Who to follow
       </div>
 
-      % for person in people:
-
-      <!-- person -->
-      <div class="flex items-center gap-4 p-2">
-        <img src="images/{{person['profile_picture']}}" class="w-12 h-12 rounded-full">
+      <!-- hardcoded person til opgavebeskrivelsen -->
+      <!-- person #1 -->
+      <a class="flex items-center gap-4 p-2" href="./elonmusk">
+        <img src="/images/3658fee36e88469b90ba6490bd52422c.jpg" class="w-12 h-12 rounded-full">
         <div class="">
           <div class="text-gray-200 font-semibold text-base">
-            {{person["title"]}}
+            elonmusk
           </div>
           <div class="font-light text-gray-500 text-base">
-            @{{person["user_mail"]}}
+            @elonmusk
           </div>
         </div>
         <button class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full hover:bg-gray-400">
           Follow
         </button>
-      </div>
+      </a>
       <!-- end person -->
-      % end
+      <!-- person #2-->
+      <a class="flex items-center gap-4 p-2" href="./shakira">
+        <img src="/images/d4c66eb4aa3342d2b1dff4c39bee7003.jpg" class="w-12 h-12 rounded-full">
+        <div class="">
+          <div class="text-gray-200 font-semibold text-base">
+            Shakira
+          </div>
+          <div class="font-light text-gray-500 text-base">
+            @shakira
+          </div>
+        </div>
+        <button class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full hover:bg-gray-400">
+          Follow
+        </button>
+      </a>
+      <!-- end person -->
+      <!-- person #3 -->
+      <a class="flex items-center gap-4 p-2" href="./rihanna">
+        <img src="/images/07a08c8b225f4713a8b427f7de39f67d.jpg" class="w-12 h-12 rounded-full">
+        <div class="">
+          <div class="text-gray-200 font-semibold text-base">
+            Britney Spears
+          </div>
+          <div class="font-light text-gray-500 text-base">
+            @britneyspears
+          </div>
+        </div>
+        <button class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full hover:bg-gray-400">
+          Follow
+        </button>
+      </a>
+      <!-- end person -->
+
 
       <a href="" class="text-sky-500 p-4 text-base hover:bg-zinc-800 rounded-b-lg">
         Show more

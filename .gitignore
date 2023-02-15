@@ -1,1 +1,5 @@
-/lib
+Include
+Lib
+Bin
+.gitignore
+pyvenv.cfg
