@@ -2,6 +2,18 @@ from bottle import default_app, get, template, run, view, static_file
 import os
 import sqlite3
 
+trends = [
+    {"title":"Sports - Trending", "trend_name":"Holland", "total_hash":6.795},
+    {"title":"Trending in Denmark", "trend_name":"Denmark", "total_hash":6.795},
+    {"title":"Entertainment - Trending", "trend_name":"Holland", "total_hash":6.795},
+    {"title":"Entertainment - Trending", "trend_name":"Holland", "total_hash":6.795},
+    {"title":"Entertainment - Trending", "trend_name":"Holland", "total_hash":6.795},
+    {"title":"Entertainment - Trending", "trend_name":"Holland", "total_hash":6.795}
+]
+
+heros = [
+  {"cover_img":"elon_cover.jpg"}
+]
 
 ##############################
 def dict_factory(cursor, row):
@@ -12,6 +24,11 @@ def dict_factory(cursor, row):
 @get("/")
 def _():
   return "Home page"
+
+
+@get("/images/<filename:re:.*\.jpg>")
+def _(filename):
+    return static_file(filename, root="./images")
 
 @get("/output.css")
 def _():
@@ -37,7 +54,7 @@ def _(username):
     # pass the tweets to the view. Template it
     
     print(user) # {'id': '51602a9f7d82472b90ed1091248f6cb1', 'username': 'elonmusk', 'name': 'Elon', 'last_name': 'Musk', 'total_followers': '128900000', 'total_following': '177', 'total_tweets': '22700', 'avatar': '51602a9f7d82472b90ed1091248f6cb1.jpg'}
-    return template("profile", user=user)
+    return template("profile", user=user, trends=trends, heros=heros)
   except Exception as ex:
     print(ex)
     return "error"
