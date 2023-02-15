@@ -1,4 +1,4 @@
-from bottle import default_app, get, template, run, view
+from bottle import default_app, get, template, run, view, static_file
 import os
 import sqlite3
 
@@ -12,6 +12,10 @@ def dict_factory(cursor, row):
 @get("/")
 def _():
   return "Home page"
+
+@get("/output.css")
+def _():
+  return static_file("output.css", root=".")
 
 ##############################
 @get("/<username>")
