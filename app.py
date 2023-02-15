@@ -15,6 +15,8 @@ def git_update():
 def _():
     return "One" 
 
+# Halløjsa dette er en test
+
 ############################## 
 try:
     import production
