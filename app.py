@@ -1,4 +1,6 @@
-######################### 
+# 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
+# https://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@github.com/EmilieFischer/2023_1_Web_Development.git
+
 from bottle import default_app, get, post, run 
 import git 
 
@@ -13,9 +15,7 @@ def git_update():
 ##############################
 @get("/") 
 def _():
-    return "One" 
-
-# Halløjsa dette er en test
+    return "Two" 
 
 ############################## 
 try:
