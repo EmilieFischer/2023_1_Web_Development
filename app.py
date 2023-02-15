@@ -15,7 +15,7 @@ def git_update():
 ##############################
 @get("/") 
 def _():
-    return "Two" 
+    return "Please subscribe and like!" 
 
 ############################## 
 try:
