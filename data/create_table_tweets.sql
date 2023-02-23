@@ -1,11 +1,13 @@
 DROP TABLE IF EXISTS tweets;
 
 CREATE TABLE tweets(
+  full_name       TEXT,
+  user_name       TEXT,
   id              TEXT,
   user_fk         TEXT,
   created_at      TEXT,
   message         TEXT,
-  image           TEXT,
+  message_image   TEXT,
   updated_at      TEXT,
   total_retweets  TEXT,
   total_likes     TEXT,
@@ -15,11 +17,13 @@ CREATE TABLE tweets(
 ) WITHOUT ROWID;
 
 INSERT INTO tweets VALUES(
-  "75544dcd995745ba83557143458a672c", 
-  "51602a9f7d82472b90ed1091248f6cb1",
+  "Elon Musk",
+  "elonmusk",
+  "75544dcd995745ba83557143458a6546", 
+  "3658fee36e88469b90ba6490bd52422c",
   "1676283561",
   "My first tweet",
-  "",
+  "2.jpg",
   "0",
   "0",
   "0",
