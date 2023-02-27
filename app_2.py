@@ -62,8 +62,12 @@ def _(username):
     return "error"
   finally:
     if "db" in locals(): db.close()
-
 ##############################
+# APIS
+# makes sure that the app.py calls the api_tweet.py file 
+import apis.api_tweet
+
+
 ##############################
 # run in AWS
 try:
