@@ -21,6 +21,13 @@ def dict_factory(cursor, row):
   return {key: value for key, value in zip(col_names, row)}
 
 ##############################
+@get("/js/<filename>")
+def _(filename):
+  return static_file(filename, "js")
+
+
+##############################
+
 @get("/")
 def _():
   return "Home page"
@@ -41,13 +48,14 @@ def _(username):
   try:
     db = sqlite3.connect(os.getcwd()+"/twitter.db")
     db.row_factory = dict_factory
-    user = db.execute("SELECT * FROM users WHERE username=? COLLATE NOCASE",(username,)).fetchall()[0]
+    user = db.execute("SELECT * FROM users WHERE user_name=? COLLATE NOCASE",(username,)).fetchall()[0]
     # Get the user's id
-    user_id = user["id"]
+    user_id = user["user_id"]
     print("#"*30)
     print(f"user id:{user_id}")
     # With that id, look up/get the respectives tweets
-    tweets = db.execute("SELECT * FROM tweets WHERE user_fk=?", (user_id,)).fetchall()
+    tweets = db.execute("SELECT * FROM tweets WHERE tweet_user_fk=?", (user_id,)).fetchall()
+    trends = db.execute("SELECT * FROM trends").fetchall()
     print("#"*30)
     print(tweets)
     print("#"*30)
@@ -62,6 +70,11 @@ def _(username):
     return "error"
   finally:
     if "db" in locals(): db.close()
+
+##############################
+# VIEWS
+import views.tweet
+
 ##############################
 # APIS
 # makes sure that the app.py calls the api_tweet.py file 
