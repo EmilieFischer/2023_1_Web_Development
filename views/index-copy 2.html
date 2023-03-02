@@ -272,7 +272,7 @@
   <div class="flex p-4">
     <img src="/images/{{user['user_avatar']}}" class="h-16 rounded-full">
     <span class="font-bold flex gap-2 items-center pl-4">
-      {{user['user_first_name]}} {{user['user_last_name']}}
+      {{user["user_first_name"]}} {{user["user_last_name"]}}
       <!-- % if tweet["verified"]: -->
       <svg
         width="18"
@@ -288,8 +288,8 @@
       <!-- % end -->
     
     <span class="text-gray-500 font-light text-sm">
-      <span class=""> <strong>@</strong>{{user['user_name']}} · </span
-      >{{tweet['tweet_created_at']}}</span
+      <span class=""> <strong>@</strong>{{user["user_name"]}} · </span
+      >{{tweet["tweet_created_at"]}}</span
     >
   </span>
     <svg

@@ -16,7 +16,11 @@ def _():
     tweet_image = ""
     tweet_created_at = int(time.time())
     tweet_user_fk = "ebb0d9d74d6c4825b3e1a1bcd73ff49a"
-    db.execute("INSERT INTO tweets VALUES(?, ?, ?, ?, ?)", (tweet_id, tweet_message, tweet_image, tweet_created_at, tweet_user_fk))
+    tweet_total_messages = "0"
+    tweet_total_retweets = "0"
+    tweet_total_likes = "0"
+    tweet_total_dislikes = "0"
+    db.execute("INSERT INTO tweets VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)", (tweet_id, tweet_message, tweet_image, tweet_created_at, tweet_user_fk, tweet_total_messages, tweet_total_retweets, tweet_total_likes, tweet_total_dislikes))
     db.commit()
     return {"info":"ok", "tweet_id":tweet_id}
   except Exception as ex: # SOMETHING IS WRONG
