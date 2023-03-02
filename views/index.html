@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/output.css">
   <title>
-    {{title}}
   </title>
 </head>
 
@@ -270,9 +269,9 @@
   % for tweet in tweets:
   <div class="border-b border-gray-700">
   <div class="flex p-4">
-    <img src="/images/{{user['user_avatar']}}" class="h-16 rounded-full">
+    <img src="/images/{{tweet['user_avatar']}}" class="h-16 rounded-full">
     <span class="font-bold flex gap-2 items-center pl-4">
-      {{user['user_first_name]}} {{user['user_last_name']}}
+      {{tweet['user_first_name']}} {{tweet['user_last_name']}}
       <!-- % if tweet["verified"]: -->
       <svg
         width="18"
@@ -288,9 +287,8 @@
       <!-- % end -->
     
     <span class="text-gray-500 font-light text-sm">
-      <span class=""> <strong>@</strong>{{user['user_name']}} · </span
-      >{{tweet['tweet_created_at']}}</span
-    >
+      <span class=""> <strong>@</strong>{{tweet['user_name']}} · 
+        </span>{{tweet['tweet_created_at']}}</span>
   </span>
     <svg
       xmlns="http://www.w3.org/2000/svg"

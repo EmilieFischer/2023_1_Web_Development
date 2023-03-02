@@ -1,7 +1,7 @@
 # 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
 # https://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@github.com/EmilieFischer/2023_1_Web_Development.git
 
-from bottle import default_app, post, get, run, template, static_file, response, request, view
+from bottle import default_app, post, get, run, template, static_file, request, view
 import git 
 import os
 import pathlib
@@ -10,41 +10,6 @@ import x
 import sqlite3 
 # this data will come from the database (we will make an array for our tweets)
 # for now, we just cided the data
-
-
-# list = array
-# tweets = [
-#   {"verified":1, 
-#    "might_like":"you might like", 
-#    "image_name":"3658fee36e88469b90ba6490bd52422c.jpg", 
-#    "fullname":"Elon Musk", 
-#    "username":"elonmusk", 
-#    "hours":"· 9h", 
-#    "message":"This is looking great! I just love my new mansion", 
-#    "message_image":"2.jpg", 
-#    "total_messages":"578",
-#    "total_retweets":"4492",
-#    "total_likes":"4726",
-#    "total_dislikes":"365",},
-#   { "verified":0, "might_like":"Elon commented this", "image_name":"joe.jpg", "fullname":"Joe Biden", "username":"joebiden", "hours":"· 3h", "message":"I am THE new president! I will now make it the best country evaaaaaaaaar! BELIEVE ME!","message_image":"president.jpg","total_messages":"7482","total_retweets":"894","total_likes":"75832","total_dislikes":"3359",},
-#   { "verified":1, "might_like":"you might like", "image_name":"d4c66eb4aa3342d2b1dff4c39bee7003.jpg", "fullname":"Shakira", "username":"shakira", "hours":"· 2h", "message":"Just filmed my new musicvideo! It went amaaaaaazing and I was so beautiful - you would not believe it! Just look at this picture - wow!", "message_image":"dancing.jpg", "total_messages":"253","total_retweets":"7482","total_likes":"3","total_dislikes":"527",},
-#   { "verified":0, "might_like":"Shakira commented this", "image_name":"07a08c8b225f4713a8b427f7de39f67d.jpg", "fullname":"Britney Spears", "username":"britneyspears", "hours":"· 17h", "message":"Just sitting here missing my ex-boyfriend! Justin Timberlake was just so handsome you would not believe it!","message_image":"scandal.jpg","total_messages":"748","total_retweets":"885","total_likes":"393","total_dislikes":"2501",},
-#   { "verified":1, "might_like":"you might like", "image_name":"michael.jpg", "fullname":"Michael Jackson", "username":"michaeljackson", "hours":"· 14h", "message":"Just finished my last show tonight. Thank you all for always believing in me - it has been an amazing journey - see you in heaven! Peace and love to you all!","message_image":"show.jpg", "total_messages":"5839","total_retweets":"5729","total_likes":"87584","total_dislikes":"329",},
-# ]
-
-# dictionary is {}. think of it as JSON
-# trends = [
-#     {"title":"Sports - Trending", "trend_name":"Holland", "total_hash":6.795},
-#     {"title":"Trending in Denmark", "trend_name":"Denmark", "total_hash":6.795},
-#     {"title":"Entertainment - Trending", "trend_name":"Holland", "total_hash":6.795},
-#     {"title":"Entertainment - Trending", "trend_name":"Holland", "total_hash":6.795},
-#     {"title":"Entertainment - Trending", "trend_name":"Holland", "total_hash":6.795},
-#     {"title":"Entertainment - Trending", "trend_name":"Holland", "total_hash":6.795}
-# ]
-
-# heros = [
-#   {"cover_img":"elon_cover.jpg"}
-# ]
 
 
 @post('/secret_url_for_git_hook')
@@ -57,8 +22,8 @@ def git_update():
 
 ##############################
 def dict_factory(cursor, row):
-  col_names = [col[0] for col in cursor.description]
-  return {key: value for key, value in zip(col_names, row)}
+    col_names = [col[0] for col in cursor.description]
+    return {key: value for key, value in zip(col_names, row)}
 
 ##############################
 @get("/js/<filename>")
@@ -177,6 +142,7 @@ import apis.api_tweet
 
 ##############################
 # run in AWS
+# purpose: PythonAnywhere kan aflæse 'production', så det er når man er koblet op til PA at dette ikke er en fejl.
 try:
     import production
     print("server running in AWS")

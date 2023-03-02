@@ -86,7 +86,7 @@ import apis.api_tweet
 try:
     import production
     print("server running in AWS")
-    application = default_app()
+    application =         default_app()
 # run in local computer
 except Exception as ex:
     print("Server running locally")
