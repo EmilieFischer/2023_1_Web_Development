@@ -1,4 +1,4 @@
-from bottle import get, run, post, static_file, template
+from bottle import get, run, post, static_file, template, response, request, default_app
 import git 
 import pathlib
 import sqlite3 
@@ -7,19 +7,25 @@ import sqlite3
 
 @get("/")
 def render_index():
-  try:
+    response.add_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+    response.add_header("Pragma", "no-cache")
+    response.add_header("Expires", 0)
+
+    cookie_user = request.get_cookie("user", secret="my-secret")
+
+    try:
       # db = sqlite3.connect(str(pathlib.Path(__file__).parent.resolve()) + "/twitter.db")
       db = sqlite3.connect("./twitter.db")
       db.row_factory = dict_factory
       tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id").fetchall()
-      print (tweets)
+    #   print (tweets)
       trends = db.execute("SELECT * FROM trends").fetchall()
       users = db.execute("SELECT * FROM users").fetchall()
-      return template("index", trends=trends, tweets=tweets, users=users)
-  except Exception as ex:
+      return template("index", trends=trends, tweets=tweets, users=users, cookie_user=cookie_user)
+    except Exception as ex:
       print(ex)
       return "error"
-  finally:
+    finally:
       if "db" in locals(): db.close()
 
 
@@ -59,6 +65,11 @@ def _():
 @get("/about")
 def _():
     return template("about-us")
+
+#########################
+@get("/login")
+def _():
+    return template("login")
 
 #########################
 # skaber stien til contact-siden, så brugeren bare kan søge "about" i browseren i stedet for hele html-navnet
@@ -105,6 +116,19 @@ def _(username):
   finally:
     if "db" in locals(): db.close()
 
+
+############################
+@get("/login")
+def _():
+    return template("login")
+
+@get("/logout")
+def _():
+    response.set_cookie("user", "", expires=0)
+    response.status = 303
+    response.set_header("Location", "/login")
+    return
+
 ##############################
 # VIEWS
 import views.tweet
@@ -114,12 +138,16 @@ import views.tweet
 # makes sure that the app.py calls the api_tweet.py file 
 import apis.api_tweet
 
+############################
+import bridges.login
+
 
 ##############################
 # run in AWS
 # purpose: PythonAnywhere kan aflæse 'production', så det er når man er koblet op til PA at dette ikke er en fejl.
 try:
     import production
+    db = sqlite3.connect("/2023_1_Web_Development/twitter.db")
     print("server running in AWS")
     application = default_app()
 # run in local computer
