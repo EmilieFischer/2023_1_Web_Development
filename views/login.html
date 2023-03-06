@@ -4,13 +4,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="/output.css">
+  <title>Log in</title>
 </head>
-<body>
-  <form method="POST" action="/login">
-    <input name="email" type="text" placeholder="email">
-    <input name="password" type="password" placeholder="password">
-    <button>Login</button>
-  </form>
+<body class="flex justify-center bg-black font-light h-screen w-full">
+    <div class="block">
+        <img class="" src="/images/twitter.jpg">
+        <p class="text-gray-700">Log in</p>
+        <form method="POST" action="/login">
+            <input class="block bg-black border border-gray-900 rounded-full py-2 px-6 text-white" name="email" type="text" placeholder="email">
+            <input class="block bg-black border border-gray-900 rounded-full py-2 px-6 text-white" name="password" type="password" placeholder="password">
+            <button class="bg-sky-500 py-2 px-6 border border-slate-900 rounded-full text-white">Login</button>
+        </form>
+    </div>
 </body>
 </html>
