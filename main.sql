@@ -18,6 +18,7 @@ CREATE TABLE users(
   user_total_following        TEXT DEFAULT 0,
   PRIMARY KEY(user_id)
 ) WITHOUT ROWID;
+INSERT INTO users VALUES("1b0b3c1ba05242cea4d5a3e9e2b3cb7f", "2.jpg", "emiliefischer", "Emilie", "Fischer", "6.jpg", "1676629975", "0", "0", "0", "0", "0", "0", "0");
 INSERT INTO users VALUES("ebb0d9d74d6c4825b3e1a1bcd73ff49a", "56e8c2169277485bb8383972abb215b3.jpg", "elonmusk", "Elon", "Musk", "3658fee36e88469b90ba6490bd52422c.jpg", "1676629975", "0", "0", "0", "0", "0", "0", "0");
 INSERT INTO users VALUES("7860393a03dc4c1e872dcdd2cbf946ab", "397797c0f6154f3d8f868287a4613207.jpg", "shakira", "Shakira", "", "d4c66eb4aa3342d2b1dff4c39bee7003.jpg", "1676630033", "0", "0", "0", "0", "0", "0", "0");
 INSERT INTO users VALUES("f15e3f7afcf945e2bea6b4553f25fe75", "8eb2eed6a0824adb979f5b39642042b3.jpg", "rihanna", "Rihanna", "", "d3051eabe798441a9ff4733e6086e4d0.jpg", "1676630057", "0", "0", "0", "0", "0", "0", "0");
@@ -167,17 +168,8 @@ BEGIN
   WHERE user_id = OLD.tweet_user_fk;
 END;
 
--- SELECT user_name, user_total_tweets FROM users;
--- INSERT INTO tweets VALUES (
---     "130acdfc3d20494085ad4336a62efe4e",
---     "Hi",
---     "",
---     "1677162587",
---     "ebb0d9d74d6c4825b3e1a1bcd73ff49a"
--- );
--- DELETE FROM tweets WHERE tweet_id = "130acdfc3d20494085ad4336a62efe4e";
 
-
+-- ##############################
 DROP TABLE IF EXISTS trends;
 CREATE TABLE trends(
   trend_id            TEXT,
@@ -191,8 +183,9 @@ INSERT INTO trends VALUES("43ace034564c42788169ac18aaf601f5", "Ukraine", "698");
 INSERT INTO trends VALUES("2a9470bc61314187b19d7190b76cd535", "Super Ball", "32574");
 INSERT INTO trends VALUES("c9773e2bb68647039a7a40c2ee7d4716", "Zara", "4458796");
 
+
 -- ##############################
--- ##############################
+
 -- ##############################
 
 SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY RANDOM() LIMIT 5;

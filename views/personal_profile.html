@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/output.css" />
+    <title></title>
+  </head>
+  <body class="grid grid-cols-[100fr_150fr_100fr] w-full h-full text-gray-200 text-lg bg-black font-light overflow-hidden overflow-y-scroll">
+
+    <!-- left -->
+    <div class="sticky top-0 flex flex-col h-screen px-16 py-4">
+      <div class="flex flex-col gap-2 text-2xl">
+        <a
+          href="/"
+          class="flex items-center gap-2 px-4 py-2 hover:bg-zinc-900 rounded-full w-fit"
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" class="">
+            <path
+              fill="currentColor"
+              d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z"
+            />
+          </svg>
+        </a>
+
+        <a
+          href="/"
+          class="flex items-center gap-2 px-4 py-2 hover:bg-zinc-900 rounded-full w-fit"
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" class="">
+            <path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z" />
+          </svg>
+          <span class="text-xl"> Home </span>
+        </a>
+
+        <a
+          href="/explore"
+          class="flex items-center gap-2 px-4 py-2 hover:bg-zinc-900 rounded-full w-fit"
+        >
+          <svg width="32" height="32" viewBox="0 0 256 256">
+            <path
+              fill="currentColor"
+              d="M224 88h-48.6l8.5-46.6a8 8 0 0 0-15.8-2.8l-9 49.4h-47.7l8.5-46.6a8 8 0 1 0-15.8-2.8l-9 49.4H43.6a8 8 0 1 0 0 16h48.6l-8.7 48H32a8 8 0 0 0 0 16h48.6l-8.5 46.6a8 8 0 0 0 6.5 9.3H80a8 8 0 0 0 7.9-6.6l9-49.4h47.7l-8.5 46.6a8 8 0 0 0 6.5 9.3h1.4a8 8 0 0 0 7.9-6.6l9-49.4h51.5a8 8 0 0 0 0-16h-48.6l8.7-48H224a8 8 0 0 0 0-16Zm-76.5 64H99.8l8.7-48h47.7Z"
+            />
+          </svg>
+          <span class="text-xl"> Explore </span>
+        </a>
+
+        <a
+          href="/explore"
+          class="flex gap-2 px-4 py-2 hover:bg-zinc-900 rounded-full relative w-fit"
+        >
+          <svg width="32" height="32" viewBox="0 0 256 256">
+            <path
+              fill="currentColor"
+              d="M168 224a8 8 0 0 1-8 8H96a8 8 0 0 1 0-16h64a8 8 0 0 1 8 8Zm52.9-32a15.9 15.9 0 0 1-13.9 8H49a16 16 0 0 1-13.8-24.1c5.9-10.2 13-29.6 13-63.9v-8A79.9 79.9 0 0 1 128 24h.6c43.7.3 79.2 36.6 79.2 80.9v7.1c0 34.3 7.1 53.7 13 63.9a16.2 16.2 0 0 1 .1 16.1Zm-13.9-8c-6.9-12-15.2-34.1-15.2-72v-7.1c0-35.5-28.4-64.7-63.3-64.9h-.5a63.8 63.8 0 0 0-63.8 64v8c0 37.9-8.3 60-15.2 72Z"
+            />
+          </svg>
+          <span class="text-xl"> Notifications </span>
+          <div
+            class="flex justify-center absolute top-0 left-7 px-2 text-base text-white bg-sky-500 rounded-full"
+          >
+            4
+          </div>
+        </a>
+
+        <a
+          href="/messages"
+          class="flex items-center gap-2 px-4 py-2 hover:bg-zinc-900 rounded-full w-fit"
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24">
+            <path
+              fill="currentColor"
+              d="M5 5h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3m0 1c-.5 0-.94.17-1.28.47l7.78 5.03l7.78-5.03C18.94 6.17 18.5 6 18 6H5m6.5 6.71L3.13 7.28C3.05 7.5 3 7.75 3 8v9a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V8c0-.25-.05-.5-.13-.72l-8.37 5.43Z"
+            />
+          </svg>
+          <span class="text-xl"> Messages </span>
+        </a>
+
+        <a
+          href="/messages"
+          class="flex items-center gap-2 px-4 py-2 hover:bg-zinc-900 rounded-full w-fit"
+        >
+          <svg width="32" height="32" viewBox="0 0 256 256">
+            <path
+              fill="currentColor"
+              d="M184 36H72a12 12 0 0 0-12 12v176a3.9 3.9 0 0 0 2.1 3.5a3.8 3.8 0 0 0 4-.1l61.9-38.7l61.9 38.7a3.9 3.9 0 0 0 2.1.6a4.1 4.1 0 0 0 1.9-.5a3.9 3.9 0 0 0 2.1-3.5V48a12 12 0 0 0-12-12Zm4 180.8l-57.9-36.2a4 4 0 0 0-4.2 0L68 216.8V48a4 4 0 0 1 4-4h112a4 4 0 0 1 4 4Z"
+            />
+          </svg>
+          <span class="text-xl"> Bookmarks </span>
+        </a>
+
+        <a
+          href="/messages"
+          class="flex items-center gap-2 px-4 py-2 hover:bg-zinc-900 rounded-full w-fit"
+        >
+          <svg width="32" height="32" viewBox="0 0 256 256">
+            <path
+              fill="currentColor"
+              d="M230.2 213a118.3 118.3 0 0 0-70.5-54.6a70 70 0 1 0-63.4 0A118.3 118.3 0 0 0 25.8 213a5.9 5.9 0 0 0 2.2 8.2a6 6 0 0 0 8.2-2.2a106 106 0 0 1 183.6 0a6 6 0 0 0 5.2 3a6.4 6.4 0 0 0 3-.8a5.9 5.9 0 0 0 2.2-8.2ZM70 96a58 58 0 1 1 58 58a58 58 0 0 1-58-58Z"
+            />
+          </svg>
+          <span class="text-xl"> Profile </span>
+        </a>
+
+        <button
+          class="bg-sky-500 hover:bg-sky-600 rounded-full py-4 mt-4 text-lg"
+        >
+          Tweet
+        </button>
+      </div>
+      <a href="" class="flex gap-2 mt-auto mb-4">
+        <img src="images/6.jpg" class="w-12 rounded-full" />
+        <div class="flex-col flex justify-center ml-2">
+          <span class="hidden lg:flex text-sm font-bold">Emilie</span>
+          <p class="text-sm text-light text-gray-400">@emiliefischer</p>
+        </div>
+        <div class="ml-auto">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6 stroke-gray-500 hover:stroke-sky-400"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+            />
+          </svg>
+        </div>
+      </a>
+    </div>
+    <!-- end left -->
+
+    <!-- Center -->
+    <div class="min-h-screen h-full border-x border-gray-600 relative">
+      <!-- Top Bar -->
+      <div class="sticky h-12 bg-black my-3 pl-4">
+        <a href="" class="flex gap-2 mt-auto mb-4 top-0 left-0 right-0">
+          <div class="flex items-center group cursor-pointer">
+            <span class="p-2 group-hover:bg-zinc-900 rounded-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5 stroke-gray-500 transition ease-in-out"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+                />
+              </svg>
+            </span>
+          </div>
+          <div class="flex-col flex justify-center ml-2">
+            <div class="flex items-center gap-2">
+              <span class="hidden lg:flex text-xl font-bold"
+                >{{user["user_first_name"]}} {{user["user_last_name"]}}</span
+              >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                class="text-sky-500"
+              >
+                <path
+                  fill="currentColor"
+                  d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12Z"
+                />
+              </svg>
+            </div>
+            <p class="text-sm text-light text-gray-400">{{user["user_total_tweets"]}} Tweets</p>
+          </div>
+        </a>
+      </div>
+      <!-- end Top Bar -->
+
+      <!-- hero section -->
+
+      <div>
+   
+        <div class="static">
+          <img
+            src="images/{{user['user_cover_image']}}"
+            class=""
+          />
+        </div>
+   
+        <!-- three buttons -->
+        <div class="flex p-4">
+          <img
+            src="images/{{user['user_avatar']}}"
+            class="rounded-full h-[10rem] -mt-14 border-4 border-black"
+          />
+          <div class="ml-auto items-start flex gap-2">
+            <a
+              href="#"
+              class="stroke-gray-500 rounded-full inline-block border border-gray-500 p-2 hover:bg-zinc-900"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+                />
+              </svg>
+            </a>
+            <a
+              href="#"
+              class="stroke-gray-500 rounded-full inline-block border border-gray-500 p-2 hover:bg-zinc-900"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0M3.124 7.5A8.969 8.969 0 015.292 3m13.416 0a8.969 8.969 0 012.168 4.5"
+                />
+              </svg>
+            </a>
+            <a
+              href="#"
+              class="stroke-gray-500 rounded-full inline-block border border-gray-500 py-2 hover:bg-zinc-900 px-4 text-base"
+            >
+              Following
+            </a>
+          </div>
+        </div>
+        <!-- end three buttons -->
+      </div>
+
+      <!-- information about profile -->
+      <div class="p-4">
+        <div class="w-auto">
+          <a href="" class="flex gap-2 mt-auto mb-4">
+            <div class="flex-col flex justify-center">
+              <div class="flex items-center gap-2">
+                <span class="hidden lg:flex text-xl font-bold">{{user["user_first_name"]}} {{user["user_last_name"]}}</span>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  class="text-sky-500"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12Z"
+                  />
+                </svg>
+              </div>
+              <p class="text-sm text-light text-gray-400">@{{user["user_name"]}}</p>
+            </div>
+          </a>
+          <div class="flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5 stroke-gray-500"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"
+              />
+            </svg>
+            <p class="hidden lg:flex text-base text-gray-400">
+              Joined {{user["user_created_at"]}}
+            </p>
+          </div>
+          <div class="flex text-base gap-4 mt-3">
+            <p>
+              <span class="font-bold">{{user["user_total_following"]}}</span>
+              <span class="text-gray-400">Following</span>
+            </p>
+            <p>
+              <span class="font-bold">{{user["user_total_followers"]}} </span>
+              <span class="text-gray-400">Followers</span>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+      <!-- hero section end -->
+
+      <!-- Filtrering -->
+      <div class="flex">
+        <a
+          href=""
+          class="hover:bg-zinc-900 w-full text-center px-2 py-4 font-bold text-sm"
+        >
+          <span class="border-b-4 pb-4 border-blue-500">Tweets</span>
+        </a>
+        <a
+          href=""
+          class="hover:bg-zinc-900 w-full text-center px-2 py-4 font-bold text-sm text-gray-500"
+        >
+          <span class="pb-4">Tweets & replies</span>
+        </a>
+        <a
+          href=""
+          class="hover:bg-zinc-900 w-full text-center px-2 py-4 font-bold text-sm text-gray-500"
+        >
+          <span class="pb-4">Media</span>
+        </a>
+        <a
+          href=""
+          class="hover:bg-zinc-900 w-full text-center px-2 py-4 font-bold text-sm text-gray-500"
+          >Likes</a
+        >
+      </div>
+      <!-- end Filtrering -->
+
+
+      <!-- Tweet start -->
+      <div class="grid gap-4 pb-4 border-t border-gray-700">
+        <!-- user_name -->
+        % for tweet in tweets:
+        <div class="border-b border-gray-700">
+        <div class="flex p-4">
+          <img src="/images/{{user['user_avatar']}}" class="h-16 rounded-full">
+          <span class="font-bold flex gap-2 items-center pl-4">
+            {{user["user_first_name"]}} {{user["user_last_name"]}}
+            <!-- % if tweet["verified"]: -->
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              class="text-sky-500 w-4 h-4 stroke-transparent mr-1"
+            >
+              <path
+                fill="currentColor"
+                d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12Z"
+              />
+            </svg>
+            <!-- % end -->
+          
+          <span class="text-gray-500 font-light text-sm">
+            <span class=""> <strong>@</strong>{{user["user_name"]}} · </span
+            >{{tweet["tweet_created_at"]}}</span
+          >
+        </span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6 stroke-gray-500 hover:stroke-sky-400 ml-auto"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+            />
+          </svg>
+          
+        </div>
+        <!-- tweet text -->
+        <div class="text-base py-2 p-4">{{tweet["tweet_message"]}}</div>
+        % if tweet.get("tweet_image"):
+        <img
+          src="/images/{{tweet['tweet_image']}}"
+          class="w-full mt-4 max-h-96 rounded-lg object-contain"
+        />
+        % end
+        <!-- icons -->
+        <div class="flex justify-between mt-4 text-gray-700 mr-24">
+          <div class="flex items-center group cursor-pointer">
+            <span class="p-2 group-hover:bg-zinc-900 rounded-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4 stroke-gray-500 group-hover:stroke-sky-600 transition ease-in-out"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"
+                />
+              </svg>
+            </span>
+            <span
+              class="text-sm text-gray-500 group-hover:text-sky-600 transition ease-in-out ml-2"
+              >{{tweet["tweet_total_messages"]}}</span
+            >
+          </div>
+          <div class="flex items-center group cursor-pointer">
+            <span class="p-2 group-hover:bg-zinc-900 rounded-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4 stroke-gray-500 group-hover:stroke-green-600 transition ease-in-out"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                />
+              </svg>
+            </span>
+            <span
+              class="text-sm text-gray-500 group-hover:text-green-600 transition ease-in-out ml-2"
+              >{{tweet["tweet_total_retweets"]}}</span
+            >
+          </div>
+          <div class="flex items-center group cursor-pointer">
+            <span class="p-2 group-hover:bg-zinc-900 rounded-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4 stroke-gray-500 group-hover:stroke-red-600 transition ease-in-out"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                />
+              </svg>
+            </span>
+            <span
+              class="text-sm text-gray-500 group-hover:text-red-600 transition ease-in-out ml-2"
+              >{{tweet["tweet_total_likes"]}}</span
+            >
+          </div>
+          <div class="flex items-center group cursor-pointer">
+            <span class="p-2 group-hover:bg-zinc-900 rounded-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4 stroke-gray-500 group-hover:stroke-sky-600 transition ease-in-out"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"
+                />
+              </svg>
+            </span>
+            <span
+              class="text-sm text-gray-500 group-hover:text-sky-600 transition ease-in-out ml-2"
+              >{{tweet["tweet_total_dislikes"]}}</span
+            >
+          </div>
+          <div class="flex items-center group cursor-pointer">
+            <span class="p-2 group-hover:bg-zinc-900 rounded-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4 stroke-gray-500 group-hover:stroke-sky-600 transition ease-in-out"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+        % end
+      </div>
+    </div>
+    <!-- end tweet -->
+
+    <!-- Center end -->
+
+    <!-- right -->
+    <div class="w-full px-8 pb-8">
+      <!-- search -->
+      <div class="w-full mr-32 mt-4 mb-4">
+        <div class="rounded-full bg-zinc-900 px-4 py-2 flex">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6 text-zinc-400 mr-2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            />
+          </svg>
+          <input
+            type="text"
+            value=""
+            placeholder="Search Twitter"
+            class="text-white outline-none bg-zinc-900 text-xs"
+          />
+        </div>
+      </div>
+      <!-- end search -->
+
+      <!-- trending -->
+      <div class="flex flex-col w-full bg-zinc-900 rounded-lg">
+        <div class="text-2xl font-bold p-4">Trends for you</div>
+
+        % for trend in trends:
+        <div class="hover:bg-zinc-800 p-4">
+          <div class="flex">
+            <div class="mb-1 text-sm text-light text-gray-400">
+              {{trend["trend_title"]}}
+            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 stroke-gray-500 hover:stroke-sky-400 ml-auto"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+              />
+            </svg>
+          </div>
+          <div class="mb-1 text-bold text-sm">
+            {{ trend["trend_total_tweets"]}} Tweets
+          </div>
+          <div class="mb-2 text-xs text-light text-gray-400">
+            {{ trend["trend_title"]}}
+          </div>
+        </div>
+        % end
+
+        <a
+          href=""
+          class="text-sky-500 p-4 text-base hover:bg-zinc-800 rounded-b-lg"
+        >
+          Show more
+        </a>
+      </div>
+      <!-- end trending -->
+
+      <!-- who to follow -->
+      <div
+        class="sticky top-20 flex flex-col gap-4 w-full mt-4 bg-zinc-900 rounded-lg"
+      >
+        <div class="text-2xl font-bold p-4">Who to follow</div>
+
+        <!-- hardcoded person til opgavebeskrivelsen -->
+        <!-- person -->
+        % for user in users:
+        <a class="flex items-center gap-4 p-2" href="{{user['user_name']}}">
+          <img
+            src="/images/{{user['user_avatar']}}"
+            class="w-12 h-12 rounded-full"
+          />
+          <div class="">
+            <div class="text-gray-200 font-semibold text-base">
+              {{user['user_first_name']}} {{user['user_last_name']}}
+            </div>
+            <div class="font-light text-gray-500 text-base">
+              @{{user['user_name']}}
+            </div>
+          </div>
+          <button
+            class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full hover:bg-gray-400"
+          >
+            Follow
+          </button>
+        </a>
+        <!-- end person -->
+        % end
+
+        <a
+          href=""
+          class="text-sky-500 p-4 text-base hover:bg-zinc-800 rounded-b-lg"
+        >
+          Show more
+        </a>
+      </div>
+      <!-- end who to follow  -->
+    </div>
+    <!-- end right -->
+  </body>
+</html>

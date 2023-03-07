@@ -2,7 +2,7 @@ from bottle import get, run, post, static_file, template, response, request, def
 import git 
 import pathlib
 import sqlite3 
-
+import traceback
 
 
 @get("/")
@@ -28,7 +28,30 @@ def render_index():
     finally:
       if "db" in locals(): db.close()
 
+@get("/personal_profile")
+def _():
+    response.add_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+    response.add_header("Pragma", "no-cache")
+    response.add_header("Expires", 0)
 
+    cookie_user = request.get_cookie("user", secret="my-secret")
+
+    try:
+      # db = sqlite3.connect(str(pathlib.Path(__file__).parent.resolve()) + "/twitter.db")
+      db = sqlite3.connect("./twitter.db")
+      db.row_factory = dict_factory
+      tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id").fetchall()
+      print (tweets)
+      trends = db.execute("SELECT * FROM trends").fetchall()
+      users = db.execute("SELECT * FROM users").fetchall()
+      user = db.execute("SELECT * FROM users WHERE user_name = ? COLLATE NOCASE", (cookie_user["user_name"],)).fetchall()[0] 
+      return template("personal_profile", trends=trends, tweets=tweets, users=users, cookie_user=cookie_user, user=user)
+    except Exception as ex:
+      traceback.print_exc()
+      print(ex)
+      return "error"
+    finally:
+      if "db" in locals(): db.close()
 
 @post('/secret_url_for_git_hook')
 def git_update():
@@ -65,6 +88,7 @@ def _():
 @get("/about")
 def _():
     return template("about-us")
+
 
 #########################
 @get("/login")
@@ -128,6 +152,7 @@ def _():
     response.status = 303
     response.set_header("Location", "/login")
     return
+
 
 ##############################
 # VIEWS
