@@ -7,14 +7,15 @@
   <link rel="stylesheet" href="/output.css">
   <title>Log in</title>
 </head>
-<body class="flex justify-center bg-black font-light h-screen w-full">
-    <div class="">
-        <img class="" src="/images/twitter.jpg">
-        <p class="text-gray-700">Log in</p>
+<body class="grid place-content-center bg-black font-light h-screen w-full">
+    <div>
+        <div class="flex w-full justify-center mb-4">
+            <img class="h-32" src="/images/twitter.jpg">
+        </div>
         <form method="POST" action="/login">
-            <input class="block bg-black border border-gray-900 rounded-full py-2 px-6 mb-2 text-white" name="email" type="text" placeholder="email">
-            <input class="bg-black border border-gray-900 rounded-full py-2 px-6 text-white mb-2" name="password" type="password" placeholder="password">
-            <button class="block bg-sky-500 py-2 px-6 border border-slate-900 rounded-full text-white">Login</button>
+            <input class="block bg-black border border-gray-800 rounded-full py-2 px-6 mb-2 text-white" name="email" type="text" placeholder="email">
+            <input class="bg-black border border-gray-800 rounded-full py-2 px-6 text-white mb-4" name="password" type="password" placeholder="password">
+            <button class="block bg-sky-500 hover:bg-sky-600 py-2 px-6 border border-slate-800 rounded-full text-white w-full">Login</button>
         </form>
     </div>
 </body>
