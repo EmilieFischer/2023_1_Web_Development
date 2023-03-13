@@ -162,8 +162,10 @@ import views.tweet
 # APIS
 # makes sure that the app.py calls the api_tweet.py file 
 import apis.api_tweet
+import apis.api_sign_up
 
 ############################
+# BRIDGES
 import bridges.login
 
 
