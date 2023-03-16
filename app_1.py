@@ -108,6 +108,11 @@ def _():
 def _():
     return template("explore")
 
+#########################
+@get("/test")
+def _():
+    return template("test")
+
 
 ##############################
 @get("/<username>")
@@ -157,12 +162,14 @@ def _():
 ##############################
 # VIEWS
 import views.tweet
+import views.test
 
 ##############################
 # APIS
 # makes sure that the app.py calls the api_tweet.py file 
 import apis.api_tweet
 import apis.api_sign_up
+import apis.api_follow
 
 ############################
 # BRIDGES

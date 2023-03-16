@@ -22,5 +22,54 @@
       ]
     },
     "tests": []
+  },
+  {
+    "_id": "4aeca094-b3fc-49fc-81f6-1c662f0c574a",
+    "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
+    "containerId": "",
+    "name": "follow",
+    "url": "127.0.0.1:5009/api-follow",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-03-16T12:40:17.633Z",
+    "modified": "2023-03-16T13:02:36.917Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_followee_id",
+          "value": "1234"
+        }
+      ]
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": ""
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "equal",
+        "value": "application/json"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "info"
+      }
+    ]
   }
 ]
