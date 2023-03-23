@@ -71,5 +71,30 @@
         "value": "info"
       }
     ]
+  },
+  {
+    "_id": "68377ebb-9339-47fb-9ba0-005e1396726b",
+    "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
+    "containerId": "",
+    "name": "upload picture",
+    "url": "127.0.0.1:5009/upload-picture",
+    "method": "POST",
+    "sortNum": 50000,
+    "created": "2023-03-20T07:43:41.480Z",
+    "modified": "2023-03-20T08:20:50.492Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [],
+      "files": [
+        {
+          "name": "picture",
+          "value": "../../txt.jpg"
+        }
+      ]
+    },
+    "tests": []
   }
 ]

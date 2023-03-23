@@ -3,6 +3,42 @@ import git
 import pathlib
 import sqlite3 
 import traceback
+import os
+import uuid
+import x
+
+
+
+@post("/upload-picture")
+def _():
+   try:
+      the_picture = request.files.get("picture")
+      #filename = happy.jpg (name = happy, ext = .jpg)
+      name, ext = os.path.splitext(the_picture.filename)
+      # print("#*30")
+      # print("name") #happy
+      # print("ext") #.jpg
+
+      # how to check the mime type
+      if ext not in (".png", ".jpg", ".jpeg"):
+         response.status = 400
+         return "Picture not allowed"
+      picture_name = str(uuid.uuid4().hex)
+      picture_name = picture_name + ext #this will become the uuid.jpg
+      the_picture.save(f"pictures/{picture_name}")
+
+      # read the mime type
+      # if it is not one that is allowed 
+      # delete the picture
+      # tell the user to "stop being funny and mess with the code"
+      # if it is the real thing
+      # repsond with "ok"
+
+      return "picture uploaded"
+   except Exception as e:
+      print(e)
+   finally:
+      pass
 
 
 @get("/")
@@ -11,17 +47,20 @@ def render_index():
     response.add_header("Pragma", "no-cache")
     response.add_header("Expires", 0)
 
-    cookie_user = request.get_cookie("user", secret="my-secret")
+    cookie_user = request.get_cookie("user", secret=x.COOKIE_SECRET)
 
     try:
       # db = sqlite3.connect(str(pathlib.Path(__file__).parent.resolve()) + "/twitter.db")
       db = sqlite3.connect("./twitter.db")
       db.row_factory = dict_factory
-      tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id").fetchall()
+      tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC").fetchall()
     #   print (tweets)
       trends = db.execute("SELECT * FROM trends").fetchall()
       users = db.execute("SELECT * FROM users").fetchall()
-      return template("index", trends=trends, tweets=tweets, users=users, cookie_user=cookie_user)
+      print("*"*39)
+      print(cookie_user)
+      print("*"*39)
+      return template("index", trends=trends, tweets=tweets, users=users, cookie_user=cookie_user, tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN)
     except Exception as ex:
       print(ex)
       return "error"
@@ -45,6 +84,7 @@ def _():
       trends = db.execute("SELECT * FROM trends").fetchall()
       users = db.execute("SELECT * FROM users").fetchall()
       user = db.execute("SELECT * FROM users WHERE user_name = ? COLLATE NOCASE", (cookie_user["user_name"],)).fetchall()[0] 
+      print(user)
       return template("personal_profile", trends=trends, tweets=tweets, users=users, cookie_user=cookie_user, user=user)
     except Exception as ex:
       traceback.print_exc()
@@ -123,7 +163,9 @@ def _(username):
     db.row_factory = dict_factory
     user = db.execute("SELECT * FROM users WHERE user_name=? COLLATE NOCASE",(username, )).fetchall()[0]
     # Get the user's id
-
+    print("#"*30)
+    print(user)
+    print("#"*30)
     user_id = user["user_id"]
     #print("#"*30)
     #print(f"user id:{user_id}")
@@ -146,18 +188,16 @@ def _(username):
     if "db" in locals(): db.close()
 
 
-############################
-@get("/login")
-def _():
-    return template("login")
-
 @get("/logout")
 def _():
+    response.add_header("Cache-Control", "no-cache, no-store, must-revalidate")
+    response.add_header("Pragma", "no-cache")
+    response.add_header("Expires", 0)   
     response.set_cookie("user", "", expires=0)
+    response.delete_cookie("user")
     response.status = 303
     response.set_header("Location", "/login")
     return
-
 
 ##############################
 # VIEWS
@@ -170,6 +210,8 @@ import views.test
 import apis.api_tweet
 import apis.api_sign_up
 import apis.api_follow
+import apis.api_login
+import apis.api_test
 
 ############################
 # BRIDGES
