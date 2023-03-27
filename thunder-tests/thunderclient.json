@@ -110,5 +110,41 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "f278bebe-c58b-4b80-b86c-345a9acb42b7",
+    "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
+    "containerId": "",
+    "name": "tweet",
+    "url": "127.0.0.1:5009/tweet",
+    "method": "POST",
+    "sortNum": 70000,
+    "created": "2023-03-27T13:09:25.965Z",
+    "modified": "2023-03-27T13:16:08.446Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "message",
+          "value": "halløjsa pølsevognen "
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "016b406f-1559-4d5b-8cc4-7403af37607a",
+    "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
+    "containerId": "",
+    "name": "test",
+    "url": "",
+    "method": "GET",
+    "sortNum": 80000,
+    "created": "2023-03-27T13:57:37.605Z",
+    "modified": "2023-03-27T13:57:37.605Z",
+    "headers": []
   }
 ]

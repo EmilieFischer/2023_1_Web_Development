@@ -54,7 +54,7 @@ def render_index():
       db = sqlite3.connect("./twitter.db")
       db.row_factory = dict_factory
       tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC").fetchall()
-    #   print (tweets)
+      print (tweets)
       trends = db.execute("SELECT * FROM trends").fetchall()
       users = db.execute("SELECT * FROM users").fetchall()
       print("*"*39)
