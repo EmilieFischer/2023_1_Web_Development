@@ -129,6 +129,11 @@ def _():
 def _():
     return template("about-us")
 
+#########################
+@get("/timeout")
+def _():
+    return template("timeout")
+
 
 #########################
 @get("/login")
@@ -212,6 +217,7 @@ import apis.api_sign_up
 import apis.api_follow
 import apis.api_login
 import apis.api_test
+import apis.api_get_latest_tweets
 
 ############################
 # BRIDGES
