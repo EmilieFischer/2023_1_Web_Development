@@ -35,133 +35,17 @@ def _():
       pass
 
 
-@get("/")
-def render_index():
-    response.add_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
-    response.add_header("Pragma", "no-cache")
-    response.add_header("Expires", 0)
-
-    cookie_user = request.get_cookie("user", secret=x.COOKIE_SECRET)
-
-    try:
-      # db = sqlite3.connect(str(pathlib.Path(__file__).parent.resolve()) + "/twitter.db")
-      db = sqlite3.connect("./twitter.db")
-      db.row_factory = dict_factory
-      tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC LIMIT 10").fetchall()
-      print (tweets)
-      trends = db.execute("SELECT * FROM trends").fetchall()
-      users = db.execute("SELECT * FROM users").fetchall()
-      return template("index", trends=trends, tweets=tweets, users=users, cookie_user=cookie_user, tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN)
-    except Exception as ex:
-      print(ex)
-      return "error"
-    finally:
-      if "db" in locals(): db.close()
-
-
-@post('/secret_url_for_git_hook')
-def git_update():
-    repo = git.Repo('./2023_1_Web_Development')
-    origin = repo.remotes.origin
-    repo.create_head('main', origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
-    origin.pull()
-    return "" 
-
 ##############################
-def dict_factory(cursor, row):
-    col_names = [col[0] for col in cursor.description]
-    return {key: value for key, value in zip(col_names, row)}
-
-
-##############################
-@get("/js/<filename>")
-def _(filename):
-  return static_file(filename, "js")
-
-#########################
-#gør sådan så alle jpg'er bliver læst
-@get("/images/<filename:re:.*\.jpg>")
-def _(filename):
-    return static_file(filename, root="./images")
-
-#########################
-@get("/output.css")
-def _():
-    return static_file("output.css", root=".")
-
-#########################
-# skaber stien til about-siden, så brugeren bare kan søge "about" i browseren i stedet for hele html-navnet
-@get("/about")
-def _():
-    return template("about-us")
-
-#########################
-@get("/timeout")
-def _():
-    return template("timeout")
-
-
-#########################
-@get("/login")
-def _():
-    return template("login")
-
-#########################
-# skaber stien til contact-siden, så brugeren bare kan søge "about" i browseren i stedet for hele html-navnet
-# inkluderer eksempel på hvordan man tilføjer title via variabler i app.py
-@get("/contact")
-def _():
-    return template("contact-us", title="Contact us")
-
-#########################
-# skaber stien til explore-siden, så brugeren bare kan søge "about" i browseren i stedet for hele html-navnet
-@get("/explore")
-def _():
-    return template("explore")
-
-#########################
-@get("/test")
-def _():
-    return template("test")
-
-
-##############################
-@get("/<username>")
-# @view("profile")
-def _(username):
-  try:
-    response.add_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
-    response.add_header("Pragma", "no-cache")
-    response.add_header("Expires", 0)
-    cookie_user = request.get_cookie("user", secret="my-secret")
-
-    db = sqlite3.connect(str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
-    db.row_factory = dict_factory
-    user = db.execute("SELECT * FROM users WHERE user_name=? COLLATE NOCASE",(username, )).fetchall()[0]
-    user_id = user["user_id"] # Get the user's id
-    # tweets = db.execute("SELECT * FROM tweets WHERE tweet_user_fk=?", (user_id, )).fetchall()
-    tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id WHERE tweet_user_fk=? ORDER BY tweet_created_at DESC LIMIT 10",(user_id,)).fetchall() # With that id, look up/get the respectives tweets
-    trends = db.execute("SELECT * FROM trends").fetchall()
-    users = db.execute("SELECT * FROM users").fetchall()
-    return template("personal_profile", user=user, trends=trends, users=users, tweets=tweets, cookie_user=cookie_user) # pass the tweets to the view. Template it
-  
-  except Exception as ex:
-    print(ex)
-    return "error"
-  finally:
-    if "db" in locals(): db.close()
-
-
-@get("/logout")
-def _():
-    response.add_header("Cache-Control", "no-cache, no-store, must-revalidate")
-    response.add_header("Pragma", "no-cache")
-    response.add_header("Expires", 0)   
-    response.set_cookie("user", "", expires=0)
-    response.delete_cookie("user")
-    response.status = 303
-    response.set_header("Location", "/login")
-    return
+# ROUTES 
+import routes.render_profile
+import routes.render_index
+import routes.render_logout
+import routes.render_about
+import routes.render_login
+import routes.render_contact
+import routes.render_explore
+import routes.render_timeout
+import routes.render_test
 
 ##############################
 # VIEWS
@@ -182,6 +66,26 @@ import apis.api_get_latest_tweets
 # BRIDGES
 import bridges.login
 
+##############################
+# STATIC FILES
+import static_files.get_css 
+import static_files.get_images
+import static_files.get_js
+
+
+##############################
+def dict_factory(cursor, row):
+    col_names = [col[0] for col in cursor.description]
+    return {key: value for key, value in zip(col_names, row)}
+
+##############################
+@post('/secret_url_for_git_hook')
+def git_update():
+    repo = git.Repo('./2023_1_Web_Development')
+    origin = repo.remotes.origin
+    repo.create_head('main', origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
+    origin.pull()
+    return "" 
 
 ##############################
 # run in AWS
