@@ -13,14 +13,8 @@ import x
 def _():
    try:
       the_picture = request.files.get("picture")
-      #filename = happy.jpg (name = happy, ext = .jpg)
-      name, ext = os.path.splitext(the_picture.filename)
-      # print("#*30")
-      # print("name") #happy
-      # print("ext") #.jpg
-
-      # how to check the mime type
-      if ext not in (".png", ".jpg", ".jpeg"):
+      name, ext = os.path.splitext(the_picture.filename) #filename = happy.jpg (name = happy, ext = .jpg)
+      if ext not in (".png", ".jpg", ".jpeg"): # how to check the mime type
          response.status = 400
          return "Picture not allowed"
       picture_name = str(uuid.uuid4().hex)
@@ -54,50 +48,16 @@ def render_index():
       db = sqlite3.connect("./twitter.db")
       db.row_factory = dict_factory
       tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC LIMIT 10").fetchall()
-      # print (tweets)
+      print (tweets)
       trends = db.execute("SELECT * FROM trends").fetchall()
       users = db.execute("SELECT * FROM users").fetchall()
-      # print("*"*39)
-      # print(cookie_user)
-      # print("*"*39)
       return template("index", trends=trends, tweets=tweets, users=users, cookie_user=cookie_user, tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN)
     except Exception as ex:
-      # print(ex)
+      print(ex)
       return "error"
     finally:
       if "db" in locals(): db.close()
 
-# @get("/personal_profile")
-# def _():
-#     response.add_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
-#     response.add_header("Pragma", "no-cache")
-#     response.add_header("Expires", 0)
-
-#     cookie_user = request.get_cookie("user", secret="my-secret")
-
-#     try:
-      # db = sqlite3.connect(str(pathlib.Path(__file__).parent.resolve()) + "/twitter.db")
-      # db = sqlite3.connect("./twitter.db")
-      # db.row_factory = dict_factory
-      # print("*"*30)
-      # print("TWEETS:", tweets)
-      # print("*"*30)
-
-      # print (tweets)
-      # trends = db.execute("SELECT * FROM trends").fetchall()
-      # users = db.execute("SELECT * FROM users").fetchall()
-      # user = db.execute("SELECT * FROM users WHERE user_name = ? COLLATE NOCASE", (cookie_user["user_name"],)).fetchall()[0]
-      # user_id = user["user_id"]
-      # tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC LIMIT 10").fetchall()
-      # tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id WHERE tweet_user_fk=? ORDER BY tweet_created_at ASC LIMIT 10",(user_id,)).fetchall()
-      # print(user)
-    #   return template("personal_profile", trends=trends, tweets=tweets, users=users, cookie_user=cookie_user, user=user)
-    # except Exception as ex:
-    #   traceback.print_exc()
-    #   print(ex)
-    #   return "error"
-    # finally:
-    #   if "db" in locals(): db.close()
 
 @post('/secret_url_for_git_hook')
 def git_update():
@@ -178,26 +138,12 @@ def _(username):
     db = sqlite3.connect(str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
     db.row_factory = dict_factory
     user = db.execute("SELECT * FROM users WHERE user_name=? COLLATE NOCASE",(username, )).fetchall()[0]
-    # Get the user's id
-    # print("#"*30)
-    print(user)
-    # print("#"*30)
-    user_id = user["user_id"]
-    #print("#"*30)
-    #print(f"user id:{user_id}")
-    # With that id, look up/get the respectives tweets
+    user_id = user["user_id"] # Get the user's id
     # tweets = db.execute("SELECT * FROM tweets WHERE tweet_user_fk=?", (user_id, )).fetchall()
-    tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id WHERE tweet_user_fk=? ORDER BY tweet_created_at DESC LIMIT 10",(user_id,)).fetchall()
-
+    tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id WHERE tweet_user_fk=? ORDER BY tweet_created_at DESC LIMIT 10",(user_id,)).fetchall() # With that id, look up/get the respectives tweets
     trends = db.execute("SELECT * FROM trends").fetchall()
-    # print("#"*30)
-    # print(tweets)
-    # print("#"*30)
-
     users = db.execute("SELECT * FROM users").fetchall()
-    # pass the tweets to the view. Template it
-    # {'id': '51602a9f7d82472b90ed1091248f6cb1', 'username': 'elonmusk', 'name': 'Elon', 'last_name': 'Musk', 'total_followers': '128900000', 'total_following': '177', 'total_tweets': '22700', 'avatar': '51602a9f7d82472b90ed1091248f6cb1.jpg'}
-    return template("personal_profile", user=user, trends=trends, users=users, tweets=tweets, cookie_user=cookie_user)
+    return template("personal_profile", user=user, trends=trends, users=users, tweets=tweets, cookie_user=cookie_user) # pass the tweets to the view. Template it
   
   except Exception as ex:
     print(ex)
