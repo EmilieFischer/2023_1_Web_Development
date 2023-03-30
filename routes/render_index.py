@@ -29,5 +29,3 @@ def render_index():
       return "error"
     finally:
       if "db" in locals(): db.close()
-
-

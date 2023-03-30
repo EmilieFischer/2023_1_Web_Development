@@ -1,6 +1,7 @@
 from bottle import get, template, response, request
 import pathlib
 import sqlite3 
+import x
 
 
 ##############################
@@ -16,7 +17,7 @@ def _(username):
     response.add_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
     response.add_header("Pragma", "no-cache")
     response.add_header("Expires", 0)
-    cookie_user = request.get_cookie("user", secret="my-secret")
+    cookie_user = request.get_cookie("user", secret=x.COOKIE_SECRET)
 
     db = sqlite3.connect(str(pathlib.Path(__file__).parent.parent.resolve())+"/twitter.db") #parent.parent = 
     db.row_factory = dict_factory

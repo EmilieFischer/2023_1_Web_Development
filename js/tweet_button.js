@@ -3,6 +3,7 @@
 async function tweet(){
     // the event is = onsubmit, the target is = the form cause it triggeres the onsubmit. The code will know which form automatically 
     const frm = event.target
+    console.log(frm)
     // creates the connection, "the tunnel", and then wait for the tunnel to be made.
     const conn = await fetch("/tweet", {
         method: "POST", 

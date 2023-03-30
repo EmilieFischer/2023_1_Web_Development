@@ -13,6 +13,7 @@ def dict_factory(cursor, row):
   return {key: value for key, value in zip(col_names, row)}
 
 ##############################
+
 def db():
   try:
     db = sqlite3.connect(str(pathlib.Path(__file__).parent.resolve())+"/twitter.db") 
@@ -23,7 +24,6 @@ def db():
   finally:
     pass
 
-
 ##############################
 def disable_cache():
     response.add_header("Cache-Control", "no-cache, no-store, must-revalidate")
@@ -31,10 +31,10 @@ def disable_cache():
     response.add_header("Expires", 0)    
 
 ##############################
-def validate_user_logged():
-    user = request.get_cookie("user", secret=COOKIE_SECRET)
-    if user is None: raise Exception(400, "user must login")
-    return user
+# def validate_user_logged():
+#     user = request.get_cookie("user", secret=COOKIE_SECRET)
+#     if user is None: raise Exception(400, "user must login")
+#     return user
 
 ##############################
 # LEN = length
