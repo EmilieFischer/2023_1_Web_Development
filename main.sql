@@ -1,3 +1,7 @@
+PRAGMA foreign_keys;
+PRAGMA foreign_keys = true;
+PRAGMA foreign_keys;
+
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
 -- NOT NULL = it must be there
@@ -13,13 +17,13 @@ CREATE TABLE users(
   user_verified_at            TEXT, -- 0 if not verified, else epoch--
   user_banner                 TEXT UNIQUE,
   user_avatar                 TEXT UNIQUE, 
-  user_total_tweets           TEXT,
-  user_total_retweets         TEXT,
-  user_total_comments         TEXT,
-  user_total_likes            TEXT,
-  user_total_dislikes         TEXT,
-  user_total_followers        TEXT,
-  user_total_following        TEXT,
+  user_total_tweets           INTEGER DEFAULT 0,
+  user_total_retweets         INTEGER DEFAULT 0,
+  user_total_comments         INTEGER DEFAULT 0,
+  user_total_likes            INTEGER DEFAULT 0,
+  user_total_dislikes         INTEGER DEFAULT 0,
+  user_total_followers        INTEGER DEFAULT 0,
+  user_total_following        INTEGER DEFAULT 0,
   PRIMARY KEY(user_id)
 ) WITHOUT ROWID;
 INSERT INTO users VALUES("1b0b3c1ba05242cea4d5a3e9e2b3cb7f", "emilie@gmail.com", "emiliefischer", 0, "50a58432097c466d8651f5daf06ebd2c", "password", "Emilie", "Fischer", 0, "72ebc47738c34d5db8087de52943ea00.jpg", "711edd0b77a54df3b1e01387b07c740b.jpg", "1676629975", "0", "0", "0", "0", "0", "0");
@@ -27,7 +31,9 @@ INSERT INTO users VALUES("ebb0d9d74d6c4825b3e1a1bcd73ff49a", "elonmusk@gmail.com
 INSERT INTO users VALUES("7860393a03dc4c1e872dcdd2cbf946ab", "shakira@gmail.com", "shakira", 0, "ebb0d9d74d6c4825b3e1a1bcd73ff48b", "password", "Shakira", "", 0, "397797c0f6154f3d8f868287a4613207.jpg", "d4c66eb4aa3342d2b1dff4c39bee7003.jpg", "1574268", "0", "0", "0", "0", "0", "0");
 INSERT INTO users VALUES("f15e3f7afcf945e2bea6b4553f25fe75", "rihanna@gmail.com", "rihanna", 0, "ebb0d9d74d6c4825b3e1a1bcd73ff47c", "password", "Rihanna", "", 0, "8eb2eed6a0824adb979f5b39642042b3.jpg", "d3051eabe798441a9ff4733e6086e4d0.jpg", "33586", "0", "0", "0", "0", "0", "0");
 INSERT INTO users VALUES("655079064c5f44bc9b75524121840ff1", "joebiden@gmail.com", "joebiden", 0, "ebb0d9d74d6c4825b3e1a1bcd73ff46d", "password", "Joe", "Biden", 0, "08c4365b9d85458a9d8971ffef8bed79.jpg", "95ae726eee6349b18389599f62b9ead9.jpg", "20485", "0", "0", "0", "0", "0", "0");
+
 -- CREATE INDEX (unique index)
+
 CREATE INDEX idx_users_user_first_name ON users(user_first_name);
 CREATE INDEX idx_users_user_last_name ON users(user_last_name);
 CREATE INDEX idx_users_user_avatar ON users(user_avatar);
@@ -46,7 +52,8 @@ CREATE TABLE tweets(
   tweet_total_retweets    TEXT DEFAULT 0,
   tweet_total_likes       TEXT DEFAULT 0,
   tweet_total_dislikes    TEXT DEFAULT 0,
-  PRIMARY KEY(tweet_id)
+  PRIMARY KEY(tweet_id),
+  FOREIGN KEY(tweet_user_fk) REFERENCES users(user_id)
 ) WITHOUT ROWID;
 INSERT INTO tweets VALUES(
 "bdbeb933dcf145dc9bba9282d20e775a", 
@@ -148,8 +155,11 @@ INSERT INTO tweets VALUES(
 "3874",
 "37482",
 "2738");
-
 CREATE INDEX idx_tweets_tweet_image ON tweets(tweet_image);
+INSERT INTO tweets VALUES("1924843800e5451b4c428428a14ac0f4", "A", "", "1", "xxx", "3298", "3298", "3298", "3298");
+SELECT * FROM tweets;
+
+
 
 -- trigger happening
 -- INSERT, UPDATE, DELETE
@@ -200,10 +210,6 @@ CREATE VIEW users_by_name AS SELECT * FROM users ORDER BY user_name DESC;
 SELECT * FROM users_by_name LIMIT 1;
 
 
-
-
-
-
 -- JOIN command and test it for all users and tweets
 -- Create the view that contains the join command
 -- The name of the view is: users_and_tweets
@@ -212,4 +218,4 @@ DROP VIEW IF EXISTS users_and_tweets;
 CREATE VIEW users_and_tweets AS SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
 SELECT * FROM users_and_tweets;
 
-
+DELETE from tweets WHERE 
