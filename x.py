@@ -29,7 +29,7 @@ def db():
 def disable_cache():
     response.add_header("Cache-Control", "no-cache, no-store, must-revalidate")
     response.add_header("Pragma", "no-cache")
-    response.add_header("Expires", 0)    
+    response.add_header("Expires", 0)
 
 ##############################
 # def validate_user_logged():
