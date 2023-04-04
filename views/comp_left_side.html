@@ -1,4 +1,4 @@
-<!-- left -->
+<!-- LEFT -->
 <div class="sticky top-0 flex flex-col h-screen px-16 py-4">
 
   <div class="flex flex-col gap-2 text-2xl">
@@ -56,17 +56,14 @@
       </span>
     </a>
 
-    
     <a href="/{{cookie_user['user_name']}}" class="flex items-center gap-2 px-4 py-2 hover:bg-zinc-900 rounded-full w-fit">
       <svg width="32" height="32" viewBox="0 0 256 256"><path fill="currentColor" d="M230.2 213a118.3 118.3 0 0 0-70.5-54.6a70 70 0 1 0-63.4 0A118.3 118.3 0 0 0 25.8 213a5.9 5.9 0 0 0 2.2 8.2a6 6 0 0 0 8.2-2.2a106 106 0 0 1 183.6 0a6 6 0 0 0 5.2 3a6.4 6.4 0 0 0 3-.8a5.9 5.9 0 0 0 2.2-8.2ZM70 96a58 58 0 1 1 58 58a58 58 0 0 1-58-58Z"/></svg>
       <span class="text-xl">
         Profile
       </span>
     </a>
-
-    <!-- <button class="bg-sky-500 hover:bg-sky-600 rounded-full py-4 mt-4 text-lg">Tweet</button> -->
-   
   </div>
+
   <button onclick="document.querySelector('#tweet_modal').style.display='flex'"
   class="flex items-center mx-2 px-2 lg:gap-4 py-2 lg:py-3 
   text-white bg-sky-500 rounded-full">
@@ -75,7 +72,7 @@
       Tweet
     </span>
   </button>
-  % end
+  
 
     <a href="" class="flex gap-2 mt-auto mb-4">
       % if cookie_user:
@@ -86,9 +83,9 @@
           {{cookie_user["user_last_name"]}}
         </span>
         <p class="text-sm text-light text-gray-400">@{{cookie_user["user_name"]}}</p>
-        
       </div>
       % end
+      
       <div class="ml-auto">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -107,6 +104,8 @@
       </div>
     </a>
     <a href="/logout" class="bg-zinc-900 hover:bg-zinc-800 rounded-full py-4 text-lg text-center">Logout</a>
-  
+    % end
 </div>
-<!-- end left -->
+<!-- ingen ved hvorfor denne her div skal være der, men det skal den altså -->
+</div>
+<!-- END LEFT -->
