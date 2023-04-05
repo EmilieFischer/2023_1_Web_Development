@@ -74,7 +74,7 @@
   </button>
   
 
-    <a href="" class="flex gap-2 mt-auto mb-4">
+    <div href="" class="flex gap-2 mt-auto mb-4 hover:bg-zinc-900 rounded-full px-4 py-2">
       % if cookie_user:
       <img src="images/{{cookie_user['user_avatar']}}" class="w-12 rounded-full" />
       <div class="flex-col flex justify-center ml-2">
@@ -86,7 +86,7 @@
       </div>
       % end
       
-      <div class="ml-auto">
+      <button type="button" data-modal-target="crypto-modal" data-modal-toggle="crypto-modal" class="ml-auto">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -101,9 +101,29 @@
             d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
           />
         </svg>
-      </div>
-    </a>
-    <a href="/logout" class="bg-zinc-900 hover:bg-zinc-800 rounded-full py-4 text-lg text-center">Logout</a>
+      </button>
+    </div>
+    <!-- <a href="/logout" class="bg-zinc-900 hover:bg-zinc-800 rounded-full py-4 text-lg text-center">Logout</a> -->
+
+<!-- Log out modal -->
+<div id="crypto-modal" tabindex="-1" aria-hidden="true" class="absolute bottom-16 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto mb-4">
+            <div class="relative rounded-xl shadow-lg shadow-white/30 py-4 bg-black">
+                <ul class="space-y-3 border-t-2 border-gray-200 bg-black">
+                    <li> 
+                        <a href="#" class="flex py-3 text-base font-semibold group bg-black hover:bg-zinc-900 text-white pr-24">
+                            <span class="flex-1 ml-3 whitespace-nowrap">Add an existing account</span>
+                        </a>
+                    </li>
+                    % if cookie_user:
+                    <li>
+                        <a href="/logout" class="flex py-3 text-base font-semibold group bg-black hover:bg-zinc-900 text-white pr-24">
+                            <span class="flex-1 ml-3 whitespace-nowrap">Log @{{cookie_user['user_name']}} out </span>
+                        </a>
+                    </li>
+                    % end
+            </div>
+</div>
+
     % end
 </div>
 <!-- ingen ved hvorfor denne her div skal være der, men det skal den altså -->
