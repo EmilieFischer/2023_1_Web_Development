@@ -9,7 +9,7 @@ def dict_factory(cursor, row):
     return {key: value for key, value in zip(col_names, row)}
 
 
-@get("/explore")
+@get("/connect")
 def _():
     try:
       cookie_user = request.get_cookie("user", secret=x.COOKIE_SECRET)
@@ -18,7 +18,7 @@ def _():
       tweets = db.execute("SELECT * FROM tweets").fetchall()
       trends = db.execute("SELECT * FROM trends").fetchall()
       users = db.execute("SELECT * FROM users").fetchall()
-      return template("explore", trends=trends, tweets=tweets, users=users, cookie_user=cookie_user, tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN)
+      return template("connect", trends=trends, tweets=tweets, users=users, cookie_user=cookie_user, tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN)
     except Exception as ex:
       print(ex)
       return "error"

@@ -43,9 +43,10 @@ import routes.render_logout
 import routes.render_about
 import routes.render_login
 import routes.render_contact
-import routes.render_explore
 import routes.render_timeout
 import routes.render_test
+import routes.render_connect
+import routes.render_explore
 
 ##############################
 # VIEWS

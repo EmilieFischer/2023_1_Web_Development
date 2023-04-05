@@ -1,0 +1,36 @@
+ <!-- who to follow -->
+ <div class="sticky flex flex-col gap-4 w-full mt-4 bg-zinc-900 rounded-lg">
+    <div class="text-2xl font-bold p-4">Who to follow</div>
+
+    <!-- person -->
+   % for user in users:
+   <a class="flex items-center gap-4 p-2" href="{{user['user_name']}}">
+     <img
+       src="/images/{{user['user_avatar']}}"
+       class="w-12 h-12 rounded-full"
+     />
+     <div class="">
+       <div class="text-gray-200 font-semibold text-base">
+         {{user['user_first_name']}} {{user['user_last_name']}}
+       </div>
+       <div class="font-light text-gray-500 text-base">
+         @{{user['user_name']}}
+       </div>
+     </div>
+     <button
+       class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full hover:bg-gray-400"
+     >
+       Follow
+     </button>
+   </a>
+   <!-- end person -->
+   % end
+
+    <a
+      href="/connect"
+      class="text-sky-500 p-4 text-base hover:bg-zinc-800 rounded-b-lg"
+    >
+      Show more
+    </a>
+  </div>
+  <!-- end who to follow  -->

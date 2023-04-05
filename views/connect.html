@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/output.css">
+    <title>Document</title>
+</head>
+<body class="grid grid-cols-[100fr_150fr_100fr] w-full h-full text-gray-200 text-lg bg-black font-light overflow-hidden overflow-y-scroll">
+% include("comp_left_side")
+
+<!-- Center -->
+<div class="min-h-screen h-full border-x border-gray-600 relative">
+        <!-- Top Bar -->
+        <div class="sticky h-12 bg-black my-3 pl-4">
+          <a href="/" class="flex gap-2 mt-auto mb-4 top-0 left-0 right-0">
+            <div class="flex items-center group cursor-pointer">
+              <span class="p-2 group-hover:bg-zinc-900 rounded-full">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-5 h-5 stroke-white transition ease-in-out"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+                  />
+                </svg>
+              </span>
+            </div>
+            <div class="flex-col flex justify-center ml-2">
+              <div class="flex items-center gap-2">
+                <span class="hidden lg:flex text-xl font-bold"
+                  >Connect</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- end Top Bar -->
+        <p class="text-xl font-bold text-white py-4 px-2">Suggested for you</p>
+
+
+        <!-- list of every user not followed -->
+        <div>
+            % for user in users:
+            <a class="flex items-center gap-4 py-4 px-2" href="{{user['user_name']}}">
+                <img
+                src="/images/{{user['user_avatar']}}"
+                class="w-16 h-16 rounded-full"
+                />
+                <div class="">
+                <div class="text-gray-200 font-semibold text-base">
+                    {{user['user_first_name']}} {{user['user_last_name']}}
+                </div>
+                <div class="font-light text-gray-500 text-base">
+                    @{{user['user_name']}}
+                </div>
+                </div>
+                <button
+                class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full hover:bg-gray-400"
+                >
+                Follow
+                </button>
+            </a>
+            % end
+            <!-- end list of every user not followed -->
+        </div>
+</div>
+
+% include("comp_right_side")
+</body>
+</html>
+

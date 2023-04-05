@@ -17,7 +17,11 @@ def _():
         db = x.db() #
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         # print(user)
-        if not user: raise Exception(400, "Cannot login") # hvis ikke user er til at finde, så bring fejlen "cannot login"
+        if not user: 
+            response.status=303
+            response.set_header("Location", "/")
+            return
+        # raise Exception(400, "Cannot login") # hvis ikke user er til at finde, så bring fejlen "cannot login"
 
         # if not bcrypt.checkpw(user_password.encode("utf-8"), user["user_password"]):
         # raise Exception(400, "Invalid credentials")
@@ -29,6 +33,10 @@ def _():
         response.set_cookie("user", user, secret=x.COOKIE_SECRET)
         response.status = 303
         response.set_header("Location", "/") #fortæller at det er index-siden der åbnes
+
+        # if not user:
+        # if user is None:
+        
 
         try:
             import production

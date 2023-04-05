@@ -1,0 +1,65 @@
+ <!-- search -->
+ <div class="w-full mr-32 mb-4">
+    <div class="rounded-full bg-zinc-900 px-4 py-2 flex">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6 text-zinc-400 mr-2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+        />
+      </svg>
+      <input
+        type="text"
+        value=""
+        placeholder="Search Twitter"
+        class="text-white outline-none bg-zinc-900 text-xs"
+      />
+    </div>
+  </div>
+
+ <!-- trending -->
+ <div class="flex flex-col w-full bg-zinc-900 rounded-lg">
+    <div class="text-2xl font-bold p-4">Trends for you</div>
+
+    % for trend in trends:
+    <div class="hover:bg-zinc-800 p-4">
+      <div class="flex">
+        <div class="mb-1 text-sm text-light text-gray-400">
+          {{trend["trend_title"]}}
+        </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6 stroke-gray-500 hover:stroke-sky-400 ml-auto"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+          />
+        </svg>
+      </div>
+      <div class="mb-1 text-bold text-sm">
+        {{ trend["trend_total_tweets"]}} Tweets
+      </div>
+      <div class="mb-2 text-xs text-light text-gray-400">
+        {{ trend["trend_title"]}}
+      </div>
+    </div>
+    % end
+
+    <a href="/explore" class="text-sky-500 p-4 text-base hover:bg-zinc-800 rounded-b-lg">
+      Show more
+    </a>
+  </div>
+  <!-- end trending -->
