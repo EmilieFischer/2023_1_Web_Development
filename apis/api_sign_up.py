@@ -19,7 +19,6 @@ def _():
     try:
         user_name = x.validate_user_name()
         user_email = x.validate_user_email()
-        print(user_email)
         user_password = x.validate_user_password()
         user_first_name = request.forms.user_first_name
         user_last_name = request.forms.user_last_name

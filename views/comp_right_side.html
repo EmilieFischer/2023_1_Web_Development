@@ -7,7 +7,7 @@
       <p class="text-sm text-gray-600 pb-4">Sign up now, and get your own personal timeline!</p>
 
       
-      <button type="button" data-modal-target="crypto-modal" data-modal-toggle="crypto-modal" href="/login" class="bg-white mb-2 rounded-full py-2 flex gap-4 font-bold text-black text-base items-center">
+      <button type="button" data-modal-target="login-modal" data-modal-toggle="login-modal" href="/login" class="bg-white mb-2 rounded-full py-2 flex gap-4 font-bold text-black text-base items-center">
         <img src="/images/profile.jpg" class="h-8 rounded-full ml-2">Log in with user
         <svg id="Capa_1" class="ml-auto mr-2" style="enable-background: new 0 0 150 150" width="32" height="32" version="1.1" viewBox="0 0 150 150" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" > <style type="text/css"> .st0 { fill: #1a73e8; } .st1 { fill: #ea4335; } .st2 { fill: #4285f4; } .st3 { fill: #fbbc04; } .st4 { fill: #34a853; } .st5 { fill: #4caf50; } .st6 { fill: #1e88e5; } .st7 { fill: #e53935; } .st8 { fill: #c62828; } .st9 { fill: #fbc02d; } .st10 { fill: #1565c0; } .st11 { fill: #2e7d32; } .st12 { fill: #f6b704; } .st13 { fill: #e54335; } .st14 { fill: #4280ef; } .st15 { fill: #34a353; } .st16 { clip-path: url(#SVGID_2_); } .st17 { fill: #188038; } .st18 { opacity: 0.2; fill: #ffffff; enable-background: new; } .st19 { opacity: 0.3; fill: #0d652d; enable-background: new; } .st20 { clip-path: url(#SVGID_4_); } .st21 { opacity: 0.3; fill: url(#_45_shadow_1_); enable-background: new; } .st22 { clip-path: url(#SVGID_6_); } .st23 { fill: #fa7b17; } .st24 { opacity: 0.3; fill: #174ea6; enable-background: new; } .st25 { opacity: 0.3; fill: #a50e0e; enable-background: new; } .st26 { opacity: 0.3; fill: #e37400; enable-background: new; } .st27 { fill: url(#Finish_mask_1_); } .st28 { fill: #ffffff; } .st29 { fill: #0c9d58; } .st30 { opacity: 0.2; fill: #004d40; enable-background: new; } .st31 { opacity: 0.2; fill: #3e2723; enable-background: new; } .st32 { fill: #ffc107; } .st33 { opacity: 0.2; fill: #1a237e; enable-background: new; } .st34 { opacity: 0.2; } .st35 { fill: #1a237e; } .st36 { fill: url(#SVGID_7_); } .st37 { fill: #fbbc05; } .st38 { clip-path: url(#SVGID_9_); fill: #e53935; } .st39 { clip-path: url(#SVGID_11_); fill: #fbc02d; } .st40 { clip-path: url(#SVGID_13_); fill: #e53935; } .st41 { clip-path: url(#SVGID_15_); fill: #fbc02d; } </style> <g> <path class="st14" d="M120,76.1c0-3.1-0.3-6.3-0.8-9.3H75.9v17.7h24.8c-1,5.7-4.3,10.7-9.2,13.9l14.8,11.5 C115,101.8,120,90,120,76.1L120,76.1z" /> <path class="st15" d="M75.9,120.9c12.4,0,22.8-4.1,30.4-11.1L91.5,98.4c-4.1,2.8-9.4,4.4-15.6,4.4c-12,0-22.1-8.1-25.8-18.9 L34.9,95.6C42.7,111.1,58.5,120.9,75.9,120.9z" /> <path class="st12" d="M50.1,83.8c-1.9-5.7-1.9-11.9,0-17.6L34.9,54.4c-6.5,13-6.5,28.3,0,41.2L50.1,83.8z" /> <path class="st13" d="M75.9,47.3c6.5-0.1,12.9,2.4,17.6,6.9L106.6,41C98.3,33.2,87.3,29,75.9,29.1c-17.4,0-33.2,9.8-41,25.3 l15.2,11.8C53.8,55.3,63.9,47.3,75.9,47.3z" /> </g> </svg> 
       </button>
@@ -15,29 +15,64 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="ml-2" viewBox="0 0 24 24" > <path fill="currentColor" d="M14.94 5.19A4.38 4.38 0 0 0 16 2a4.44 4.44 0 0 0-3 1.52a4.17 4.17 0 0 0-1 3.09a3.69 3.69 0 0 0 2.94-1.42Zm2.52 7.44a4.51 4.51 0 0 1 2.16-3.81a4.66 4.66 0 0 0-3.66-2c-1.56-.16-3 .91-3.83.91s-2-.89-3.3-.87a4.92 4.92 0 0 0-4.14 2.53C2.93 12.45 4.24 17 6 19.47c.8 1.21 1.8 2.58 3.12 2.53s1.75-.82 3.28-.82s2 .82 3.3.79s2.22-1.24 3.06-2.45a11 11 0 0 0 1.38-2.85a4.41 4.41 0 0 1-2.68-4.04Z" /> </svg>
         Sign up with Apple
       </a>
-      <a href="/signup" class="bg-white rounded-full font-bold text-black text-center text-base py-3 mb-4">Create account</a>
+      <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" href="/signup" class="bg-white rounded-full font-bold text-black text-center text-base py-3 mb-4">Create account</button>
      
       <p class="text-sm text-gray-600 ">By signing up you accept <span class="text-sky-500">Terms and Conditions</span> og <span class="text-sky-500">privacy policy</span>, including <span class="text-sky-500">use of cookies</span>.</p>
     </div>
   </div>
 
+
+
+  <!-- test login modal -->
+  <div id="login-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-gray-500/25">
+    <div class="relative w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-black rounded-lg shadow dark:bg-gray-700">
+             <button type="button" class="absolute top-3 right-2.5 text-white bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="login-modal">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </button>
+            <div class="px-6 py-6 lg:px-8">
+                <p class="mb-4 text-2xl font-medium text-white">Log in with your Twitter account</p>
+                <p class="text-sm font-normal text-gray-500 pb-4">Log in with your user account and get all the news before anybody else does!</p>
+
+                <form method="POST" action="/api-login" method="POST" action="/api-login">
+                  <div class="flex gap-4">
+                    <div class="w-full">
+                        <label class="text-gray-500 text-xs pb-1">Your user email</label>
+                        <input name="user_email" type="text" placeholder="email" class="bg-transparent border border-gray-800 text-gray-900 text-sm rounded-lg block w-full p-2 placeholder-gray-400" required>
+                    </div>
+                    <div class="w-full">
+                        <label class="text-gray-500 text-xs pb-1">Your user name</label>
+                        <input name="user_password" type="password" placeholder="password" class="bg-transparent border border-gray-800 text-gray-900 text-sm rounded-lg block w-full p-2 placeholder-gray-400" required>
+                    </div>
+                  </div>
+                   
+                  <button class="block bg-sky-500 hover:bg-sky-600 py-2 px-6 my-4 rounded-lg text-white w-full">Login</button>
+
+                    <div class="text-xs font-medium text-gray-500 dark:text-gray-300">
+                        Not registered yet? <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Create an account</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 
+
+  <!-- test login modal end -->
   
   <!-- Login modal -->
-  <div id="crypto-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full bg-gray-500/25">
+  <!-- <div id="crypto-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full bg-gray-500/25">
       <div class="relative w-full h-full max-w-md md:h-auto ">
-          <!-- Modal content -->
           <div class="relative bg-black rounded-xl shadow">
               <button type="button" class="absolute top-3 right-2.5 text-white bg-transparent hover:bg-slate-900 hover:text-white rounded-full text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="crypto-modal">
                   <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
-                  <!-- <span class="sr-only">Close modal</span> -->
+                  <span class="sr-only">Close modal</span>
               </button>
-              <!-- Modal header -->
               <div class="px-6 py-4 border-b rounded-t dark:border-gray-600">
                   <p class="text-base font-semibold text-white lg:text-xl">
                       Log in with your Twitter account
                   </p>
               </div>
-              <!-- Modal body -->
               <div class="p-6">
                   <p class="text-sm font-normal text-gray-500">Log in with your user account and get all the news before anybody else does!</p>
                   <ul class="my-4 space-y-3">
@@ -57,7 +92,7 @@
               </div>
           </div>
       </div>
-  </div>
+  </div> -->
     <!-- Login modal end -->
 
     <!-- Sign up modal -->
