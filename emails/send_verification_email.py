@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 
-def send_verification_email():
+def send_verification_email(user_verification_key):
   sender_email = "emiliefdhansen@gmail.com"
   receiver_email = "emiliefdhansen@hotmail.com"
   password = "esjgiseftxpubqus"
@@ -14,16 +14,16 @@ def send_verification_email():
   message["To"] = receiver_email
 
   # Create the plain-text and HTML version of your message
-  text = """\
-  Hi Emilie,
+  text = f"""\
+  Hi,
   How are you?
   www.your_website_here.com"""
-  html = """\
+  html = f"""\
   <html>
     <body>
       <p>Hi,<br>
         How are you?<br>
-        <a href="https://www.your_website_here.com">YOUR WEBSITE HERE</a>
+        <a href="http://127.0.0.1:5009/verification/{user_verification_key}">Tryk her for at logge ind</a>
       </p>
     </body>
   </html>

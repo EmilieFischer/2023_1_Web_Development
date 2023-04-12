@@ -19,18 +19,21 @@ def _():
     try:
         user_name = x.validate_user_name()
         user_email = x.validate_user_email()
+        print(user_email)
         user_password = x.validate_user_password()
         user_first_name = request.forms.user_first_name
         user_last_name = request.forms.user_last_name
         x.validate_user_confirm_password()
         salt = bcrypt.gensalt()
         user_id = str(uuid.uuid4()).replace("-","")
+        user_verification_key = str(uuid.uuid4()).replace("-","")
+
         user = {
             "user_id" : user_id,
             "user_email" : user_email,            
             "user_name" : user_name,
             "user_created_at" : int(time.time()),
-            "user_verification_key" : str(uuid.uuid4()).replace("-",""),
+            "user_verification_key" : user_verification_key,
             "user_password": bcrypt.hashpw(user_password.encode('utf-8'), salt),
             "user_first_name" : user_first_name,
             "user_last_name" : user_last_name,
@@ -74,7 +77,7 @@ def _():
         if total_rows_inserted != 1: raise Exception("Please, try again")
 
         db.commit()
-        send_verification_email.send_verification_email()
+        send_verification_email.send_verification_email(user_verification_key)
 
         print(user)
         return {
