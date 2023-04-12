@@ -8,7 +8,7 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2023-03-13T08:06:58.833Z",
-    "modified": "2023-03-13T09:01:41.403Z",
+    "modified": "2023-04-12T09:42:36.173Z",
     "headers": [],
     "params": [],
     "body": {
@@ -17,11 +17,48 @@
       "form": [
         {
           "name": "user_name",
-          "value": "AbCd_123"
+          "value": "edddeed"
+        },
+        {
+          "name": "user_email",
+          "value": "test@gmail.com"
+        },
+        {
+          "name": "user_password",
+          "value": "edwwed"
+        },
+        {
+          "name": "user_confirm_password",
+          "value": "edwwed"
         }
       ]
     },
-    "tests": []
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": ""
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "equal",
+        "value": "application/json"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "info"
+      }
+    ]
   },
   {
     "_id": "4aeca094-b3fc-49fc-81f6-1c662f0c574a",
@@ -134,17 +171,5 @@
       ]
     },
     "tests": []
-  },
-  {
-    "_id": "016b406f-1559-4d5b-8cc4-7403af37607a",
-    "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
-    "containerId": "",
-    "name": "test",
-    "url": "",
-    "method": "GET",
-    "sortNum": 80000,
-    "created": "2023-03-27T13:57:37.605Z",
-    "modified": "2023-03-27T13:57:37.605Z",
-    "headers": []
   }
 ]

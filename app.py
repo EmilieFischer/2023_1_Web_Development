@@ -47,6 +47,7 @@ import routes.render_timeout
 import routes.render_test
 import routes.render_connect
 import routes.render_explore
+import routes.render_signup
 
 ##############################
 # VIEWS

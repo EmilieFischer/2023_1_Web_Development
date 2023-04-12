@@ -18,6 +18,9 @@ async function tweet(){
     // point to the form. I want to get the value out of it
     const message = frm.querySelector("input[name ='message']").value
     const image = frm.querySelector("#image")
+    const modal = document.querySelector("#tweet_modal")
+    //  modal.style.display='none' = fjerner tweet-modalen når der trykkes på tweet-knappen
+    modal.style.display='none' 
     console.log(message)
     console.log(image)
     // selects tweets. Before the tweet-element (the section) I want to put some HTML (insertAdjacentHTML('afterbegin')) - vi bruger et så det er det nyeste tweet, der kommer først

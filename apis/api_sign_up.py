@@ -3,6 +3,8 @@ import x
 import uuid
 import time
 import bcrypt
+from emails import send_verification_email
+
 
 
 ################################
@@ -18,6 +20,8 @@ def _():
         user_name = x.validate_user_name()
         user_email = x.validate_user_email()
         user_password = x.validate_user_password()
+        user_first_name = request.forms.user_first_name
+        user_last_name = request.forms.user_last_name
         x.validate_user_confirm_password()
         salt = bcrypt.gensalt()
         user_id = str(uuid.uuid4()).replace("-","")
@@ -28,8 +32,8 @@ def _():
             "user_created_at" : int(time.time()),
             "user_verification_key" : str(uuid.uuid4()).replace("-",""),
             "user_password": bcrypt.hashpw(user_password.encode('utf-8'), salt),
-            "user_first_name" : "",
-            "user_last_name" : "",
+            "user_first_name" : user_first_name,
+            "user_last_name" : user_last_name,
             "user_verified_at" : 0,
             "user_banner" : "",
             "user_avatar" : "",
@@ -41,13 +45,14 @@ def _():
             "user_total_followers" : 0,
             "user_total_following" : 0
         }
+        # print( int(time.time()) )
 
-        user_id = 1
+        # user_id = 1
         # create dictionary for user
-        user = {
-            "user_id":user_id,
-            "user_name":user_name
-        }
+        # user = {
+        #     "user_id":user_id,
+        #     "user_name":user_name
+        # }
         
         # create placed holders for values
         values = ""
@@ -57,6 +62,7 @@ def _():
         print(values)
         db = x.db()
         total_rows_inserted = db.execute(f"INSERT INTO users VALUES({values})", user).rowcount
+        
         # total_rows_inserted = db.execute("""
         #     INSERT INTO users VALUES(:user_id, :user_email, :user_name, 
         #     :user_created_at, :user_verification_key, :user_password, :user_first_name, 
@@ -66,9 +72,17 @@ def _():
         # db.execute("INSERT INTO users VALUES()",)
 
         if total_rows_inserted != 1: raise Exception("Please, try again")
+
+        db.commit()
+        send_verification_email.send_verification_email()
+
+        print(user)
         return {
             "info" : "user created", 
-            "user_id" : user_id
+            "user_id" : user_id,
+            "user_email" : user_email, 
+            "user_name" : user_name, 
+            "user_created_at" : int(time.time())
         }
         # db.execute(f"INSERT INTO users VALUES({values})", user)
         # return "ok"

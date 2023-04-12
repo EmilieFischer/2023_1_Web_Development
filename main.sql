@@ -15,8 +15,8 @@ CREATE TABLE users(
   user_first_name             TEXT,
   user_last_name              TEXT,
   user_verified_at            TEXT, -- 0 if not verified, else epoch--
-  user_banner                 TEXT UNIQUE,
-  user_avatar                 TEXT UNIQUE, 
+  user_banner                 TEXT,
+  user_avatar                 TEXT, 
   user_total_tweets           INTEGER DEFAULT 0,
   user_total_retweets         INTEGER DEFAULT 0,
   user_total_comments         INTEGER DEFAULT 0,
