@@ -27,8 +27,8 @@
   <div id="login-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-gray-500/25">
     <div class="relative w-full max-w-md max-h-full">
         <!-- Modal content -->
-        <div class="relative bg-black rounded-lg shadow dark:bg-gray-700">
-             <button type="button" class="absolute top-3 right-2.5 text-white bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="login-modal">
+        <div class="relative bg-black rounded-lg shadow">
+             <button type="button" class="absolute top-3 right-2.5 text-white bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="login-modal">
                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </button>
             <div class="px-6 py-6 lg:px-8">
@@ -49,8 +49,8 @@
                    
                   <button class="block bg-sky-500 hover:bg-sky-600 py-2 px-6 my-4 rounded-lg text-white w-full">Login</button>
 
-                    <div class="text-xs font-medium text-gray-500 dark:text-gray-300">
-                        Not registered yet? <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Create an account</a>
+                    <div class="text-xs font-medium text-gray-500">
+                        Not registered yet? <a href="#" class="text-sky-500 hover:underline ">Create an account</a>
                     </div>
                 </form>
             </div>
@@ -99,8 +99,8 @@
 <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-gray-500/25">
     <div class="relative w-full max-w-md max-h-full">
         <!-- Modal content -->
-        <div class="relative bg-black rounded-lg shadow dark:bg-gray-700">
-            <button type="button" class="absolute top-3 right-2.5 text-white bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
+        <div class="relative bg-black rounded-lg shadow">
+            <button type="button" class="absolute top-3 right-2.5 text-white bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="authentication-modal">
                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </button>
             <div class="px-6 py-6 lg:px-8">
@@ -110,7 +110,7 @@
                   <div class="flex gap-4">
                     <div class="w-full">
                         <label class="text-gray-500 text-xs pb-1">Your first name</label>
-                        <input type="text" name="user_first_name" class="bg-transparent border border-gray-800 text-gray-900 text-sm rounded-lg block w-full p-2 placeholder-gray-400" placeholder="first name" value="anders" required>
+                        <input type="text" name="user_first_name" class="bg-transparent border border-gray-800 text-red-600 text-sm rounded-lg block w-full p-2 placeholder-red-700" placeholder="first name"  required>
                     </div>
                     <div class="w-full">
                         <label class="text-gray-500 text-xs pb-1">Your last name</label>
@@ -129,17 +129,17 @@
                   </div>
                     <div>
                         <label class="text-gray-500 text-xs pb-1">Your password</label>
-                        <input type="password" name="user_password" placeholder="••••••••" class="bg-transparent border border-gray-800 text-gray-900 text-sm rounded-lg block w-full p-2 placeholder-gray-400" placeholder="password" value="password" required>
+                        <input type="password" name="user_password" placeholder="••••••••" class="bg-transparent border border-gray-800 text-gray-900 text-sm rounded-lg block w-full p-2 placeholder-gray-400" value="password" required>
                     </div>
                     <div>
                         <label class="text-gray-500 text-xs pb-1">Confirm password</label>
-                        <input type="password" name="user_confirm_password" placeholder="••••••••" class="bg-transparent border border-gray-800 text-gray-900 text-sm rounded-lg block w-full p-2 placeholder-gray-400" placeholder="password" value="password" required>
+                        <input type="password" name="user_confirm_password" placeholder="••••••••" class="bg-transparent border border-gray-800 text-gray-900 text-sm rounded-lg block w-full p-2 placeholder-gray-100" value="password" required>
                     </div>
                  
                     <button onclick="signup(); return false" class="block bg-sky-500 hover:bg-sky-600 py-2 my-4 px-6 border border-slate-800 rounded-lg text-white w-full">Sign up</button>
 
-                    <div class="text-xs font-medium text-gray-500 dark:text-gray-300">
-                        Already registered? <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Sign in to your account</a>
+                    <div class="text-xs font-medium text-gray-500">
+                        Already registered? <a href="#" class="text-sky-500 hover:underline">Sign in to your account</a>
                     </div>
                 </form>
             </div>
