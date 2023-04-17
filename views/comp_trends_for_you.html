@@ -1,6 +1,8 @@
  <!-- search -->
  <div class="w-full mr-32 mb-4">
-    <div class="rounded-full bg-zinc-900 px-4 py-2 flex">
+ 
+  <div class="rounded-full bg-zinc-900 px-4 py-2 flex">
+    
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -17,11 +19,15 @@
       </svg>
       <input
         type="text"
+        onfocus="show_search_results()"
         value=""
         placeholder="Search Twitter"
         class="text-white outline-none bg-zinc-900 text-xs"
       />
     </div>
+    <div id="search_results" class="bg-gray-600 rounded-lg hidden h-28">
+     
+    </div> 
   </div>
 
  <!-- trending -->
@@ -62,4 +68,12 @@
       Show more
     </a>
   </div>
+
+
+  <!-- script til search-field -->
+  <script>
+    function show_search_results(){
+      document.querySelector("#search_results").style.display = "grid"
+    }
+  </script>
   <!-- end trending -->

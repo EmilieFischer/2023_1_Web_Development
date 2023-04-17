@@ -29,7 +29,12 @@ def _():
         # ÅBNER INDEX-SIDEN NÅR DER LOGGES KORREKT IND
         response.add_header("Cache-Control", "no-cache, no-store, must-revalidate")
         response.add_header("Pragma", "no-cache")
-        # response.add_header("Expires", 0)   
+        # response.add_header("Expires", 0)
+
+        
+        # create the jwt with the user's data
+        # user_jwt = jwt.encode(user, "the secret", algorithm="HS256")
+        
         response.set_cookie("user", user, secret=x.COOKIE_SECRET)
         response.status = 303
         response.set_header("Location", "/") #fortæller at det er index-siden der åbnes
