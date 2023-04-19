@@ -20,7 +20,7 @@ def render_index():
       db = sqlite3.connect("./twitter.db")
       db.row_factory = dict_factory
       tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC LIMIT 10").fetchall()
-      print (tweets)
+      # print (tweets)
       trends = db.execute("SELECT * FROM trends").fetchall()
       users = db.execute("SELECT * FROM users").fetchall()
       return template("index", trends=trends, tweets=tweets, users=users, cookie_user=cookie_user, tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN)

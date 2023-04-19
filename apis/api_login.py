@@ -7,8 +7,8 @@ import traceback
 def _():
     try:
         # if user is logged, go to the profile page of that user
-        user = request.get_cookie("user", secret=x.COOKIE_SECRET)
-        if user: return {"info":"success login", "user_name":user["user_name"]}
+        # user = request.get_cookie("user", secret=x.COOKIE_SECRET)
+        # if user: return {"info":"success login", "user_name":user["user_name"]}
         # Validate
         user_email = x.validate_user_email()
         user_password = x.validate_user_password()
@@ -16,11 +16,16 @@ def _():
         # Connect to database
         db = x.db() #
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
-        # print(user)
-        if not user: 
+        if not user:
             response.status=303
             response.set_header("Location", "/")
-            return
+            raise Exception ("user not found i database")
+            
+        if user['user_verified_at'] == 0:
+            raise Exception ("User not verified")
+        
+        # print(user)
+       
         # raise Exception(400, "Cannot login") # hvis ikke user er til at finde, så bring fejlen "cannot login"
 
         # if not bcrypt.checkpw(user_password.encode("utf-8"), user["user_password"]):

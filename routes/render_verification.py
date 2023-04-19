@@ -1,6 +1,4 @@
 from bottle import get, template, response, request
-import sqlite3 
-import traceback
 import x
 
 
@@ -27,4 +25,3 @@ def _(user_verification_key):
     finally:
         if 'db' in locals(): db.close()
 
-# TODO: return index med variabler fra render_index
