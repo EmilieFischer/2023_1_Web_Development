@@ -50,7 +50,7 @@
                   <button class="block bg-sky-500 hover:bg-sky-600 py-2 px-6 my-4 rounded-lg text-white w-full">Login</button>
 
                     <div class="text-xs font-medium text-gray-500">
-                        Not registered yet? <a href="#" class="text-sky-500 hover:underline ">Create an account</a>
+                        Not registered yet? <a href="#" onclick="hide_login_modal()" class="text-sky-500 hover:underline">Create an account</a>
                     </div>
                 </form>
             </div>
@@ -104,8 +104,9 @@
                  
                     <button onclick="signup(); return false" class="block bg-sky-500 hover:bg-sky-600 py-2 my-4 px-6 border border-slate-800 rounded-lg text-white w-full">Sign up</button>
 
+                    
                     <div class="text-xs font-medium text-gray-500">
-                        Already registered? <a href="#" class="text-sky-500 hover:underline">Sign in to your account</a>
+                        Already registered? button <a href="#" onclick="hide_signup_modal()" class="text-sky-500 hover:underline" >Log in to your account</a>
                     </div>
                 </form>
             </div>
@@ -142,3 +143,4 @@
  % include("comp_who_to_follow")
   <!-- % end -->
 </div>
+

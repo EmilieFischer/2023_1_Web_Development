@@ -1,23 +1,30 @@
-from bottle import get, template
+from bottle import get, template, response, request
+import sqlite3 
+import traceback
 import x
 
-@get("/verification/<user_verification_key>")
-def _(user_verification_key):
-    return template("verification")
 
 #########################
-# @get("/verification/<user_verification_key>")
-# def _(user_verification_key):
-#     try:
-#         db = x.db()
-#         rowsInserted=db.execute("UPDATE users SET user_active WHERE user_verification_key=?", (user_verification_key,)).rowcount
+@get("/verification/<user_verification_key>")
+def _(user_verification_key):
+    cookie_user = request.get_cookie("user", secret=x.COOKIE_SECRET)
 
-#         if rowsInserted == 0: raise Exception("user not active")
-#         return template("verification", succes=1)
-#         return {'info':'Ok'}
-#     except Exception as ex:
-#         if 'db' in locals(): db.rollback()
-#         print(ex)
-#         return template("verification", succes=0)
-#     finally:
-#         if 'db' in locals(): db.close()
+    try:
+        db = x.db()
+        user = db.execute("SELECT * FROM users WHERE user_verification_key = ?",(user_verification_key, )).fetchone()
+        user_verified = db.execute("UPDATE users SET user_verified_at = '1' WHERE user_verification_key=?", (user_verification_key,)).fetchone()
+        print(user)
+       
+        tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC LIMIT 10").fetchall()
+        print (tweets)
+        trends = db.execute("SELECT * FROM trends").fetchall()
+        users = db.execute("SELECT * FROM users").fetchall()
+        db.commit()
+        return template("index", trends=trends, tweets=tweets, users=users, cookie_user=cookie_user, tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN)
+    except Exception as e:
+            response.status = 400
+            return {"info":str(e)}
+    finally:
+        if 'db' in locals(): db.close()
+
+# TODO: return index med variabler fra render_index

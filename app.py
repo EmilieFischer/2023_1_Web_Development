@@ -64,6 +64,7 @@ import apis.api_follow
 import apis.api_login
 import apis.api_test
 import apis.api_get_latest_tweets
+import apis.api_search
 
 ############################
 # BRIDGES

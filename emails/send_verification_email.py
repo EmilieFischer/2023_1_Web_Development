@@ -45,3 +45,6 @@ def send_verification_email(user_verification_key):
       server.sendmail(
           sender_email, receiver_email, message.as_string()
       )
+
+
+# TODO: når bruger klikker i mail, skal der linkes til en anden API som opdaterer deres tabel til at være = 1

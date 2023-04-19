@@ -14,7 +14,7 @@ CREATE TABLE users(
   user_password               TEXT NOT NULL,
   user_first_name             TEXT,
   user_last_name              TEXT,
-  user_verified_at            TEXT, -- 0 if not verified, else epoch--
+  user_verified_at            INTEGER DEFAULT 0, -- 0 if not verified, else epoch--
   user_banner                 TEXT,
   user_avatar                 TEXT, 
   user_total_tweets           INTEGER DEFAULT 0,

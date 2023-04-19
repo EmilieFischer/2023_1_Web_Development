@@ -63,3 +63,7 @@ def _():
         if "db" in locals(): db.close()
 
 
+
+# TODO: user_verified_at (verificér at deres key er = 1, hvis ikke må de ikke logge ind)
+
+# TODO: man skal ikke kunne logge ind medmindre man er verificeret (kig i databasen, hvis ikke bruger = 1 skal den raise exception)

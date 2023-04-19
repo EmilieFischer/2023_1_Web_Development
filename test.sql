@@ -13,3 +13,5 @@ INSERT INTO posts VALUES
 
 -- find "are" and "message"
 SELECT * FROM posts WHERE posts MATCH 'are NOT trying';
+
+UPDATE users SET user_verified_at = '1' WHERE user_verification_key="50a58432097c466d8651f5daf06ebd2c";
