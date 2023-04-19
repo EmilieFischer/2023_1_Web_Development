@@ -10,9 +10,11 @@ def _():
         # user = request.get_cookie("user", secret=x.COOKIE_SECRET)
         # if user: return {"info":"success login", "user_name":user["user_name"]}
         # Validate
+        print(request.forms.user_email)
+        print("HELLO ")
+
         user_email = x.validate_user_email()
         user_password = x.validate_user_password()
-
         # Connect to database
         db = x.db() #
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
@@ -60,7 +62,7 @@ def _():
         traceback.print_exc()
         try: # Controlled exception, usually comming from the x file
             response.status = e.args[0]
-            return {"info":e.args[1]}
+            return {"info":"Login failed", "cause":e.args[1]}
         except: # Something unknown went wrong
             response.status = 500
             return {"info":str(e)}
