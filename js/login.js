@@ -15,12 +15,15 @@ async function login(){
     const info = data.info
     const cause = data.cause
     console.log(data)
-    if(info === "Login failed"){
+    if(info === "Login succes"){
+        console.log("Succes")
+        location.href="/"
+    } else {
         console.log("Her kan vi gøre noget")
         console.log(cause)
-    } else{
-        console.log("Succes")
     }
     // // data = the text that I get back in the response from the server
 
 }
+
+// todo: åben index-siden når brugeren er verificeret

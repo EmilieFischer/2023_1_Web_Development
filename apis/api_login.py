@@ -10,8 +10,7 @@ def _():
         # user = request.get_cookie("user", secret=x.COOKIE_SECRET)
         # if user: return {"info":"success login", "user_name":user["user_name"]}
         # Validate
-        print(request.forms.user_email)
-        print("HELLO ")
+        
 
         user_email = x.validate_user_email()
         user_password = x.validate_user_password()
@@ -41,14 +40,9 @@ def _():
         
         # create the jwt with the user's data
         # user_jwt = jwt.encode(user, "the secret", algorithm="HS256")
-        
-        response.set_cookie("user", user, secret=x.COOKIE_SECRET)
-        response.status = 303
-        response.set_header("Location", "/") #fortæller at det er index-siden der åbnes
-
-        # if not user:
-        # if user is None:
-        
+        # response.set_cookie("user", user, secret=x.COOKIE_SECRET)
+        # response.status = 303
+        # response.set_header("Location", "/") #fortæller at det er index-siden der åbnes
 
         try:
             import production
@@ -56,7 +50,7 @@ def _():
         except:
             is_cookie_https = False
         response.set_cookie("user", user, secret=x.COOKIE_SECRET, httponly=True, secure=is_cookie_https)
-        return {"info":"success login", "user_name":user["user_name"]}
+        return {"info":"Login succes"}
     except Exception as e:
         print(e)
         traceback.print_exc()
