@@ -76,7 +76,7 @@ def _():
         if total_rows_inserted != 1: raise Exception("Please, try again")
 
         db.commit()
-        send_verification_email.send_verification_email(user_verification_key)
+        send_verification_email.send_verification_email(user_email, user_verification_key)
 
         print(user)
         return {

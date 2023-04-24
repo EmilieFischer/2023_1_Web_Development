@@ -3,9 +3,9 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 
-def send_verification_email(user_verification_key):
+def send_verification_email(user_email, user_verification_key):
   sender_email = "emiliefdhansen@gmail.com"
-  receiver_email = "emiliefdhansen@hotmail.com"
+  receiver_email = user_email
   password = "esjgiseftxpubqus"
 
   message = MIMEMultipart("alternative")
