@@ -3,6 +3,7 @@ import x
 import uuid
 import time
 import bcrypt
+import traceback
 from emails import send_verification_email
 
 
@@ -26,6 +27,7 @@ def _():
         salt = bcrypt.gensalt()
         user_id = str(uuid.uuid4()).replace("-","")
         user_verification_key = str(uuid.uuid4()).replace("-","")
+        delete_user_verification_key = str(uuid.uuid4()).replace("-","")
 
         user = {
             "user_id" : user_id,
@@ -33,6 +35,7 @@ def _():
             "user_name" : user_name,
             "user_created_at" : int(time.time()),
             "user_verification_key" : user_verification_key,
+            "delete_user_verification_key" : delete_user_verification_key,
             "user_password": bcrypt.hashpw(user_password.encode('utf-8'), salt),
             "user_first_name" : user_first_name,
             "user_last_name" : user_last_name,
@@ -89,6 +92,7 @@ def _():
         # db.execute(f"INSERT INTO users VALUES({values})", user)
         # return "ok"
     except Exception as e:
+        traceback.print_exc()
         print(e)
         try: # Controlled exception, usually comming from the x file
             response.status = e.args[0]

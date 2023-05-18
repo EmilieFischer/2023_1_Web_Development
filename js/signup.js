@@ -13,10 +13,11 @@ async function signup(){
     // // what we will get back from the server after the tunnel is build. We want to get some text back from the server
     const data = await conn.json()
     if (!conn.ok) {
-        console.log("Cannot login");
+        console.log("Cannot sign up");
         return;
     }
     console.log(data)
+    frm.reset()
     // // data = the text that I get back in the response from the server
 
 }

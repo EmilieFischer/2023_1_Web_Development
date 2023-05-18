@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/output.css" />
     <script src="/js/validate.js"></script>
     <script src="/js/tweet_button.js"></script>
+    <script src="/js/deactivate_user.js"></script>
+
     <title></title>
   </head>
   <body class="grid grid-cols-[100fr_150fr_100fr] w-full h-full text-gray-200 text-lg bg-black font-light overflow-hidden overflow-y-scroll">
@@ -60,9 +62,7 @@
       <!-- end Top Bar -->
 
       <!-- hero section -->
-
       <div>
-   
         <div class="static">
           <img
             src="images/{{user['user_banner']}}"
@@ -115,12 +115,29 @@
                 />
               </svg>
             </a>
-            <a
-              href="#"
-              class="stroke-gray-500 rounded-full inline-block border border-gray-500 py-2 hover:bg-zinc-900 px-4 text-base"
-            >
-              Following
-            </a>
+            
+            %if user["user_id"] not in user_followed:
+            <form id="{{cookie_user['user_id']}}" onsubmit="follow(); return false" method="POST" class="grid">
+              <input style="display:none" name="user_followee_id" type="text" value="{{user['user_id']}}">
+              <button type="submit" class="stroke-gray-500 rounded-full inline-block border border-gray-500 py-2 hover:bg-zinc-900 px-4 text-base">
+                Follow
+              </button>
+            </form>
+            %else:
+            <form id="{{cookie_user['user_id']}}" onsubmit="unfollow_user(); return false" method="POST" class="grid">
+              <input style="display:none" name="user_followee_id" type="text" value="{{user['user_id']}}">
+              <button type="submit" class="stroke-gray-500 rounded-full inline-block border border-gray-500 py-2 hover:bg-zinc-900 px-4 text-base">
+                Following
+              </button>
+            </form>
+            %end
+
+            <form onsubmit="deactivate_user(); return false">
+              <button href="" class="stroke-gray-500 rounded-full inline-block border border-gray-500 py-2 hover:bg-zinc-900 px-4 text-base">
+                Delete user
+              </button>
+            </form>
+           
           </div>
         </div>
         <!-- end three buttons -->
@@ -493,5 +510,8 @@
       <!-- end who to follow  -->
     </div>
     <!-- end right -->
+    %if cookie_user:
+    <script defer src="/js/follow.js"></script>
+    % end
   </body>
 </html>

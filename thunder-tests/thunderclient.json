@@ -241,5 +241,95 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "5a5d53cb-757a-4c48-9193-796751b0ce7c",
+    "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
+    "containerId": "",
+    "name": "api follow",
+    "url": "127.0.0.1:5009/api-follow",
+    "method": "POST",
+    "sortNum": 120000,
+    "created": "2023-04-26T08:47:31.042Z",
+    "modified": "2023-04-26T12:31:39.700Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_followee_id",
+          "value": "12345"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "4872a242-5a91-46b1-99a7-365e609dddda",
+    "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
+    "containerId": "",
+    "name": "api unfollow",
+    "url": "127.0.0.1:5009/api-unfollow",
+    "method": "POST",
+    "sortNum": 130000,
+    "created": "2023-04-26T10:28:23.236Z",
+    "modified": "2023-04-26T10:29:13.961Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_followee_id",
+          "value": "1234"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "7dab9407-8fc4-4f31-a435-c5bae15cbde9",
+    "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
+    "containerId": "",
+    "name": "api delete user",
+    "url": "127.0.0.1:5009/delete-user/95b374ce008241e58ebb34c6eee9e5ab",
+    "method": "GET",
+    "sortNum": 140000,
+    "created": "2023-05-17T07:52:55.431Z",
+    "modified": "2023-05-18T09:02:22.692Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "e2a5bdd8-668c-465a-b121-193050470c08",
+    "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
+    "containerId": "",
+    "name": "api delete user email",
+    "url": "127.0.0.1:5009/api-delete-user",
+    "method": "POST",
+    "sortNum": 150000,
+    "created": "2023-05-18T08:10:47.327Z",
+    "modified": "2023-05-18T09:09:46.308Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_email",
+          "value": "emiliefdhansen@hotmail.com"
+        },
+        {
+          "name": "user_id",
+          "value": "1234"
+        }
+      ]
+    },
+    "tests": []
   }
 ]
