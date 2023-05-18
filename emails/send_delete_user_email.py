@@ -34,7 +34,7 @@ def send_delete_user_email():
       <body>
         <p>Hi,<br>
           How are you?<br>
-          <a href="http://127.0.0.1:5009/delete_user/{cookie_user['user_id']}">Click here to delete your account</a>
+          <a href="http://127.0.0.1:5009/delete-user/{cookie_user['user_id']}">Click here to delete your account</a>
         </p>
       </body>
     </html>
