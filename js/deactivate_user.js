@@ -5,10 +5,4 @@ async function deactivate_user(){
         method: "POST", 
         body: new FormData(frm)
     })
-    // const data = await conn.json()
-    // if (!conn.ok) {
-    //     console.log("Cannot delete user");
-    //     return;
-    // }
-    // console.log(data)
 }

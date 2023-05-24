@@ -331,5 +331,19 @@
       ]
     },
     "tests": []
+  },
+  {
+    "_id": "cce425fa-fd74-48db-9a2a-126df624bd76",
+    "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
+    "containerId": "",
+    "name": "send reset password email",
+    "url": "127.0.0.1:5009/api-create-new-password",
+    "method": "POST",
+    "sortNum": 160000,
+    "created": "2023-05-24T14:03:28.983Z",
+    "modified": "2023-05-24T14:04:44.473Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
