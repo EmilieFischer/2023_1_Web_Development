@@ -15,6 +15,8 @@
 </head>
 
 <body class="grid grid-cols-[100fr_150fr_100fr] w-full h-full text-gray-200 text-lg bg-black font-light overflow-hidden overflow-y-scroll">
+ 
+
 
 % include("comp_left_side")
 
@@ -39,14 +41,31 @@
 
 <!-- CENTER -->
 <div class="min-h-screen h-full border-x border-gray-600">
+  <!-- CENTER IF LOGGED IN WITH COOKIE_ADMIN -->
+  % if cookie_admin: 
+  <div>
+    <p>Hej cookie admin</p>
+    <a href="/logout">logout</a>
+  </div>
+ 
+  % end
+  <!-- END CENTER IF LOGGED IN WITH COOKIE_ADMIN -->
 
-<!-- CENTER IF USER IS NOT LOGGED IN -->
-% include("center_not_logged")
-<!-- END CENTER IF USER IS NOT LOGGED IN -->
 
-<!-- CENTER IF USER IS LOGGED IN -->
-% include("center_logged")
-<!-- END CENTER IF USER IS LOGGED IN -->
+% if not cookie_admin:
+    <!-- CENTER IF USER IS NOT LOGGED IN -->
+    % include("center_not_logged")
+    <!-- END CENTER IF USER IS NOT LOGGED IN -->
+
+    <!-- CENTER IF USER IS LOGGED IN -->
+    % include("center_logged")
+    <!-- END CENTER IF USER IS LOGGED IN -->
+
+% end
+<!-- CENTER IF ADMIN IS LOGGED -->
+
+
+<!-- END CENTER IF ADMIN IS LOGGED -->
 
 </div>
 

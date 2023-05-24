@@ -49,6 +49,7 @@ import routes.render_connect
 import routes.render_explore
 import routes.render_signup
 import routes.render_verification
+import routes.render_admin
 
 ##############################
 # VIEWS
