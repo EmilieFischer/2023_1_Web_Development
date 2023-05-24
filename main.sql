@@ -1,6 +1,5 @@
 -- PRAGMA foreign_keys;
 -- PRAGMA foreign_keys = true;
--- PRAGMA foreign_keys;
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
@@ -42,6 +41,18 @@ CREATE INDEX idx_users_user_avatar ON users(user_avatar);
 
 SELECT name FROM sqlite_master WHERE type = 'index';
 SELECT name FROM sqlite_master WHERE type = 'trigger';
+
+
+-- CREATE ADMIN USER 
+DROP TABLE IF EXISTS admins;
+CREATE TABLE admins(
+  admin_id              TEXT NOT NULL UNIQUE,
+  admin_name            TEXT NOT NULL UNIQUE,
+  admin_password        TEXT NOT NULL,
+  PRIMARY KEY(admin_id)
+) WITHOUT ROWID;
+INSERT INTO admins VALUES("032b70b2ca084f3cb8f69c7de464b0da", "admin", "adminpassword");
+
 
 DROP TABLE IF EXISTS tweets;
 CREATE TABLE tweets(

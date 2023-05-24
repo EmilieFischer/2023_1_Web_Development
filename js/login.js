@@ -12,12 +12,13 @@ async function login(){
     })
     // // what we will get back from the server after the tunnel is build. We want to get some text back from the server
     const data = await conn.json()
-    const info = data.info
-    const cause = data.cause
+    const {info, cause} = data
+    console.log("hej")
+
     console.log(data)
     if(info === "Login succes"){
         console.log("Succes")
-        location.href="/"
+        window.location.href="/"
     } else {
         console.log("Her kan vi gøre noget")
         console.log(cause)
