@@ -20,7 +20,7 @@ def send_delete_user_email():
     password = "esjgiseftxpubqus"
 
     message = MIMEMultipart("alternative")
-    message["Subject"] = "multipart test"
+    message["Subject"] = "Delete user email"
     message["From"] = sender_email
     message["To"] = receiver_email
 

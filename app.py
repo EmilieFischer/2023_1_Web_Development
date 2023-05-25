@@ -49,7 +49,7 @@ import routes.render_connect
 import routes.render_explore
 import routes.render_signup
 import routes.render_verification
-import routes.render_new_password
+import routes.render_reset_password
 import routes.render_forgot_password
 
 ##############################
@@ -70,7 +70,7 @@ import apis.api_search
 import apis.api_unfollow
 import apis.api_delete_user
 import emails.send_delete_user_email
-import emails.send_reset_password_email
+import emails.send_forgot_password_email
 
 
 ############################

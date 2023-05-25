@@ -341,9 +341,19 @@
     "method": "POST",
     "sortNum": 160000,
     "created": "2023-05-24T14:03:28.983Z",
-    "modified": "2023-05-24T14:04:44.473Z",
+    "modified": "2023-05-25T11:29:15.106Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_email",
+          "value": "genay45605@goflipa.com"
+        }
+      ]
+    },
     "tests": []
   }
 ]

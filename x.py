@@ -64,7 +64,7 @@ def validate_user_email():
 	return request.forms.user_email
 
 
-##############################
+############################## PASSWORD VALIDATION
 
 USER_PASSWORD_MIN = 6
 USER_PASSWORD_MAX = 50
@@ -83,11 +83,37 @@ def validate_user_confirm_password():
 	if request.forms.user_confirm_password != request.forms.user_password: raise Exception(400, error)
 	return request.forms.user_confirm_password
 
+
+# ------------------ reset password validation
+# USER_PASSWORD_MIN = 6
+# USER_PASSWORD_MAX = 50
+
+# def validate_user_password():
+#   password = request.forms.user_password 
+#   error = f"The password you entered did not match our records. Please double check and try again." 
+#   user_password = request.forms.user_password = request.forms.user_password.strip() 
+#   if len(request.forms.user_password) < USER_PASSWORD_MIN:
+#     raise Exception(error) 
+#   if len(request.forms.user_password) > USER_PASSWORD_MAX: 
+#     raise Exception(error) 
+#   return request.forms.user_password
+
+
+# def validate_user_confirm_password():
+# 	error = f"user_password and user_confirm_password do not match"
+# 	user_password = request.forms.get("user_password", "").strip()
+# 	user_confirm_password = request.forms.get("user_confirm_password", "").strip()
+# 	if user_confirm_password != user_password: raise Exception(400, error)
+# 	return user_confirm_password
+
+
 ##############################
 def validate_user_logged():
     user = request.get_cookie("user", secret=COOKIE_SECRET)
     if user is None: raise Exception(400, "user must login")
     return user
+
+
 
 ##############################
 # the rules for the username

@@ -9,7 +9,7 @@ def send_verification_email(user_email, user_verification_key):
   password = "esjgiseftxpubqus"
 
   message = MIMEMultipart("alternative")
-  message["Subject"] = "multipart test"
+  message["Subject"] = "Verification email"
   message["From"] = sender_email
   message["To"] = receiver_email
 

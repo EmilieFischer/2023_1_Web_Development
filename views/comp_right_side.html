@@ -34,26 +34,26 @@
             <div class="px-6 py-6 lg:px-8">
                 <p class="mb-4 text-2xl font-medium text-white">Log in with your Twitter account</p>
                 <p class="text-sm font-normal text-gray-500 pb-4">Log in with your user account and get all the news before anybody else does!</p>
-
+                
                 <form method="POST" onsubmit="login(); return false">
                   <div class="flex gap-4">
                     <div class="w-full">
-                        <label class="text-gray-500 text-xs pb-1">Your user email</label>
-                        <input name="user_email" type="text" placeholder="email" class="bg-transparent border border-gray-800 text-white text-sm rounded-lg block w-full p-2 placeholder-gray-400" required>
+                      <label class="text-gray-500 text-xs pb-1">Your user email</label>
+                      <input name="user_email" type="text" placeholder="email" class="bg-transparent border border-gray-800 text-white text-sm rounded-lg block w-full p-2 placeholder-gray-400" required>
                     </div>
                     <div class="w-full">
-                        <label class="text-gray-500 text-xs pb-1">Your user name</label>
-                        <input name="user_password" type="password" placeholder="••••••••" class="bg-transparent border border-gray-800 text-white text-sm rounded-lg block w-full p-2 placeholder-gray-400" required>
+                      <label class="text-gray-500 text-xs pb-1">Your user password</label>
+                      <input name="user_password" type="password" placeholder="••••••••" class="bg-transparent border border-gray-800 text-white text-sm rounded-lg block w-full p-2 placeholder-gray-400" required>
                     </div>
+                  </div>
+                  <div class="text-xs font-medium text-gray-500 mt-2">
+                      <a href="forgotpassword" class="text-sky-500 hover:underline">Forgot password? </a>
                   </div>
                    
                   <button class="block bg-sky-500 hover:bg-sky-600 py-2 px-6 my-4 rounded-lg text-white w-full">Login</button>
 
                     <div class="text-xs font-medium text-gray-500">
                         Not registered yet? <a href="#" onclick="toggle_signup()" class="text-sky-500 hover:underline">Create an account</a>
-                    </div>
-                    <div class="text-xs font-medium text-gray-500">
-                        <a href="forgotpassword" class="text-sky-500 hover:underline">Forgot password? </a>
                     </div>
                 </form>
             </div>
