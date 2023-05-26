@@ -30,8 +30,8 @@ def _():
             if user['user_verified_at'] == 0:
                 raise Exception ("User not verified")       
 
-            # if not bcrypt.checkpw(user_password.encode("utf-8"), user["user_password"]):
-            # raise Exception(400, "Invalid credentials")
+            if not bcrypt.checkpw(user_password.encode("utf-8"), user["user_password"]):
+                raise Exception(400, "Invalid credentials")
 
             # ÅBNER INDEX-SIDEN NÅR DER LOGGES KORREKT IND
             response.add_header("Cache-Control", "no-cache, no-store, must-revalidate")

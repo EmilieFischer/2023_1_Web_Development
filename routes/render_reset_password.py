@@ -3,4 +3,4 @@ from bottle import get, template
 #########################
 @get("/resetpassword/<user_reset_password_key>")
 def _(user_reset_password_key):
-    return template("reset_password")
+    return template("reset_password", user_reset_password_key=user_reset_password_key)

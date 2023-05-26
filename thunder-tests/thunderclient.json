@@ -337,11 +337,11 @@
     "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
     "containerId": "",
     "name": "send reset password email",
-    "url": "127.0.0.1:5009/api-create-new-password",
+    "url": "127.0.0.1:5009/send-forgot-password-email",
     "method": "POST",
     "sortNum": 160000,
     "created": "2023-05-24T14:03:28.983Z",
-    "modified": "2023-05-25T11:29:15.106Z",
+    "modified": "2023-05-26T08:53:17.970Z",
     "headers": [],
     "params": [],
     "body": {
@@ -350,7 +350,35 @@
       "form": [
         {
           "name": "user_email",
-          "value": "genay45605@goflipa.com"
+          "value": "fevabor347@mevori.com"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "7e73e84d-fd34-41e5-8cf3-63d19f37d05e",
+    "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
+    "containerId": "",
+    "name": "api create new password",
+    "url": "127.0.0.1:5009/create-new-password",
+    "method": "POST",
+    "sortNum": 170000,
+    "created": "2023-05-26T08:52:32.431Z",
+    "modified": "2023-05-26T09:01:32.963Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_reset_password_key",
+          "value": "a3f502737c7d4c5e9c7426a7db406f7f"
+        },
+        {
+          "name": "user_password",
+          "value": "password"
         }
       ]
     },

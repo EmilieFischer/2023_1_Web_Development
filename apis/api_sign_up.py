@@ -28,7 +28,6 @@ def _():
         user_id = str(uuid.uuid4()).replace("-","")
         user_verification_key = str(uuid.uuid4()).replace("-","")
         delete_user_verification_key = str(uuid.uuid4()).replace("-","")
-        user_reset_password_key = str(uuid.uuid4()).replace("-","")
 
         user = {
             "user_id" : user_id,
@@ -37,7 +36,7 @@ def _():
             "user_created_at" : int(time.time()),
             "user_verification_key" : user_verification_key,
             "delete_user_verification_key" : delete_user_verification_key,
-            "user_reset_password_key" : user_reset_password_key,
+            "user_reset_password_key" : "",
             "user_password": bcrypt.hashpw(user_password.encode('utf-8'), salt),
             "user_first_name" : user_first_name,
             "user_last_name" : user_last_name,

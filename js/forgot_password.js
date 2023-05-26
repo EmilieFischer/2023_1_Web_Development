@@ -37,4 +37,4 @@ async function forgot_password(){
     //     document.querySelector("#errorModal").classList.remove("hidden");
     //     document.querySelector("#errorMessage").textContent = errorMessage
     // }
-};
+}

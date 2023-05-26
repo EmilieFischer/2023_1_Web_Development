@@ -70,7 +70,7 @@ USER_PASSWORD_MIN = 6
 USER_PASSWORD_MAX = 50
 
 def validate_user_password():
-	error = f"user_password {USER_PASSWORD_MIN} to {USER_PASSWORD_MAX} characters"
+	error = f"user_password need to be between {USER_PASSWORD_MIN} to {USER_PASSWORD_MAX} characters"
 	request.forms.user_password = request.forms.user_password.strip()
 	if len(request.forms.user_password) < USER_PASSWORD_MIN : raise Exception(400, error)
 	if len(request.forms.user_password) > USER_PASSWORD_MAX : raise Exception(400, error)

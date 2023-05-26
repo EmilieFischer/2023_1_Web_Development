@@ -5,9 +5,10 @@ import bcrypt
 @post("/create-new-password")
 def _():
     try:
-        user_reset_password_key = request.forms.get("user_reset_password_key", "")
+        user_reset_password_key = request.forms.get("user_reset_password_key")
+        if user_reset_password_key == "":
+            raise Exception(400, "User reset key not found")
         user_password = x.validate_user_password()
-        x.validate_user_confirm_password()
 
         salt = bcrypt.gensalt()
         user_password = bcrypt.hashpw(user_password.encode('utf-8'), salt)

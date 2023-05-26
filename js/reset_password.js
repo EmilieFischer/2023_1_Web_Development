@@ -3,7 +3,7 @@ async function reset_password() {
 
     const form = event.target;
     console.log(form);
-    const conn = await fetch("/api-create-new-password", {
+    const conn = await fetch("/create-new-password", {
      method: "POST",
      body: new FormData(form),
     });
@@ -36,5 +36,5 @@ async function reset_password() {
     //         document.querySelector("#errorModal").classList.remove("hidden");
     //         document.querySelector("#errorMessage").textContent = errorMessage
     // }
-};
+}
    

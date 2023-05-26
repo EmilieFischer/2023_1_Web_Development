@@ -1,12 +1,10 @@
-from bottle import get, run, post, static_file, template, response, request, default_app
+from bottle import run, post, response, request, default_app
 import git 
 import pathlib
 import sqlite3 
 import traceback
 import os
 import uuid
-import x
-
 
 
 @post("/upload-picture")
@@ -69,6 +67,10 @@ import apis.api_get_latest_tweets
 import apis.api_search
 import apis.api_unfollow
 import apis.api_delete_user
+import apis.api_create_new_password 
+
+############################
+# EMAILS
 import emails.send_delete_user_email
 import emails.send_forgot_password_email
 
