@@ -132,12 +132,13 @@
             </form>
             %end
 
+            % if cookie_user and cookie_user['user_id']==user['user_id']:
             <form onsubmit="deactivate_user(); return false">
               <button href="" class="stroke-gray-500 rounded-full inline-block border border-gray-500 py-2 hover:bg-zinc-900 px-4 text-base">
                 Delete user
               </button>
             </form>
-           
+            % end
           </div>
         </div>
         <!-- end three buttons -->
