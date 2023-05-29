@@ -23,6 +23,7 @@
         <div class="pr-4 pt-4 w-full">
           <form method="POST" onsubmit="validate(tweet); return false" class="grid">
             <input class="bg-black outline-none text-gray-400" placeholder="What's happening?" name="message" type="text" data-validate="str" data-min="{{tweet_min_len}}" data-max="{{tweet_max_len}}">
+            <input class="bg-black outline-none text-gray-400" name="image" type="file">
             <button class="ml-auto bg-sky-500 hover:bg-sky-600 rounded-full py-2 px-6 text-lg">
               Tweet
             </button>

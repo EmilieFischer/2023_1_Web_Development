@@ -17,7 +17,8 @@ async function tweet(){
     console.log(frm)
     // point to the form. I want to get the value out of it
     const message = frm.querySelector("input[name ='message']").value
-    const image = frm.querySelector("#image")
+    const image = frm.querySelector("input[name='image']").value
+    // const image = frm.querySelector("#image")
     const modal = document.querySelector("#tweet_modal")
     //  modal.style.display='none' = fjerner tweet-modalen når der trykkes på tweet-knappen
     modal.style.display='none' 

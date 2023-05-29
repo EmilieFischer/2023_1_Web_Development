@@ -7,10 +7,13 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- DENNE SIDE BRUGES VIDST IKKE????? -->
+
     <!-- onsubmit return false does so the page does not reload everytime a tweet is made - because it is not a single page app -->
-    <!-- if all the fields is valid, I will run the tweet function -->
+    <!-- if all the fields is valid, it will run the tweet function -->
     <form method="POST" onsubmit="validate(tweet); return false">
         <input name="message" type="text" data-validate="str" data-min ="{{tweet_min_len}}" data-max ="{{tweet_max_len}}">
+        
         <button>
             Tweet
         </button>

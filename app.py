@@ -7,32 +7,6 @@ import os
 import uuid
 
 
-@post("/upload-picture")
-def _():
-   try:
-      the_picture = request.files.get("picture")
-      name, ext = os.path.splitext(the_picture.filename) #filename = happy.jpg (name = happy, ext = .jpg)
-      if ext not in (".png", ".jpg", ".jpeg"): # how to check the mime type
-         response.status = 400
-         return "Picture not allowed"
-      picture_name = str(uuid.uuid4().hex)
-      picture_name = picture_name + ext #this will become the uuid.jpg
-      the_picture.save(f"pictures/{picture_name}")
-
-      # read the mime type
-      # if it is not one that is allowed 
-      # delete the picture
-      # tell the user to "stop being funny and mess with the code"
-      # if it is the real thing
-      # repsond with "ok"
-
-      return "picture uploaded"
-   except Exception as e:
-      print(e)
-   finally:
-      pass
-
-
 ##############################
 # ROUTES 
 import routes.render_profile
@@ -68,6 +42,7 @@ import apis.api_search
 import apis.api_unfollow
 import apis.api_delete_user
 import apis.api_create_new_password 
+import apis.api_upload_pictures
 
 ############################
 # EMAILS
@@ -91,7 +66,7 @@ def dict_factory(cursor, row):
     col_names = [col[0] for col in cursor.description]
     return {key: value for key, value in zip(col_names, row)}
 
-##############################
+############################## github will inform PA that a new code has been pushed to Github
 @post('/secret_url_for_git_hook')
 def git_update():
     repo = git.Repo('./2023_1_Web_Development')

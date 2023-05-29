@@ -28,11 +28,11 @@ CREATE TABLE users(
   -- user_active                 INTEGER DEFAULT 0,
   PRIMARY KEY(user_id)
 ) WITHOUT ROWID;
-INSERT INTO users VALUES("1b0b3c1ba05242cea4d5a3e9e2b3cb7f", "emilie@gmail.com", "emiliefischer", 0, "50a58432097c466d8651f5daf06ebd2c", "password", 0, "", "Emilie", "Fischer", 1, "72ebc47738c34d5db8087de52943ea00.jpg", "711edd0b77a54df3b1e01387b07c740b.jpg", "1676629975", "0", "0", "0", "0", "0", "0");
-INSERT INTO users VALUES("ebb0d9d74d6c4825b3e1a1bcd73ff49a", "elonmusk@gmail.com", "elonmusk", 0, "ebb0d9d74d6c4825b3e1a1bcd73ff49c", "password", 0, "", "Elon", "Musk", 1, "56e8c2169277485bb8383972abb215b3.jpg", "3658fee36e88469b90ba6490bd52422c.jpg", "852365", "0", "0", "0", "0", "0", "0");
-INSERT INTO users VALUES("7860393a03dc4c1e872dcdd2cbf946ab", "shakira@gmail.com", "shakira", 0, "ebb0d9d74d6c4825b3e1a1bcd73ff48b", "password", 0, "", "Shakira", "", 1, "397797c0f6154f3d8f868287a4613207.jpg", "d4c66eb4aa3342d2b1dff4c39bee7003.jpg", "1574268", "0", "0", "0", "0", "0", "0");
-INSERT INTO users VALUES("f15e3f7afcf945e2bea6b4553f25fe75", "rihanna@gmail.com", "rihanna", 0, "ebb0d9d74d6c4825b3e1a1bcd73ff47c", "password", 0, "", "Rihanna", "", 1, "8eb2eed6a0824adb979f5b39642042b3.jpg", "d3051eabe798441a9ff4733e6086e4d0.jpg", "33586", "0", "0", "0", "0", "0", "0");
-INSERT INTO users VALUES("655079064c5f44bc9b75524121840ff1", "joebiden@gmail.com", "joebiden", 0, "ebb0d9d74d6c4825b3e1a1bcd73ff46d", "password", 0, "", "Joe", "Biden", 1, "08c4365b9d85458a9d8971ffef8bed79.jpg", "95ae726eee6349b18389599f62b9ead9.jpg", "20485", "0", "0", "0", "0", "0", "0");
+INSERT INTO users VALUES("1b0b3c1ba05242cea4d5a3e9e2b3cb7f", "emilie@gmail.com", "emiliefischer", 0, "50a58432097c466d8651f5daf06ebd2c", "", 0, "password", "Emilie", "Fischer", 1, "72ebc47738c34d5db8087de52943ea00.jpg", "711edd0b77a54df3b1e01387b07c740b.jpg", "1676629975", "0", "0", "0", "0", "0", "0");
+INSERT INTO users VALUES("ebb0d9d74d6c4825b3e1a1bcd73ff49a", "elonmusk@gmail.com", "elonmusk", 0, "ebb0d9d74d6c4825b3e1a1bcd73ff49c", "", 0, "password", "Elon", "Musk", 1, "56e8c2169277485bb8383972abb215b3.jpg", "3658fee36e88469b90ba6490bd52422c.jpg", "852365", "0", "0", "0", "0", "0", "0");
+INSERT INTO users VALUES("7860393a03dc4c1e872dcdd2cbf946ab", "shakira@gmail.com", "shakira", 0, "ebb0d9d74d6c4825b3e1a1bcd73ff48b", "", 0, "password", "Shakira", "", 1, "397797c0f6154f3d8f868287a4613207.jpg", "d4c66eb4aa3342d2b1dff4c39bee7003.jpg", "1574268", "0", "0", "0", "0", "0", "0");
+INSERT INTO users VALUES("f15e3f7afcf945e2bea6b4553f25fe75", "rihanna@gmail.com", "rihanna", 0, "ebb0d9d74d6c4825b3e1a1bcd73ff47c", "", 0, "password", "Rihanna", "", 1, "8eb2eed6a0824adb979f5b39642042b3.jpg", "d3051eabe798441a9ff4733e6086e4d0.jpg", "33586", "0", "0", "0", "0", "0", "0");
+INSERT INTO users VALUES("655079064c5f44bc9b75524121840ff1", "joebiden@gmail.com", "joebiden", 0, "ebb0d9d74d6c4825b3e1a1bcd73ff46d", "", 0, "password", "Joe", "Biden", 1, "08c4365b9d85458a9d8971ffef8bed79.jpg", "95ae726eee6349b18389599f62b9ead9.jpg", "20485", "0", "0", "0", "0", "0", "0");
 
 -- CREATE INDEX (unique index)
 
@@ -225,7 +225,20 @@ INSERT INTO trends VALUES("c9773e2bb68647039a7a40c2ee7d4716", "Zara", "4458796")
 
 -- ##############################
 
+-- inner
 SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY RANDOM() LIMIT 5;
+
+-- left join
+-- SELECT tweets.tweet_id, tweets.tweet_message, likes.like_id, likes.user_fk
+-- FROM tweets LEFT JOIN likes ON tweets.tweet_id = likes.tweet_id;
+
+-- right join
+-- SELECT users.user_id, users.user_name, tweets.tweet_id, tweets.tweet_message
+-- FROM users RIGHT JOIN tweets ON users.user_id = tweets.user_id;
+
+-- full outer join
+-- SELECT users.user_id, users.user_name, tweets.tweet_id, tweets.tweet_message
+-- FROM users FULL OUTER JOIN tweets ON users.user_id = tweets.user_id;
 
 DROP VIEW IF EXISTS users_by_name;
 CREATE VIEW users_by_name AS SELECT * FROM users ORDER BY user_name DESC;
@@ -241,4 +254,7 @@ DROP VIEW IF EXISTS users_and_tweets;
 CREATE VIEW users_and_tweets AS SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
 SELECT * FROM users_and_tweets;
 
-DELETE from tweets WHERE 
+
+-- SELECT Username FROM Users UNION SELECT Username FROM Admins;
+-- SELECT UserID, COUNT(*) AS TweetCount FROM Tweets GROUP BY UserID HAVING COUNT(*) > 100;
+-- SELECT UserID, COUNT(*) AS FollowerCount FROM Followers GROUP BY UserID;
