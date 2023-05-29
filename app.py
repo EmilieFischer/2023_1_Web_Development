@@ -67,7 +67,7 @@ def dict_factory(cursor, row):
     return {key: value for key, value in zip(col_names, row)}
 
 ############################## github will inform PA that a new code has been pushed to Github
-@post('/secret_url_for_git_hook')
+@post('/24cab7a8d5c54cc89090b7271775361c')
 def git_update():
     repo = git.Repo('./2023_1_Web_Development')
     origin = repo.remotes.origin
@@ -87,3 +87,6 @@ try:
 except Exception as ex:
     print("Server running locally")
     run(host="127.0.0.1", port=5009, reloader=True, debug=True)
+
+# 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
+# https://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@github.com/EmilieFischer/2023_1_Web_Development.git
