@@ -1,14 +1,18 @@
 from bottle import get, run, post, static_file, template, response, request, default_app
 import sqlite3 
 import x
+import pathlib
 
 ##############################
 def dict_factory(cursor, row):
     col_names = [col[0] for col in cursor.description]
     return {key: value for key, value in zip(col_names, row)}
 
+
+
 @get("/")
 def render_index():
+    print(str(pathlib.Path(__file__).parent.resolve()))
     
     try:
       response.add_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
