@@ -80,8 +80,8 @@ def git_update():
 # purpose: PythonAnywhere kan aflæse 'production', så det er når man er koblet op til PA at dette ikke er en fejl.
 try:
     import production
-    db = sqlite3.connect("/2023_1_Web_Development/twitter.db")
-    print("server running in AWS")
+    # db = sqlite3.connect("/2023_1_Web_Development/twitter.db")
+    # print("server running in AWS")
     application = default_app()
 # run in local computer
 except Exception as ex:
