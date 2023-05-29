@@ -67,7 +67,7 @@ def dict_factory(cursor, row):
     return {key: value for key, value in zip(col_names, row)}
 
 ############################## github will inform PA that a new code has been pushed to Github
-@post('/24cab7a8d5c54cc89090b7271775361c')
+@post('/secret_url_for_git_hook')
 def git_update():
     repo = git.Repo('./2023_1_Web_Development')
     origin = repo.remotes.origin
