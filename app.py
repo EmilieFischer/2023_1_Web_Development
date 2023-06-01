@@ -37,7 +37,6 @@ import apis.api_search
 import apis.api_unfollow
 import apis.api_delete_user
 import apis.api_create_new_password 
-# import apis.api_upload_pictures
 
 ############################
 # EMAILS

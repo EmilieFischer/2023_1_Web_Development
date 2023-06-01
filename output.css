@@ -537,6 +537,10 @@ video {
   top: 5rem;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
 .top-0 {
   top: 0px;
 }
@@ -567,14 +571,6 @@ video {
 
 .right-2 {
   right: 0.5rem;
-}
-
-.top-32 {
-  top: 8rem;
-}
-
-.bottom-0 {
-  bottom: 0px;
 }
 
 .left-\[30rem\] {
@@ -648,6 +644,10 @@ video {
   margin-bottom: 0.25rem;
 }
 
+.mr-4 {
+  margin-right: 1rem;
+}
+
 .mt-auto {
   margin-top: auto;
 }
@@ -660,8 +660,8 @@ video {
   margin-top: 0.5rem;
 }
 
-.mr-4 {
-  margin-right: 1rem;
+.mt-9 {
+  margin-top: 2.25rem;
 }
 
 .-mt-14 {
@@ -678,6 +678,14 @@ video {
 
 .mt-20 {
   margin-top: 5rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
 }
 
 .block {
@@ -968,6 +976,11 @@ video {
   border-color: rgb(55 65 81 / var(--tw-border-opacity));
 }
 
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
 .border-gray-600 {
   --tw-border-opacity: 1;
   border-color: rgb(75 85 99 / var(--tw-border-opacity));
@@ -981,11 +994,6 @@ video {
 .border-slate-800 {
   --tw-border-opacity: 1;
   border-color: rgb(30 41 59 / var(--tw-border-opacity));
-}
-
-.border-white {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
 .border-black {
@@ -1023,6 +1031,11 @@ video {
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
+.bg-sky-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 132 199 / var(--tw-bg-opacity));
+}
+
 .bg-gray-500\/25 {
   background-color: rgb(107 114 128 / 0.25);
 }
@@ -1038,11 +1051,6 @@ video {
 
 .bg-inherit {
   background-color: inherit;
-}
-
-.bg-sky-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(2 132 199 / var(--tw-bg-opacity));
 }
 
 .bg-gray-500 {
@@ -1121,6 +1129,16 @@ video {
   padding-right: 1rem;
 }
 
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .px-16 {
   padding-left: 4rem;
   padding-right: 4rem;
@@ -1134,16 +1152,6 @@ video {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-}
-
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
 }
 
 .py-1 {

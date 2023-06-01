@@ -1,4 +1,4 @@
-from bottle import post, request, response
+from bottle import post, response
 import json
 
 @post("/search")

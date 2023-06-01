@@ -30,6 +30,7 @@
           Settings
         </span>
     </a>
+    
 
     % if cookie_user:
     <a href="/explore" class="flex gap-2 px-4 py-2 hover:bg-zinc-900 rounded-full relative w-fit">
@@ -105,27 +106,29 @@
     </div>
     <!-- <a href="/logout" class="bg-zinc-900 hover:bg-zinc-800 rounded-full py-4 text-lg text-center">Logout</a> -->
 
-<!-- Log out modal -->
-<div id="crypto-modal" tabindex="-1" aria-hidden="true" class="absolute bottom-16 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto mb-4">
-            <div class="relative rounded-xl shadow-lg shadow-white/30 py-4 bg-black">
-                <ul class="space-y-3 border-t border-gray-600 bg-black">
-                    <li> 
-                        <a href="#" class="flex py-3 text-base font-semibold group bg-black hover:bg-zinc-900 text-white pr-24">
-                            <span class="flex-1 ml-3 whitespace-nowrap">Add an existing account</span>
-                        </a>
-                    </li>
-                    % if cookie_user:
-                    <li>
-                        <a href="/logout" class="flex py-3 text-base font-semibold group bg-black hover:bg-zinc-900 text-white pr-24">
-                            <span class="flex-1 ml-3 whitespace-nowrap">Log @{{cookie_user['user_name']}} out </span>
-                        </a>
-                    </li>
-                    % end
-            </div>
-</div>
-
+    <!-- Log out modal -->
+    <div id="crypto-modal" tabindex="-1" aria-hidden="true" class="absolute bottom-16 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto mb-4">
+                <div class="relative rounded-xl shadow-lg shadow-white/30 py-4 bg-black">
+                    <ul class="space-y-3 border-t border-gray-600 bg-black">
+                        <li> 
+                            <a href="#" class="flex py-3 text-base font-semibold group bg-black hover:bg-zinc-900 text-white pr-24">
+                                <span class="flex-1 ml-3 whitespace-nowrap">Add an existing account</span>
+                            </a>
+                        </li>
+                        % if cookie_user:
+                        <li>
+                            <a href="/logout" class="flex py-3 text-base font-semibold group bg-black hover:bg-zinc-900 text-white pr-24">
+                                <span class="flex-1 ml-3 whitespace-nowrap">Log @{{cookie_user['user_name']}} out </span>
+                            </a>
+                        </li>
+                        % end   
+                </div>
+    </div>
     % end
-</div>
+    
+
+  </div>
+
 <!-- ingen ved hvorfor denne her div skal være der, men det skal den altså -->
 </div>
 <!-- END LEFT -->

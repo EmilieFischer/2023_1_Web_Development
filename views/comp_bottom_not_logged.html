@@ -1,0 +1,18 @@
+
+% if not cookie_admin:
+<div class="absolute bg-sky-600 w-full bottom-0 py-5">
+    <div class="flex place-content-around items-center">
+      <div>
+        <p class="font-bold text-2xl">Don't miss out on anything that happens</p>
+        <p class="text-base">People on Twitter get the news before everyone else.</p>
+      </div>
+      <div>
+        <button onclick="open_login_modal()" data-modal-target="login-modal" data-modal-toggle="login-modal" class="rounded-full font-bold text-white text-center text-base py-2 px-5 bg-sky-600 border border-white mr-4">Log in</button>
+        
+        <button onclick="open_signup_modal()" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="bg-white rounded-full font-bold text-black text-center text-base py-3 mb-4 px-5">Sign up</button>
+      </div>
+    </div>
+  </div>
+
+  
+% end

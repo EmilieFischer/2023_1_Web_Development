@@ -28,7 +28,7 @@ def _():
                 raise Exception (400, "user not found i database")
                 
             if user['user_verified_at'] == 0:
-                raise Exception (400, "User not verified") 
+                raise Exception ("Sorry, your account is not verified. Please check your mail to verify your account before proceeding.") 
 
             if not bcrypt.checkpw(user_password.encode("utf-8"), user["user_password"]):
                 raise Exception(400, "Invalid credentials")
@@ -60,14 +60,15 @@ def _():
             return {"info":"Login succes"}
         
     except Exception as e:
-        print(e)
-        traceback.print_exc()
-        try: # Controlled exception, usually comming from the x file
-            response.status = e.args[0]
-            return {"info":"Login failed", "cause":e.args[1]}
-        except: # Something unknown went wrong
-            response.status = 500
-            return {"info":str(e)}
+        return {"info":str(e)}
+        # print(e)
+        # traceback.print_exc()
+        # try: # Controlled exception, usually comming from the x file
+        #     response.status = e.args[0]
+        #     return {"info":"Login failed", "cause":e.args[1]}
+        # except: # Something unknown went wrong
+        #     response.status = 500
+        #     return {"info":str(e)}
     finally:
         if "db" in locals(): db.close()
 

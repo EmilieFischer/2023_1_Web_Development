@@ -9,20 +9,21 @@ def _(user_id):
     cookie_user = request.get_cookie("user", secret=x.COOKIE_SECRET)
 
     try:
-        db = x.db()
-        # user_id = request.forms.get("user_id")
-        # print("user_id")
+        db = x.db()      
         user = db.execute("SELECT * FROM users WHERE user_id = ?",(user_id, )).fetchone()
+        
         if not user: raise Exception ("invalid user id")
         user_deactivated = db.execute("UPDATE users SET user_verified_at = '0' WHERE user_id=?", (user_id,)).rowcount
         if user_deactivated == 0:
              raise Exception ("user not deactivated")
-        # Hent alt om brugeren
+        
         tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC LIMIT 10").fetchall()
         print (tweets)
         trends = db.execute("SELECT * FROM trends").fetchall()
         users = db.execute("SELECT * FROM users").fetchall()
+        
         db.commit()
+        
         response.delete_cookie("user", secret=x.COOKIE_SECRET)
         response.status = 302
         response.set_header("Location", "/")
