@@ -1,4 +1,4 @@
-from bottle import post, request, response, template
+from bottle import post, request, response
 import x
 import bcrypt
 import traceback
@@ -25,10 +25,10 @@ def _():
             if not user:
                 response.status=303
                 response.set_header("Location", "/")
-                raise Exception ("user not found i database")
+                raise Exception (400, "user not found i database")
                 
             if user['user_verified_at'] == 0:
-                raise Exception ("User not verified")       
+                raise Exception (400, "User not verified") 
 
             if not bcrypt.checkpw(user_password.encode("utf-8"), user["user_password"]):
                 raise Exception(400, "Invalid credentials")
@@ -37,13 +37,6 @@ def _():
             response.add_header("Cache-Control", "no-cache, no-store, must-revalidate")
             response.add_header("Pragma", "no-cache")
             response.add_header("Expires", 0)
-
-            
-            # create the jwt with the user's data
-            # user_jwt = jwt.encode(user, "the secret", algorithm="HS256")
-            # response.set_cookie("user", user, secret=x.COOKIE_SECRET)
-            # response.status = 303
-            # response.set_header("Location", "/") #fortæller at det er index-siden der åbnes
 
             try:
                 import production
@@ -77,3 +70,6 @@ def _():
             return {"info":str(e)}
     finally:
         if "db" in locals(): db.close()
+
+
+# kiros19603@ratedane.com

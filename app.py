@@ -1,10 +1,5 @@
-from bottle import run, post, response, request, default_app
+from bottle import run, post, default_app
 import git 
-import pathlib
-import sqlite3 
-import traceback
-import os
-import uuid
 
 
 ##############################
@@ -42,7 +37,7 @@ import apis.api_search
 import apis.api_unfollow
 import apis.api_delete_user
 import apis.api_create_new_password 
-import apis.api_upload_pictures
+# import apis.api_upload_pictures
 
 ############################
 # EMAILS

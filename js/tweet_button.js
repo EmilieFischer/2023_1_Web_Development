@@ -1,8 +1,10 @@
 
+
+
 // async = run multible functions in the browser at the same time
 async function tweet(){
     // the event is = onsubmit, the target is = the form cause it triggeres the onsubmit. The code will know which form automatically 
-    const frm = event.target
+    const frm = event.target;
     console.log(frm)
     // creates the connection, "the tunnel", and then wait for the tunnel to be made.
     const conn = await fetch("/tweet", {
@@ -10,20 +12,16 @@ async function tweet(){
         // building the form: i want to post whatever i have in the form
         body: new FormData(frm)
     })
-    // what we will get back from the server after the tunnel is build. We want to get some text back from the server
+    // what we will get back from the server after the tunnel is build
     const data = await conn.json()
     console.log(data)
     // data = the text that I get back in the response from the server
-    console.log(frm)
     // point to the form. I want to get the value out of it
     const message = frm.querySelector("input[name ='message']").value
-    const image = frm.querySelector("input[name='image']").value
     // const image = frm.querySelector("#image")
     const modal = document.querySelector("#tweet_modal")
     //  modal.style.display='none' = fjerner tweet-modalen når der trykkes på tweet-knappen
     modal.style.display='none' 
-    console.log(message)
-    console.log(image)
     // selects tweets. Before the tweet-element (the section) I want to put some HTML (insertAdjacentHTML('afterbegin')) - vi bruger et så det er det nyeste tweet, der kommer først
     document.querySelector("#tweets").insertAdjacentHTML("afterbegin", 
     `<div class="flex p-2">
@@ -66,7 +64,8 @@ ${data.user.user_last_name}
 </span>
    <!-- tweet text -->
 <div class="text-base py-2">${message}</div>
-${image ? '<img src="/images/${image}"class="w-full mt-4 max-h-96 rounded-lg object-contain"/>':""}
+${data.tweet.tweet_image ? `<img src="./images/${data.tweet.tweet_image}"class="w-full mt-4 max-h-96 rounded-lg object-contain"/>`: "" }
+  
  
       <!-- icons -->
 <div class="flex justify-between mt-4 text-gray-700 mr-24">
@@ -188,4 +187,11 @@ ${image ? '<img src="/images/${image}"class="w-full mt-4 max-h-96 rounded-lg obj
 </div>
 </div>
 </div>`)
+
+frm.querySelector("#preview").src=""
   }
+
+function handle_preview() {
+  document.querySelector('#preview').src=URL.createObjectURL(event.target.files[0]);
+}
+

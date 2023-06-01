@@ -2,6 +2,7 @@ from bottle import get, run, post, static_file, template, response, request, def
 import sqlite3 
 import x
 import pathlib
+import traceback
 
 ##############################
 def dict_factory(cursor, row):
@@ -32,6 +33,7 @@ def render_index():
       return template("index", trends=trends, tweets=tweets, users=users, cookie_user=cookie_user, cookie_admin=cookie_admin, tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN)
     except Exception as ex:
       print(ex)
+      traceback.print_exc()
       return "error"
     finally:
       if "db" in locals(): db.close()

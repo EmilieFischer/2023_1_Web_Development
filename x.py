@@ -2,6 +2,9 @@ from bottle import request, response
 import sqlite3
 import pathlib
 import re
+import magic
+import os
+import uuid
 
 
 ##############################
@@ -24,6 +27,40 @@ def db():
     print(ex)
   finally:
     pass
+
+############################## MIMETYPE UPLOAD PICTURE  
+def uploadPictures():
+  try:
+    # tjekker om der er et billede i tweetet. Hvis der ikke er (og hvis filnavnet er tomt), så returner ingenting
+    the_picture = request.files.get("image", "")
+    if not the_picture : return None
+    if the_picture.filename == "" or the_picture.filename == "empty":
+      return None
+    # hvis der er, tjek ext 
+    _, ext = os.path.splitext(the_picture.filename) 
+    
+    # tjek om ext er tilladt
+    if ext not in (".png", ".jpg", ".jpeg"):
+        raise Exception("This picture is not allowed")
+    
+    # gem billedet
+    picture_name = str(uuid.uuid4().hex) + ext
+    the_picture.save(str(pathlib.Path(__file__).parent.resolve())+f"/images/{picture_name}")
+    
+    # tjek mimetype
+    mimetype = magic.from_file(str(pathlib.Path(__file__).parent.resolve())+f"/images/{picture_name}", mime=True)
+    print(mimetype)
+     # tjek om mimetype er tilladt
+    if mimetype not in ("image/jpg", "image/png", "image/jpeg"):
+        os.remove(str(pathlib.Path(__file__).parent.resolve())+f"/images/{picture_name}")
+        raise Exception("This mimetype is not allowed")
+    
+    # returner billedenavnet hvis alt er okay
+    return picture_name
+  except Exception as ex:
+      print(ex)
+  finally:
+      pass
 
 
 ##############################
@@ -83,29 +120,6 @@ def validate_user_confirm_password():
 	request.forms.user_confirm_password = request.forms.user_confirm_password.strip()
 	if request.forms.user_confirm_password != request.forms.user_password: raise Exception(400, error)
 	return request.forms.user_confirm_password
-
-
-# ------------------ reset password validation
-# USER_PASSWORD_MIN = 6
-# USER_PASSWORD_MAX = 50
-
-# def validate_user_password():
-#   password = request.forms.user_password 
-#   error = f"The password you entered did not match our records. Please double check and try again." 
-#   user_password = request.forms.user_password = request.forms.user_password.strip() 
-#   if len(request.forms.user_password) < USER_PASSWORD_MIN:
-#     raise Exception(error) 
-#   if len(request.forms.user_password) > USER_PASSWORD_MAX: 
-#     raise Exception(error) 
-#   return request.forms.user_password
-
-
-# def validate_user_confirm_password():
-# 	error = f"user_password and user_confirm_password do not match"
-# 	user_password = request.forms.get("user_password", "").strip()
-# 	user_confirm_password = request.forms.get("user_confirm_password", "").strip()
-# 	if user_confirm_password != user_password: raise Exception(400, error)
-# 	return user_confirm_password
 
 
 ##############################

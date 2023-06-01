@@ -10,7 +10,7 @@ async function login(){
         // building the form: i want to post whatever i have in the form
         body: new FormData(frm)
     })
-    // // what we will get back from the server after the tunnel is build. We want to get some text back from the server
+    // what we will get back from the server after the tunnel is build. We want to get some text back from the server
     const data = await conn.json()
     const {info, cause} = data
 
@@ -21,7 +21,11 @@ async function login(){
             window.location.href="/"
         } else {
             console.log(cause)
+            const errorMessage = data.info;
+            console.log(errorMessage)
+
+            document.querySelector("#errorModal").classList.remove("hidden");
+            document.querySelector("#errorMessage").textContent = errorMessage
         }
     }
-
 }
