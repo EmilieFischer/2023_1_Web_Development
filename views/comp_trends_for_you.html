@@ -1,8 +1,7 @@
- <!-- search -->
+ <!-- full text search -->
  <div class="w-full mr-32 mb-4">
- 
-  <div class="rounded-full bg-zinc-900 px-4 py-2 flex">
-    
+  <form class="">
+    <div class="rounded-full bg-zinc-900 px-4 py-2 flex">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -17,10 +16,9 @@
           d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
         />
       </svg>
-
-
       <input
         type="text"
+        id="search-input"
         oninput="search()"
         onblur="hide_search_results()"
         onfocus="show_search_results()"
@@ -29,11 +27,10 @@
         class="text-white outline-none bg-zinc-900 text-xs"
       />
     </div>
-    <div id="search_results" class="bg-gray-600 rounded-lg hidden h-28">
-     
-    </div> 
+    <div id="resultField" class="bg-[#16181C] h-auto grid border-gray-500 border-[0.5px] rounded-2xl hidden fixed z-50 top-14 w-[385px]"><p class="p-4 text-gray-400">Type something to search</p> </div>
+    </form>
   </div>
-
+    
  <!-- trending -->
  <div class="flex flex-col w-full bg-zinc-900 rounded-lg">
     <div class="text-2xl font-bold p-4">Trends for you</div>
@@ -76,36 +73,57 @@
 
   <!-- script til search-field -->
   <script>
-    function show_search_results(){
-      document.querySelector("#search_results").classList.remove("hidden")
+    function show_search_results() {
+      document.getElementById('resultField').classList.remove("hidden");
     }
-
-    function hide_search_results(){
-      document.querySelector("#search_results").classList.add("hidden")
+  
+    function hide_search_results() {
+      document.getElementById('resultField').classList.add("hidden");
     }
-
-    let the_timer
-    function search(){
-      clearTimeout(the_timer)
-      the_timer = setTimeout(async function(){
-        const conn = await fetch(("/search", {
-          method : "POST"
-        }))
-        const data = await conn.json()
-        console.log(data)
-        // loop and show the nemaes in the div
-        let results = ""
-        // document.querySelector("")????
-        data.forEach((item) => {
-          console.log(item.name)
-          results += `<div>${item.name}</div>`
-        })
-        console.log(results)
-        document.querySelector("#search_results").insertAdjacentHTML('afterbegin', results)
-      }, 2000 );
+  
+    let the_timer;
+  
+    async function search() {
+      clearTimeout(the_timer);
+      the_timer = setTimeout(async function() {
+  
+      const searchText = document.querySelector("#search-input").value;
+  
+      try {
+    const conn = await fetch("/search", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({search_input: searchText })
+    });
+  
+    if (conn.ok) {
+      const data = JSON.parse(await conn.text());
+      const results = data.map((item) => ({
+        user_name: item.user_name,
+        user_avatar: item.user_avatar
+      }));
+  
+      const searchResults = document.querySelector("#resultField");
+      searchResults.innerHTML = "";
+  
+      data.forEach((item) => {
+        const resultItem = `<a class="font-semibold" href="/${item.user_name}">
+  <div class="cursor-pointer flex gap-2 items-center p-4 hover:bg-[#23252a] rounded-2xl">
+  <img class="w-[45px] h-[45px] rounded-full object-cover" src="/images/${item.user_avatar}" alt="">@${item.user_name}
+  </div>
+  </a>`;
+        searchResults.insertAdjacentHTML('beforeend', resultItem);
+      });
+  
+    } else {
+      console.error(`Response not OK: ${conn.status}`);
     }
-
-
-
+  
+  } catch (error) {
+    console.error(error);
+  }
+    }, 500);
+  }
+  
   </script>
   <!-- end trending -->

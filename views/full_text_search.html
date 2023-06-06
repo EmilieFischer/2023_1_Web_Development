@@ -1,0 +1,67 @@
+<div class="sticky top-0 w-full py-[8px] mb-4 bg-[#000000c6] z-10">
+    <form class="flex items-center">
+    <div class="grid w-full">
+    <svg width="22" height="22" viewBox="0 0 24 24" class="absolute top-[18px] left-2 text-gray-700">
+    <path fill="currentColor"
+            d="m18.9 20.3l-5.6-5.6q-.75.6-1.725.95Q10.6 16 9.5 16q-2.725 0-4.612-1.887Q3 12.225 3 9.5q0-2.725 1.888-4.613Q6.775 3 9.5 3t4.613 1.887Q16 6.775 16 9.5q0 1.1-.35 2.075q-.35.975-.95 1.725l5.625 5.625q.275.275.275.675t-.3.7q-.275.275-.7.275q-.425 0-.7-.275ZM9.5 14q1.875 0 3.188-1.312Q14 11.375 14 9.5q0-1.875-1.312-3.188Q11.375 5 9.5 5Q7.625 5 6.312 6.312Q5 7.625 5 9.5q0 1.875 1.312 3.188Q7.625 14 9.5 14Z" />
+    </svg>
+    <input id="search-input" oninput="search()" type="text" placeholder="Search Twitter" class="w-[75%] h-10 pl-12 bg-[#1e2127] rounded-full outline-gray-500" onfocus="show_search_results()" onblur="hide_search_results()">
+    </div>
+    <div id="resultField" class="bg-[#16181C] h-auto grid border-gray-500 border-[0.5px] rounded-2xl hidden fixed z-50 top-14 w-[385px]"><p class="p-4 text-gray-400">Type something to search</p> </div>
+    </form>
+</div>
+    
+    <script>
+      function show_search_results() {
+        document.getElementById('resultField').classList.remove("hidden");
+      }
+    
+      function hide_search_results() {
+        document.getElementById('resultField').classList.add("hidden");
+      }
+    
+      let the_timer;
+    
+      async function search() {
+        clearTimeout(the_timer);
+        the_timer = setTimeout(async function() {
+    
+        const searchText = document.querySelector("#search-input").value;
+    
+        try {
+      const conn = await fetch("/search", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({search_input: searchText })
+      });
+    
+      if (conn.ok) {
+        const data = JSON.parse(await conn.text());
+        const results = data.map((item) => ({
+          user_name: item.user_name,
+          user_avatar: item.user_avatar
+        }));
+    
+        const searchResults = document.querySelector("#resultField");
+        searchResults.innerHTML = "";
+    
+        data.forEach((item) => {
+          const resultItem = `<a class="font-semibold" href="/${item.user_name}">
+    <div class="cursor-pointer flex gap-2 items-center p-4 hover:bg-[#23252a] rounded-2xl">
+    <img class="w-[45px] h-[45px] rounded-full object-cover" src="/images/${item.user_avatar}" alt="">@${item.user_name}
+    </div>
+    </a>`;
+          searchResults.insertAdjacentHTML('beforeend', resultItem);
+        });
+    
+      } else {
+        console.error(`Response not OK: ${conn.status}`);
+      }
+    
+    } catch (error) {
+      console.error(error);
+    }
+      }, 500);
+    }
+    
+    </script>

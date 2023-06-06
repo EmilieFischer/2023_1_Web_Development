@@ -19,7 +19,7 @@ def _(username):
     response.add_header("Expires", 0)
     cookie_user = request.get_cookie("user", secret=x.COOKIE_SECRET)
 
-    db = sqlite3.connect(str(pathlib.Path(__file__).parent.parent.resolve())+"/twitter.db") #parent.parent = 
+    db = sqlite3.connect(str(pathlib.Path(__file__).parent.parent.resolve())+"/twitter.db")
     db.row_factory = dict_factory
     user = db.execute("SELECT * FROM users WHERE user_name=? COLLATE NOCASE",(username, )).fetchall()[0]
     user_id = cookie_user["user_id"] # Get the user's id

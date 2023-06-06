@@ -2,16 +2,12 @@ from bottle import post, request, response
 import x
 import uuid
 import time
-import os
 import traceback
 import pprint 
-import pathlib
 
-# 'post' is the same as 'create'
-# ? = placeholder - the only way you should talk to the database = safety. It is to prevend sequal invention
 @post("/tweet")
 def _():
-  try: # SUCCESS
+  try: 
     print("*"*30)
     x.validate_tweet()
     user = request.get_cookie("user", secret=x.COOKIE_SECRET)
@@ -30,7 +26,7 @@ def _():
     db = x.db()
 
     tweet = {
-    "tweet_id" : str(uuid.uuid4().hex), # .hex removes the dashes
+    "tweet_id" : str(uuid.uuid4().hex),
     "tweet_message" : tweet_message,
     "tweet_image" : the_picture,
     "tweet_created_at" : int(time.time()),
@@ -50,9 +46,9 @@ def _():
 
     db.commit()
     return {"info":"ok", "user":userData, "tweet":tweet}
-  except Exception as ex: # SOMETHING IS WRONG
+  except Exception as ex: 
     response.status = 400
     traceback.print_exc()
     return {"info":str(ex)}
-  finally: # This will always take place
+  finally:
     if "db" in locals(): db.close()

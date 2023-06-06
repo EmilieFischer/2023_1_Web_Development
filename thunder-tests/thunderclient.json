@@ -181,7 +181,7 @@
     "method": "POST",
     "sortNum": 80000,
     "created": "2023-04-17T11:10:32.499Z",
-    "modified": "2023-04-17T11:11:02.143Z",
+    "modified": "2023-06-06T08:33:13.119Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -382,6 +382,20 @@
         }
       ]
     },
+    "tests": []
+  },
+  {
+    "_id": "71574fac-7263-41af-b70d-6520275a463e",
+    "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
+    "containerId": "",
+    "name": "api delete tweet",
+    "url": "127.0.0.1:5009/delete-tweet",
+    "method": "GET",
+    "sortNum": 180000,
+    "created": "2023-06-02T09:34:22.599Z",
+    "modified": "2023-06-02T09:55:26.894Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]

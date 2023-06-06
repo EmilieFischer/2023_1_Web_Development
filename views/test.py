@@ -1,5 +1,6 @@
 from bottle import get, template
 
 @get("/test")
-def _():
-    return template("test")
+def index():
+    name = 'Emilie Fischer'
+    return template('test', name=name)
