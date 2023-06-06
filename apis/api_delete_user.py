@@ -7,6 +7,8 @@ import x
 def _(user_id):
     print(user_id)
     cookie_user = request.get_cookie("user", secret=x.COOKIE_SECRET)
+    cookie_admin = request.get_cookie("admin", secret=x.COOKIE_SECRET)
+
 
     try:
         db = x.db()      
@@ -27,7 +29,7 @@ def _(user_id):
         response.delete_cookie("user", secret=x.COOKIE_SECRET)
         response.status = 302
         response.set_header("Location", "/")
-        return template("index", trends=trends, tweets=tweets, users=users, cookie_user=cookie_user, tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN)
+        return template("index", trends=trends, tweets=tweets, users=users, cookie_user=cookie_user, cookie_admin=cookie_admin, tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN)
     except Exception as e:
             traceback.print_exc()
             response.status = 400

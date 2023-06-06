@@ -1,7 +1,7 @@
 from bottle import post, request, response
 import x
 
-# post = creating something in the system (what is really says). I know that it is a post because we want to insert something in the database. Also we have a form that is a post
+
 @post("/api-follow")
 def _():
     try:
@@ -25,6 +25,6 @@ def _():
         return {"info":"user followed", "followee_id":followee_id, "follower_id":follower_id}
     except Exception as e:
         print(e) #is made so we can see the exception in the terminal
-        pass
     finally:
-        pass
+        if "db" in locals(): db.close()
+

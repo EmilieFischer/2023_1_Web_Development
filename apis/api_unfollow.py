@@ -26,13 +26,12 @@ def _():
         print(followee_id)
 
         # TODO: put values into table
-        unfollowed = db.execute("DELETE FROM followers WHERE follower_id_fk = ? AND followee_id_fk =?", (follower_id, followee_id)).rowcount
+        unfollowed = db.execute("DELETE FROM followers WHERE follower_fk = ? AND followee_fk =?", (follower_id, followee_id)).rowcount
         if not unfollowed:raise Exception("user not unfollowed")
         db.commit()
 
         return {"info":"user unfollowed", "followee_id":followee_id, "follower_id":follower_id}
     except Exception as e:
         print(e) #is made so we can see the exception in the terminal
-        pass
     finally:
-        pass
+        if "db" in locals(): db.close()

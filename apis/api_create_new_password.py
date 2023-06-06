@@ -32,7 +32,7 @@ def _():
         try: # Controlled exception, usually comming from the x file
             response.status = e.args[0]
             return {"info":e.args[1]}
-        except: # Something unknown went wrong
+        except:
             response.status = 500
             return {"info":str(e)}
     finally:

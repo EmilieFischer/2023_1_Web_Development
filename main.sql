@@ -199,12 +199,49 @@ END;
 -- ############# FOLLOWERS TABLE #################
 DROP TABLE IF EXISTS followers;
 CREATE TABLE followers(
-  follower_id_fk       TEXT NOT NULL,
-  followee_id_fk       TEXT NOT NULL,
-  PRIMARY KEY(follower_id_fk, followee_id_fk),
-  FOREIGN KEY(follower_id_fk) REFERENCES user(user_id),
-  FOREIGN KEY(followee_id_fk) REFERENCES user(user_id)
+  follower_fk       TEXT NOT NULL,
+  followee_fk       TEXT NOT NULL,
+  PRIMARY KEY(follower_fk, followee_fk),
+  FOREIGN KEY(follower_fk) REFERENCES user(user_id),
+  FOREIGN KEY(followee_fk) REFERENCES user(user_id)
 ) WITHOUT ROWID;
+
+-- goal: increase the total amount of followers after a person is being followed
+DROP TRIGGER IF EXISTS increment_user_total_followers;
+CREATE TRIGGER increment_user_total_followers AFTER INSERT ON followers
+BEGIN
+  UPDATE users
+  SET user_total_followers = user_total_followers + "1" 
+  WHERE user_id = NEW.followee_fk;
+END;
+
+-- goal: increase the total amount of followees after a person follows someone
+DROP TRIGGER IF EXISTS increment_user_total_following;
+CREATE TRIGGER increment_user_total_following AFTER INSERT ON followers
+BEGIN
+  UPDATE users
+  SET user_total_following = user_total_following + "1" 
+  WHERE user_id = NEW.follower_fk;
+END;
+
+-- goal: decrease the total amount of followers after a person is being unfollowed
+DROP TRIGGER IF EXISTS decrement_user_total_followers;
+CREATE TRIGGER decrement_user_total_followers AFTER DELETE ON followers
+BEGIN
+  UPDATE users
+  SET user_total_followers = user_total_followers - "1" 
+  WHERE user_id = OLD.followee_fk;
+END;
+
+-- goal: decrease the total amount of followers after a person is being unfollowed
+DROP TRIGGER IF EXISTS decrement_user_total_followees;
+CREATE TRIGGER decrement_user_total_followees AFTER DELETE ON followers
+BEGIN
+  UPDATE users
+  SET user_total_following = user_total_following - "1" 
+  WHERE user_id = OLD.follower_fk;
+END;
+
 
 -- ##############################
 DROP TABLE IF EXISTS trends;
@@ -223,38 +260,16 @@ INSERT INTO trends VALUES("c9773e2bb68647039a7a40c2ee7d4716", "Zara", "4458796")
 
 -- ##############################
 
--- ##############################
-
--- inner
 SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY RANDOM() LIMIT 5;
-
--- left join
--- SELECT tweets.tweet_id, tweets.tweet_message, likes.like_id, likes.user_fk
--- FROM tweets LEFT JOIN likes ON tweets.tweet_id = likes.tweet_id;
-
--- right join
--- SELECT users.user_id, users.user_name, tweets.tweet_id, tweets.tweet_message
--- FROM users RIGHT JOIN tweets ON users.user_id = tweets.user_id;
-
--- full outer join
--- SELECT users.user_id, users.user_name, tweets.tweet_id, tweets.tweet_message
--- FROM users FULL OUTER JOIN tweets ON users.user_id = tweets.user_id;
 
 DROP VIEW IF EXISTS users_by_name;
 CREATE VIEW users_by_name AS SELECT * FROM users ORDER BY user_name DESC;
-
 SELECT * FROM users_by_name LIMIT 1;
 
 
 -- JOIN command and test it for all users and tweets
 -- Create the view that contains the join command
--- The name of the view is: users_and_tweets
 SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
 DROP VIEW IF EXISTS users_and_tweets;
 CREATE VIEW users_and_tweets AS SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
 SELECT * FROM users_and_tweets;
-
-
--- SELECT Username FROM Users UNION SELECT Username FROM Admins;
--- SELECT UserID, COUNT(*) AS TweetCount FROM Tweets GROUP BY UserID HAVING COUNT(*) > 100;
--- SELECT UserID, COUNT(*) AS FollowerCount FROM Followers GROUP BY UserID;

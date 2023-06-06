@@ -7,7 +7,7 @@ import os
 import uuid
 
 
-##############################
+############################## GETS COOKIE SECRET
 COOKIE_SECRET = "41ebeca46feb-4d77-a8e2-554659074C6319a2fbfb-9a2D-4fb6-Afcad32abb26a5e0"
 
 ##############################
@@ -55,7 +55,6 @@ def uploadPictures():
         os.remove(str(pathlib.Path(__file__).parent.resolve())+f"/images/{picture_name}")
         raise Exception("This mimetype is not allowed")
     
-    # returner billedenavnet hvis alt er okay
     return picture_name
   except Exception as ex:
       print(ex)
@@ -69,18 +68,11 @@ def disable_cache():
     response.add_header("Pragma", "no-cache")
     response.add_header("Expires", 0)
 
-##############################
-# def validate_user_logged():
-#     user = request.get_cookie("user", secret=COOKIE_SECRET)
-#     if user is None: raise Exception(400, "user must login")
-#     return user
-
-##############################
+############################## TWEET VALIDATION
 # LEN = length
 TWEET_MIN_LEN = 2
 TWEET_MAX_LEN = 50
 
-# Create error-message for the user if done tweet wrong
 def validate_tweet():
   error = f"message min {TWEET_MIN_LEN} max {TWEET_MAX_LEN} characters"
   if len(request.forms.message) < TWEET_MIN_LEN: raise Exception(error)
@@ -88,7 +80,7 @@ def validate_tweet():
   return request.forms.get("message")
 
 
-##############################
+############################## EMAIL VALIDATION
 USER_EMAIL_MIN = 6
 USER_EMAIL_MAX = 100
 USER_EMAIL_REGEX = "^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$"
@@ -122,25 +114,20 @@ def validate_user_confirm_password():
 	return request.forms.user_confirm_password
 
 
-##############################
+############################## USER LOGGED VALIDATION
 def validate_user_logged():
     user = request.get_cookie("user", secret=COOKIE_SECRET)
     if user is None: raise Exception(400, "user must login")
     return user
 
 
-
-##############################
-# the rules for the username
-# why capitalize? = a constant that I should never change
-# regex = what the user is allowed to put inside the username = english letters only and numbers from 0 to 9
+############################## USER NAME VALIDATION
 USER_NAME_MIN = 4
 USER_NAME_MAX = 15
 USER_NAME_REGEX = "^[a-zA-Z0-9_]*$"
-# now create the function to validate
+
 def validate_user_name():
   print("*"*30)
-  # analize in the terminal
   print (request.forms.user_name)
   error = f"user_name {USER_NAME_MIN} to {USER_NAME_MAX} english letters or numbers from 0 to 9"
   # strip = removes the empty "letters" if the user by accident uses the space-button before or after the username
@@ -149,5 +136,4 @@ def validate_user_name():
   if len(request.forms.user_name) > USER_NAME_MAX: raise Exception(error)
   # if the virable we have does not match what we want to send
   if not re.match(USER_NAME_REGEX, request.forms.user_name): raise Exception(error)
-  # if everything is okay, then return
   return request.forms.user_name

@@ -182,7 +182,7 @@
     <div id="tweets" class="grid gap-4 pb-4 border-t border-gray-700">
       <!-- left side tweet -->
         % for tweet in tweets:
-        <div class="flex p-2">
+        <div id="tweet_{{tweet['tweet_id']}}" class="flex p-2">
           <img src="images/{{tweet['user_avatar']}}" class="h-16 rounded-full">
         <!-- right side tweet -->
           <!-- user -->
@@ -218,11 +218,15 @@
                   d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
                 />
               </svg>
-              <form method="GET" name="delete_tweet">
-                <button class="ml-auto bg-red-700 hover:bg-sky-600 rounded-full py-2 px-6 text-lg" onclick="delete_tweet(); return false" >
+              <div>
+              <form id="{{tweet['tweet_id']}}">
+                <button class="ml-auto bg-red-700 hover:bg-sky-600 rounded-full py-2 px-6 text-lg" onclick="delete_tweet('{{tweet['tweet_id']}}')" type="button" id="dlt.btn" >
                   delete
                 </button>
               </form>
+            </div>
+            
+
             </span>
                 <!-- tweet text -->
               <div class="text-base py-2">{{tweet["tweet_message"]}}</div>
@@ -230,7 +234,7 @@
                   <img
                   id="image"
                   name="image"
-                  src="./images/{{tweet['tweet_image']}}"
+                  src="/images/{{tweet['tweet_image']}}"
                     class="w-full mt-4 max-h-96 rounded-lg object-contain"
                   />
                 % end

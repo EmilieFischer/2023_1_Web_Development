@@ -1,5 +1,5 @@
--- test for making search-function
---  values = post_title og post_body
+test for making search-function
+ values = post_title og post_body
 
 DROP TABLE IF EXISTS posts;
 CREATE VIRTUAL TABLE posts USING FTS5(post_title, post_body);
