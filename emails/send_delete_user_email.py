@@ -5,7 +5,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 
-@post("/api-delete-user")
+@post("/api-deactivate-user")
 def send_delete_user_email():
     cookie_user = request.get_cookie("user", secret=x.COOKIE_SECRET)
     print (cookie_user)
@@ -29,7 +29,7 @@ def send_delete_user_email():
       <body>
         <p>Hi,<br>
           How are you?<br>
-          <a href="http://127.0.0.1:5009/delete-user/{cookie_user['user_id']}">Click here to delete your account</a>
+          <a href="http://127.0.0.1:5009/deactivate-user/{cookie_user['user_id']}">Click here to delete your account</a>
         </p>
       </body>
     </html>

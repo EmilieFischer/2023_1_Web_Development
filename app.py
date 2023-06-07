@@ -28,9 +28,10 @@ import apis.api_login
 import apis.api_test
 import apis.api_get_latest_tweets
 import apis.api_search
-import apis.api_delete_user
+import apis.api_deactivate_user
 import apis.api_create_new_password 
 import apis.api_delete_tweet
+import apis.api_delete_user
 
 ############################
 # EMAILS

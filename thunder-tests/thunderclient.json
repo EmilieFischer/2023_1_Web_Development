@@ -369,23 +369,13 @@
     "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
     "containerId": "",
     "name": "api delete tweet",
-    "url": "127.0.0.1:5009/delete-tweet/<tweet_id>",
+    "url": "127.0.0.1:5009/delete-tweet",
     "method": "DELETE",
     "sortNum": 180000,
     "created": "2023-06-02T09:34:22.599Z",
-    "modified": "2023-06-06T14:27:57.136Z",
+    "modified": "2023-06-07T16:05:35.663Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "formdata",
-      "raw": "",
-      "form": [
-        {
-          "name": "tweet_id",
-          "value": "1233"
-        }
-      ]
-    },
     "tests": []
   }
 ]

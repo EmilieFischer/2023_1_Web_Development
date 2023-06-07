@@ -34,12 +34,5 @@
         }
       ]
     }
-  },
-  {
-    "_id": "634e1852-1a2a-4050-b8dd-b643040a4aa0",
-    "colName": "Fiotext",
-    "created": "2023-06-07T07:37:18.518Z",
-    "sortNum": 20000,
-    "folders": []
   }
 ]

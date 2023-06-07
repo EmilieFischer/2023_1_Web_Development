@@ -12,6 +12,7 @@
   <script src="/js/login.js"></script>
   <script defer src="/js/app.js"></script>
   <script defer src="/js/delete_tweet.js"></script>
+  <script defer src="/js/delete_user.js"></script>
   <title>Twitter</title>
 </head>
 
@@ -45,7 +46,7 @@
     <div class="text-2xl font-bold p-4">All users</div>
 
     % for user in users:
-    <a class="flex items-center gap-4 p-4" href="{{user['user_name']}}">
+    <div id="user_{{user['user_id']}}"  class="flex items-center gap-4 p-4">
       <img
       src="/images/{{user['user_avatar']}}"
       class="w-12 h-12 rounded-full"
@@ -58,12 +59,12 @@
           @{{user['user_name']}}
         </div>
       </div>
-      <button
-      class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full hover:bg-gray-400" 
-      >
-      Delete user
-    </button>
-  </a>
+      <form id="{{user['user_id']}}">
+        <button class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full hover:bg-gray-400" onclick="delete_user('{{user['user_id']}}')" type="button" id="dlt.btn">
+          Delete user
+        </button>
+      </form>
+  </div>
   <!-- end person -->
   % end
   <a href="/logout" class="items-center mx-2 px-8 gap-4 py-3 text-white bg-sky-500 hover:bg-sky-600 rounded-full">logout</a>
