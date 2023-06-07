@@ -2,6 +2,7 @@ from bottle import get, template, response, request
 import pathlib
 import sqlite3 
 import x
+import traceback
 
 
 ##############################
@@ -25,7 +26,6 @@ def _(username):
     user_id = user["user_id"] # Get the user's id
     # user_id = cookie_user["user_id"] # Get the user's id
     user_followed = set(row["followee_fk"] for row in db.execute("SELECT followee_fk FROM followers WHERE follower_fk = ?", (user_id,)))
-    
     # tweets = db.execute("SELECT * FROM tweets WHERE tweet_user_fk=?", (user_id, )).fetchall()
     tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id WHERE tweet_user_fk=? ORDER BY tweet_created_at DESC LIMIT 10",(user_id,)).fetchall() # With that id, look up/get the respectives tweets
     trends = db.execute("SELECT * FROM trends").fetchall()
@@ -34,6 +34,7 @@ def _(username):
   
   except Exception as ex:
     print(ex)
+    traceback.print_exc()
     return "error"
   finally:
     if "db" in locals(): db.close()

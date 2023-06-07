@@ -251,19 +251,9 @@
     "method": "POST",
     "sortNum": 120000,
     "created": "2023-04-26T08:47:31.042Z",
-    "modified": "2023-06-06T09:58:03.132Z",
+    "modified": "2023-06-07T12:41:18.767Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "formdata",
-      "raw": "",
-      "form": [
-        {
-          "name": "user_followee_id",
-          "value": "12345"
-        }
-      ]
-    },
     "tests": []
   },
   {
@@ -275,19 +265,9 @@
     "method": "POST",
     "sortNum": 130000,
     "created": "2023-04-26T10:28:23.236Z",
-    "modified": "2023-04-26T10:29:13.961Z",
+    "modified": "2023-06-07T12:41:21.151Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "formdata",
-      "raw": "",
-      "form": [
-        {
-          "name": "user_followee_id",
-          "value": "1234"
-        }
-      ]
-    },
     "tests": []
   },
   {

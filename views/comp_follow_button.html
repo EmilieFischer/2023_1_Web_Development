@@ -1,0 +1,15 @@
+%if user["user_id"] not in user_followed:
+<form id="{{cookie_user['user_id']}}" onsubmit="follow(); return false" method="POST" class="grid">
+  <input style="display:none" name="user_followee_id" type="text" value="{{user['user_id']}}">
+  <button type="submit" class="stroke-gray-500 rounded-full inline-block border border-gray-500 py-2 hover:bg-zinc-900 px-4 text-base">
+    Follow
+  </button>
+</form>
+%else:
+<form id="{{cookie_user['user_id']}}" onsubmit="unfollow_user(); return false" method="POST" class="grid">
+  <input style="display:none" name="user_followee_id" type="text" value="{{user['user_id']}}">
+  <button type="submit" class="stroke-gray-500 rounded-full inline-block border border-gray-500 py-2 hover:bg-zinc-900 px-4 text-base">
+    Following
+  </button>
+</form>
+%end

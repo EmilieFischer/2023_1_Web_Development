@@ -22,7 +22,7 @@ async function tweet(){
     const modal = document.querySelector("#tweet_modal")
     //  modal.style.display='none' = fjerner tweet-modalen når der trykkes på tweet-knappen
     modal.style.display='none' 
-    // selects tweets. Before the tweet-element (the section) I want to put some HTML (insertAdjacentHTML('afterbegin')) - vi bruger et så det er det nyeste tweet, der kommer først
+    // selects tweets. Before the tweet-element (the section) I want to put some HTML (insertAdjacentHTML('afterbegin')) - vi bruger det så det er det nyeste tweet, der kommer først
     document.querySelector("#tweets").insertAdjacentHTML("afterbegin", 
     `<div class="flex p-2">
 <img src="/images/${data.user.user_avatar}" class="h-16 rounded-full">

@@ -6,7 +6,6 @@ def dict_factory(cursor, row):
   col_names = [col[0] for col in cursor.description]
   return {key: value for key, value in zip(col_names, row)}
 
-##############################
 
 # post = creating something in the system (what is really says). I know that it is a post because we want to insert something in the database. Also we have a form that is a post
 @post("/api-unfollow")

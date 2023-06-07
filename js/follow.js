@@ -18,7 +18,7 @@ async function follow(){
     frm.remove()
     }
 
-    async function unfollow_user(){
+async function unfollow_user(){
         const frm = event.target
         const conn = await fetch("/api-unfollow", { 
             method: "POST", 
