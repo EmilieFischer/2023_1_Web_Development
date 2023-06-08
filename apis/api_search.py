@@ -12,8 +12,8 @@ def _():
         db.row_factory = x.dict_factory
 
         #get logged user
-        user = request.get_cookie("user", secret=x.COOKIE_SECRET)
-        user_name = user["user_name"]
+        cookie_user = request.get_cookie("user", secret=x.COOKIE_SECRET)
+        user_name = cookie_user["user_name"]
 
         # Get the search query from the JSON payload
         search_input = request.forms.get("search_input")

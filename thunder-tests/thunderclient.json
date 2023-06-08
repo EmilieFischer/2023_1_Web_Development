@@ -118,7 +118,7 @@
     "method": "POST",
     "sortNum": 27500,
     "created": "2023-03-27T13:09:25.965Z",
-    "modified": "2023-06-08T09:00:01.130Z",
+    "modified": "2023-06-08T10:54:38.129Z",
     "headers": [],
     "params": [],
     "body": {
@@ -189,7 +189,7 @@
     "_id": "95dae1a0-9ae8-4d6d-ae40-a9a45d6b60b9",
     "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
     "containerId": "",
-    "name": "api logout",
+    "name": "logout",
     "url": "127.0.0.1:5009/logout",
     "method": "GET",
     "sortNum": 110000,
@@ -228,11 +228,11 @@
     "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
     "containerId": "",
     "name": "api delete user",
-    "url": "127.0.0.1:5009/delete-user/341cda134e944c48a5db945ed16a00c8",
+    "url": "127.0.0.1:5009/delete-user/38ded306bd1c4ce58b7edeb57b6e8f1e",
     "method": "DELETE",
     "sortNum": 140000,
     "created": "2023-05-17T07:52:55.431Z",
-    "modified": "2023-06-08T08:51:11.387Z",
+    "modified": "2023-06-08T10:14:12.890Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -242,27 +242,13 @@
     "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
     "containerId": "",
     "name": "send deactivate user email",
-    "url": "127.0.0.1:5009/api-deactivate-user",
-    "method": "POST",
+    "url": "127.0.0.1:5009/deactivate-user/fb6b974613784a95bea4a638c63e7233",
+    "method": "GET",
     "sortNum": 180000,
     "created": "2023-05-18T08:10:47.327Z",
-    "modified": "2023-06-08T08:42:56.134Z",
+    "modified": "2023-06-08T10:52:43.049Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "formdata",
-      "raw": "",
-      "form": [
-        {
-          "name": "user_email",
-          "value": "jecajit201@rockdian.com"
-        },
-        {
-          "name": "user_id",
-          "value": "40975b859a814345b137839179318290\t1234"
-        }
-      ]
-    },
     "tests": []
   },
   {

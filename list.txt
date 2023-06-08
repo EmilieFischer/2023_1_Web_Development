@@ -1,0 +1,8 @@
+tweets = [
+ #dictionary
+ { "verified":1, "image_name": "1.jpg", "might_like": "Shakira commented", "fullname": "Elon Musk", "username": "elonmusk", "timestamp": "7h", "message": "This looks absolutely amazing!", "message_image": "7.jpg", "total_messages": "150K", "total_retweets": "3.4K", "total_likes": "4M", "total_dislikes": "130"},
+ { "verified":0, "image_name": "2.jpg", "might_like": "You might like", "fullname": "Joe Biden", "username": "joebiden", "timestamp": "9h", "message": "The whole population could fit in New York City on one floor", "message_image": "708effae0a1f442c9a35cee81a06eee8.png", "total_messages": "50K", "total_retweets": "32K", "total_likes": "80K", "total_dislikes": "5K"},
+ ]
+
+# list = array
+# dictionary is {}. Think of it as JSON

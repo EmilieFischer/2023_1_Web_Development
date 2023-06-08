@@ -6,7 +6,6 @@ import git
 # ROUTES 
 import routes.render_profile
 import routes.render_index
-import routes.render_logout
 import routes.render_about
 import routes.render_login
 import routes.render_contact
@@ -25,7 +24,6 @@ import apis.api_sign_up
 import apis.api_follow
 import apis.api_unfollow
 import apis.api_login
-import apis.api_get_latest_tweets
 import apis.api_search
 import apis.api_deactivate_user
 import apis.api_create_new_password 
@@ -34,13 +32,13 @@ import apis.api_delete_user
 
 ############################
 # EMAILS
-import emails.send_delete_user_email
+import emails.send_deactivate_user_email
 import emails.send_forgot_password_email
 
 
 ############################
 # BRIDGES
-import bridges.login
+import bridges.render_logout
 
 ##############################
 # STATIC FILES
@@ -54,7 +52,7 @@ def dict_factory(cursor, row):
     col_names = [col[0] for col in cursor.description]
     return {key: value for key, value in zip(col_names, row)}
 
-############################## github will inform PA that a new code has been pushed to Github
+############################## 
 @post('/secret_url_for_git_hook')
 def git_update():
     repo = git.Repo('./2023_1_Web_Development')

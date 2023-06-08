@@ -6,7 +6,7 @@ from email.mime.multipart import MIMEMultipart
 
 
 @post("/api-deactivate-user")
-def send_delete_user_email():
+def send_deactivate_user_email():
     cookie_user = request.get_cookie("user", secret=x.COOKIE_SECRET)
     print (cookie_user)
 
