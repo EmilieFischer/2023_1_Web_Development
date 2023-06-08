@@ -5,8 +5,6 @@ import x
 @delete("/delete-tweet/<tweet_id>")
 def _(tweet_id):
     try:
-        user = request.get_cookie("user", secret=x.COOKIE_SECRET)
-        user_id = user['user_id']
         print(tweet_id)
 
         db = x.db()

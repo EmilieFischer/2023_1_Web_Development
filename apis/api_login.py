@@ -72,5 +72,3 @@ def _():
     finally:
         if "db" in locals(): db.close()
 
-
-# kiros19603@ratedane.com

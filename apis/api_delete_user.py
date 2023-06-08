@@ -5,15 +5,12 @@ import x
 @delete("/delete-user/<user_id>")
 def _(user_id):
     try:
-        user = request.get_cookie("user", secret=x.COOKIE_SECRET)
-        # user_id = user['user_id']
         print(user_id)
 
         db = x.db()
         db.row_factory = x.dict_factory
 
         db.execute("DELETE FROM users WHERE user_id=?", (user_id, )).rowcount
-
         db.commit()
 
         return f"user deleted: {user_id}"

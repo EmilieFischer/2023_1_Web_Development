@@ -7,10 +7,10 @@ import pprint
 
 @post("/tweet")
 def _():
-  try: 
-    print("*"*30)
+  try:
     x.validate_tweet()
     user = request.get_cookie("user", secret=x.COOKIE_SECRET)
+    # print(user)
     userData = user.copy()
     del userData["user_password"]
     pprint.pprint(userData)

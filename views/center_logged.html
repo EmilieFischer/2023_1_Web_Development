@@ -219,11 +219,13 @@
                 />
               </svg>
               <div>
+              % if cookie_user and cookie_user['user_id']==tweet['tweet_user_fk']:
               <form id="{{tweet['tweet_id']}}">
-                <button class="ml-auto bg-red-700 hover:bg-sky-600 rounded-full py-2 px-6 text-lg" onclick="delete_tweet('{{tweet['tweet_id']}}')" type="button" id="dlt.btn" >
+                <button class="ml-auto bg-red-700 hover:bg-sky-600 rounded-full py-2 px-6 text-sm font-light" onclick="delete_tweet('{{tweet['tweet_id']}}')" type="button">
                   delete
                 </button>
               </form>
+              % end
             </div>
             
 

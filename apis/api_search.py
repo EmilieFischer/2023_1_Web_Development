@@ -8,8 +8,6 @@ import traceback
 @post("/search")
 def _():
     try:
-        # Connect to the database
-        # db = sqlite3.connect(str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
         db = x.db()
         db.row_factory = x.dict_factory
 
@@ -18,12 +16,13 @@ def _():
         user_name = user["user_name"]
 
         # Get the search query from the JSON payload
-        search_input = request.json["search_input"]
+        search_input = request.forms.get("search_input")
+        print("I am here")
         print(search_input)
 
         # Execute the SELECT statement to get all users
         results = db.execute("SELECT * FROM users WHERE user_name LIKE ? AND user_name != ?", ('%' + search_input + '%', user_name,)).fetchall()
-
+        print(results)
         # Convert the rows to a list of dictionaries
         users = []
         for row in results:
@@ -46,5 +45,4 @@ def _():
         print(e)
 
     finally:
-        # Close the database connection
         db.close()

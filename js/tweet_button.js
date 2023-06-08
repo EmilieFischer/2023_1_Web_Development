@@ -1,6 +1,3 @@
-
-
-
 // async = run multible functions in the browser at the same time
 async function tweet(){
     // the event is = onsubmit, the target is = the form cause it triggeres the onsubmit. The code will know which form automatically 
@@ -61,6 +58,7 @@ ${data.user.user_last_name}
     d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
   />
 </svg>
+
 </span>
    <!-- tweet text -->
 <div class="text-base py-2">${message}</div>
