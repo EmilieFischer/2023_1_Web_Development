@@ -25,7 +25,7 @@ def _(username):
     user = db.execute("SELECT * FROM users WHERE user_name=? COLLATE NOCASE",(username, )).fetchall()[0]
     user_id = cookie_user["user_id"]
     user_followed = set(row["followee_fk"] for row in db.execute("SELECT * FROM followers WHERE follower_fk = ?", (user_id,)))
-    # tweets = db.execute("SELECT * FROM tweets WHERE tweet_user_fk=?", (user_id, )).fetchall()
+
     tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id WHERE tweet_user_fk=? ORDER BY tweet_created_at DESC LIMIT 10",(user_id,)).fetchall() # With that id, look up/get the respectives tweets
     trends = db.execute("SELECT * FROM trends").fetchall()
     users = db.execute("SELECT * FROM users").fetchall()
