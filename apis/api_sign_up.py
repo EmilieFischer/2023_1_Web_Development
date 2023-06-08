@@ -67,8 +67,7 @@ def _():
             "user_name" : user_name, 
             "user_created_at" : int(time.time())
         }
-        # db.execute(f"INSERT INTO users VALUES({values})", user)
-        # return "ok"
+        
     except Exception as e:
         traceback.print_exc()
         print(e)
@@ -82,7 +81,6 @@ def _():
             if "user_name" in str(e): 
                 response.status = 400 
                 return {"info":"user_name already exists"}
-            # unknown scenario
             response.status = 500
             return {"info":str(e)}
     finally:

@@ -29,7 +29,7 @@ def _():
     except Exception as e:
         print(e)
         if "db" in locals(): db.rollback()
-        try: # Controlled exception, usually comming from the x file
+        try:
             response.status = e.args[0]
             return {"info":e.args[1]}
         except:

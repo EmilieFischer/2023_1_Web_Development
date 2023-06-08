@@ -1,4 +1,4 @@
-from bottle import request, delete
+from bottle import delete
 import traceback
 import x
 

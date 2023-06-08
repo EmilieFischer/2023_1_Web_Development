@@ -20,7 +20,6 @@ def _():
         print("I am here")
         print(search_input)
 
-        # Execute the SELECT statement to get all users
         results = db.execute("SELECT * FROM users WHERE user_name LIKE ? AND user_name != ?", ('%' + search_input + '%', user_name,)).fetchall()
         print(results)
         # Convert the rows to a list of dictionaries

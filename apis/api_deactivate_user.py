@@ -9,7 +9,6 @@ def _(user_id):
     cookie_user = request.get_cookie("user", secret=x.COOKIE_SECRET)
     cookie_admin = request.get_cookie("admin", secret=x.COOKIE_SECRET)
 
-
     try:
         db = x.db()      
         user = db.execute("SELECT * FROM users WHERE user_id = ?",(user_id, )).fetchone()

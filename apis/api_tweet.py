@@ -10,10 +10,12 @@ def _():
   try:
     x.validate_tweet()
     user = request.get_cookie("user", secret=x.COOKIE_SECRET)
-    # print(user)
+    
+    # quick fix
     userData = user.copy()
     del userData["user_password"]
     pprint.pprint(userData)
+    
     if not user: print("User not found")
     tweet_message = request.forms.get("message","")
     tweet_user_fk = user['user_id']

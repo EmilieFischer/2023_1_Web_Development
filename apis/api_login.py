@@ -60,15 +60,14 @@ def _():
             return {"info":"Login succes"}
         
     except Exception as e:
-        return {"info":str(e)}
-        # print(e)
-        # traceback.print_exc()
-        # try: # Controlled exception, usually comming from the x file
-        #     response.status = e.args[0]
-        #     return {"info":"Login failed", "cause":e.args[1]}
-        # except: # Something unknown went wrong
-        #     response.status = 500
-        #     return {"info":str(e)}
+        print(e)
+        traceback.print_exc()
+        try:
+            response.status = e.args[0]
+            return {"info":"Login failed", "cause":e.args[1]}
+        except:
+            response.status = 500
+            return {"info":str(e)}
     finally:
         if "db" in locals(): db.close()
 
