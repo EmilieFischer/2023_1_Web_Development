@@ -12,7 +12,6 @@ def _():
 
       user_email = request.forms.get("user_email")
 
-      # henter den i forvejen generet key der er lavet i sign-up
       user_reset_password_key = str(uuid.uuid4().hex)
 
 
@@ -24,7 +23,7 @@ def _():
       
       db.commit()
       
-      if not total_changes: raise Exception(400, "Could not update user_reset_password_key.")
+      if not total_changes: raise Exception("Could not update user_reset_password_key.")
 
       # send email information
       sender_email = "emiliefdhansen@gmail.com"

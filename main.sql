@@ -273,3 +273,5 @@ SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
 DROP VIEW IF EXISTS users_and_tweets;
 CREATE VIEW users_and_tweets AS SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
 SELECT * FROM users_and_tweets;
+
+

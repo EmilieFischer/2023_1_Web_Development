@@ -25,13 +25,13 @@ def _():
             if not user:
                 response.status=303
                 response.set_header("Location", "/")
-                raise Exception (400, "user not found i database")
+                raise Exception ("user not found i database")
                 
             if user['user_verified_at'] == 0:
                 raise Exception ("Sorry, your account is not verified. Please check your mail to verify your account before proceeding.") 
 
             if not bcrypt.checkpw(user_password.encode("utf-8"), user["user_password"]):
-                raise Exception(400, "Invalid credentials")
+                raise Exception("Invalid credentials")
 
             # ÅBNER INDEX-SIDEN NÅR DER LOGGES KORREKT IND
             response.add_header("Cache-Control", "no-cache, no-store, must-revalidate")

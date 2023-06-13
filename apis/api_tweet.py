@@ -15,8 +15,8 @@ def _():
     userData = user.copy()
     del userData["user_password"]
     pprint.pprint(userData)
-    
     if not user: print("User not found")
+    
     tweet_message = request.forms.get("message","")
     tweet_user_fk = user['user_id']
 

@@ -7,7 +7,7 @@ def _():
     try:
         user_reset_password_key = request.forms.get("user_reset_password_key")
         if user_reset_password_key == "":
-            raise Exception(400, "User reset key not found")
+            raise Exception("User reset key not found")
         user_password = x.validate_user_password()
 
         salt = bcrypt.gensalt()
@@ -23,7 +23,7 @@ def _():
         
         db.commit()
 
-        if not total_changes: raise Exception(400, "Could not update password. Please doublecheck that the reset key is valid.")
+        if not total_changes: raise Exception("Could not update password. Please doublecheck that the reset key is valid.")
         return {"info":"Reset password succes"}
 
     except Exception as e:

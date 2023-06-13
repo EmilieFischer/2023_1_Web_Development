@@ -117,7 +117,7 @@ def validate_user_confirm_password():
 ############################## USER LOGGED VALIDATION
 def validate_user_logged():
     user = request.get_cookie("user", secret=COOKIE_SECRET)
-    if user is None: raise Exception(400, "user must login")
+    if user is None: raise Exception("user must login")
     return user
 
 

@@ -8,7 +8,7 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2023-03-13T08:06:58.833Z",
-    "modified": "2023-06-08T08:54:09.022Z",
+    "modified": "2023-06-08T19:27:48.180Z",
     "headers": [],
     "params": [],
     "body": {
@@ -17,11 +17,11 @@
       "form": [
         {
           "name": "user_name",
-          "value": "santiagodonoso"
+          "value": "usertester"
         },
         {
           "name": "user_email",
-          "value": "sijode9447@vaband.com"
+          "value": "niloje4509@onlcool.com"
         },
         {
           "name": "user_password",
@@ -43,8 +43,8 @@
       {
         "type": "res-body",
         "custom": "",
-        "action": "isjson",
-        "value": ""
+        "action": "contains",
+        "value": "info"
       },
       {
         "type": "Content-Type",
@@ -55,8 +55,8 @@
       {
         "type": "res-body",
         "custom": "",
-        "action": "contains",
-        "value": "info"
+        "action": "isjson",
+        "value": ""
       }
     ]
   },
@@ -69,7 +69,7 @@
     "method": "POST",
     "sortNum": 30000,
     "created": "2023-03-16T12:40:17.633Z",
-    "modified": "2023-06-08T08:30:20.243Z",
+    "modified": "2023-06-08T18:52:40.648Z",
     "headers": [],
     "params": [],
     "body": {
@@ -78,7 +78,7 @@
       "form": [
         {
           "name": "user_followee_id",
-          "value": "b84f17b9473546cbad78a6d39381bd00"
+          "value": "40c9b9abf13c45b8a20486bfa3394447\t"
         }
       ]
     },
@@ -118,7 +118,7 @@
     "method": "POST",
     "sortNum": 27500,
     "created": "2023-03-27T13:09:25.965Z",
-    "modified": "2023-06-08T10:54:38.129Z",
+    "modified": "2023-06-08T19:12:39.283Z",
     "headers": [],
     "params": [],
     "body": {
@@ -127,7 +127,7 @@
       "form": [
         {
           "name": "message",
-          "value": "hejsa"
+          "value": "hejsa jeg er ny user"
         }
       ]
     },
@@ -142,7 +142,7 @@
     "method": "POST",
     "sortNum": 80000,
     "created": "2023-04-17T11:10:32.499Z",
-    "modified": "2023-06-08T08:10:49.835Z",
+    "modified": "2023-06-08T19:16:30.103Z",
     "headers": [],
     "params": [],
     "body": {
@@ -151,7 +151,7 @@
       "form": [
         {
           "name": "search_input",
-          "value": "e"
+          "value": "a"
         }
       ]
     },
@@ -166,7 +166,7 @@
     "method": "POST",
     "sortNum": 25000,
     "created": "2023-04-19T10:52:35.554Z",
-    "modified": "2023-06-08T09:26:29.609Z",
+    "modified": "2023-06-08T19:12:09.112Z",
     "headers": [],
     "params": [],
     "body": {
@@ -175,7 +175,7 @@
       "form": [
         {
           "name": "user_email",
-          "value": "kristen98@allen.net"
+          "value": "niloje4509@onlcool.com"
         },
         {
           "name": "user_password",
@@ -208,7 +208,7 @@
     "method": "POST",
     "sortNum": 55000,
     "created": "2023-04-26T10:28:23.236Z",
-    "modified": "2023-06-08T08:33:45.523Z",
+    "modified": "2023-06-08T18:53:44.416Z",
     "headers": [],
     "params": [],
     "body": {
@@ -217,7 +217,7 @@
       "form": [
         {
           "name": "user_followee_id",
-          "value": "b84f17b9473546cbad78a6d39381bd00"
+          "value": "40c9b9abf13c45b8a20486bfa3394447\t"
         }
       ]
     },
@@ -228,11 +228,11 @@
     "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
     "containerId": "",
     "name": "api delete user",
-    "url": "127.0.0.1:5009/delete-user/38ded306bd1c4ce58b7edeb57b6e8f1e",
+    "url": "127.0.0.1:5009/delete-user/3927aeba30a44b10a747515ca8d3e97f",
     "method": "DELETE",
-    "sortNum": 140000,
+    "sortNum": 200000,
     "created": "2023-05-17T07:52:55.431Z",
-    "modified": "2023-06-08T10:14:12.890Z",
+    "modified": "2023-06-08T19:20:03.673Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -242,13 +242,27 @@
     "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
     "containerId": "",
     "name": "send deactivate user email",
-    "url": "127.0.0.1:5009/deactivate-user/fb6b974613784a95bea4a638c63e7233",
-    "method": "GET",
+    "url": "127.0.0.1:5009/api-deactivate-user",
+    "method": "POST",
     "sortNum": 180000,
     "created": "2023-05-18T08:10:47.327Z",
-    "modified": "2023-06-08T10:52:43.049Z",
+    "modified": "2023-06-08T19:18:50.466Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_email",
+          "value": "niloje4509@onlcool.com"
+        },
+        {
+          "name": "user_id",
+          "value": "3927aeba30a44b10a747515ca8d3e97f"
+        }
+      ]
+    },
     "tests": []
   },
   {
@@ -260,7 +274,7 @@
     "method": "POST",
     "sortNum": 160000,
     "created": "2023-05-24T14:03:28.983Z",
-    "modified": "2023-06-08T08:36:46.305Z",
+    "modified": "2023-06-08T19:16:53.811Z",
     "headers": [],
     "params": [],
     "body": {
@@ -269,7 +283,7 @@
       "form": [
         {
           "name": "user_email",
-          "value": "jecajit201@rockdian.com"
+          "value": "niloje4509@onlcool.com"
         }
       ]
     },
@@ -284,7 +298,7 @@
     "method": "POST",
     "sortNum": 170000,
     "created": "2023-05-26T08:52:32.431Z",
-    "modified": "2023-06-08T08:38:46.935Z",
+    "modified": "2023-06-08T19:17:22.720Z",
     "headers": [],
     "params": [],
     "body": {
@@ -293,7 +307,7 @@
       "form": [
         {
           "name": "user_reset_password_key",
-          "value": "3632f2a888ac4d9d82b34744b0b0a098"
+          "value": "393eeec62df646ca9fb8d1be436f1dc0"
         },
         {
           "name": "user_password",
@@ -308,11 +322,11 @@
     "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
     "containerId": "",
     "name": "api delete tweet",
-    "url": "127.0.0.1:5009/delete-tweet/d578d536fb4f4989af582d19cd428efd",
+    "url": "127.0.0.1:5009/delete-tweet/277436223d6a486ea1c472651a897be5",
     "method": "DELETE",
     "sortNum": 28750,
     "created": "2023-06-02T09:34:22.599Z",
-    "modified": "2023-06-08T08:59:04.347Z",
+    "modified": "2023-06-08T19:14:33.275Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -322,11 +336,25 @@
     "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
     "containerId": "",
     "name": "api deactivate user",
-    "url": "127.0.0.1:5009/deactivate-user",
+    "url": "127.0.0.1:5009/deactivate-user/4b4a386b4df643feafc8f9b4a6c3e233",
     "method": "GET",
-    "sortNum": 190000,
+    "sortNum": 210000,
     "created": "2023-06-08T08:44:28.044Z",
-    "modified": "2023-06-08T08:45:13.105Z",
+    "modified": "2023-06-08T19:21:43.014Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "5ca0990b-f034-4d66-87b5-07660e9bb6eb",
+    "colId": "6145c0ab-d0a6-4c8c-a248-af5fc1406f60",
+    "containerId": "",
+    "name": "get name",
+    "url": "127.0.0.1:5009/test",
+    "method": "POST",
+    "sortNum": 200000,
+    "created": "2023-06-09T07:38:00.847Z",
+    "modified": "2023-06-09T07:38:21.214Z",
     "headers": [],
     "params": [],
     "tests": []

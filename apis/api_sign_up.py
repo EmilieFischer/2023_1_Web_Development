@@ -43,17 +43,16 @@ def _():
             "user_total_following" : 0
         }
         
-        # create placed holders for values
+        # create place holders for values
         values = ""
         for key in user:
             values = values + f":{key},"
         values = values.rstrip(",") #remove whatever you have in the last strip (the comma)
         print(values)
+        
         db = x.db()
         total_rows_inserted = db.execute(f"INSERT INTO users VALUES({values})", user).rowcount
-        
-
-
+    
         if total_rows_inserted != 1: raise Exception("Please, try again")
 
         db.commit()

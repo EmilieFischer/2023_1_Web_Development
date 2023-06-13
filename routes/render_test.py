@@ -1,6 +1,5 @@
-from bottle import view
+from bottle import get, template
 
-@view("/test")
+@get("/test")
 def _():
-    name = "Emilie"
-    return dict(name=name)
+    return template("test")

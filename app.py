@@ -16,6 +16,7 @@ import routes.render_signup
 import routes.render_verification
 import routes.render_reset_password
 import routes.render_forgot_password
+import routes.render_test
 
 ##############################
 # APIS
@@ -39,6 +40,7 @@ import emails.send_forgot_password_email
 ############################
 # BRIDGES
 import bridges.render_logout
+import bridges.get_name
 
 ##############################
 # STATIC FILES

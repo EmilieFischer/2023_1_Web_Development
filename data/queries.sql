@@ -25,6 +25,10 @@ SELECT COUNT(*) FROM products;
 -- ALIAS
 SELECT COUNT(*) AS total_products FROM products;
 
+-- Beregner den samlede mængde af alle produkter
+SELECT SUM(quantity) FROM products;
+
+
 
 
 -- Pagination
