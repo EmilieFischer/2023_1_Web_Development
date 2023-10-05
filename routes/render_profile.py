@@ -11,7 +11,7 @@ def dict_factory(cursor, row):
     return {key: value for key, value in zip(col_names, row)}
 
 ##############################
-@get("/<username>")
+@get("/profile/<username>")
 # @view("profile")
 def _(username):
   try:
@@ -22,9 +22,10 @@ def _(username):
 
     db = sqlite3.connect(str(pathlib.Path(__file__).parent.parent.resolve())+"/twitter.db")
     db.row_factory = dict_factory
-    # print(username, "/*"*30)
+    print(username, "/*"*30)
     user = db.execute("SELECT * FROM users WHERE user_name=? COLLATE NOCASE",(username, )).fetchall()[0]
     user_id = user["user_id"]
+    print("hej",user)
     user_followed = set(row["followee_fk"] for row in db.execute("SELECT * FROM followers WHERE follower_fk = ?", (user_id,)))
 
     tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id WHERE tweet_user_fk=? ORDER BY tweet_created_at DESC LIMIT 10",(user_id,)).fetchall() # With that id, look up/get the respectives tweets

@@ -21,7 +21,7 @@ def _():
             # Connect to database
             db = x.db() #
             user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
-            print(user)
+            print("Login ",user)
             if not user:
                 response.status=303
                 response.set_header("Location", "/")
