@@ -1075,6 +1075,11 @@ video {
   background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
 
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
 .stroke-sky-400 {
   stroke: #38bdf8;
 }
@@ -1093,6 +1098,10 @@ video {
 
 .stroke-green-900 {
   stroke: #14532d;
+}
+
+.stroke-red-400 {
+  stroke: #f87171;
 }
 
 .object-contain {
