@@ -77,3 +77,4 @@ BEGIN
   SET customer_total_tweets = customer_total_tweets + "1"
   WHERE customer_id = NEW.tweet_customer_fk;
 END;
+

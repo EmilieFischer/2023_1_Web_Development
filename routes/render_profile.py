@@ -22,6 +22,7 @@ def _(username):
 
     db = sqlite3.connect(str(pathlib.Path(__file__).parent.parent.resolve())+"/twitter.db")
     db.row_factory = dict_factory
+    # print(username, "/*"*30)
     user = db.execute("SELECT * FROM users WHERE user_name=? COLLATE NOCASE",(username, )).fetchall()[0]
     user_id = user["user_id"]
     user_followed = set(row["followee_fk"] for row in db.execute("SELECT * FROM followers WHERE follower_fk = ?", (user_id,)))
