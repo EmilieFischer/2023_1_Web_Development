@@ -19,6 +19,7 @@ def dict_factory(cursor, row):
 
 def db():
   try:
+    print(str(pathlib.Path(__file__).parent.resolve()))
     db = sqlite3.connect(str(pathlib.Path(__file__).parent.resolve())+"/twitter.db") 
     db.execute("PRAGMA foreign_key==ON")
     db.row_factory = dict_factory
